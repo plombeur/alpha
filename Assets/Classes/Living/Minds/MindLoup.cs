@@ -7,6 +7,8 @@ public class MindLoup : MindAnimal {
     { }
 	public override void vivre()
     {
+        if (Living.DEBUG)
+            Debug.Log("MindLoup.vivre ...");
         base.vivre();
     }
 
