@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class ActionPendingList
 {
+    public static bool DEBUG_ALL = false;
     private Animal animal;
     private static string DEBUG_TAG = "[ActionPendingList]";
     private List<Action> actions = new List<Action>();
@@ -14,11 +15,11 @@ public class ActionPendingList
     {
         if (actions.Contains(action))
         {
-            if (debug)
+            if (debug || DEBUG_ALL)
                 Debug.Log(DEBUG_TAG + "Action already exist : " + action.getName()+", dont adding it");
             return;
         }
-        if (debug)
+        if (debug || DEBUG_ALL)
             Debug.Log(DEBUG_TAG + " Adding new Action : " + action.getName());
         actions.Add(action);
         action.setActionPendingList(this);
@@ -29,7 +30,7 @@ public class ActionPendingList
 
         if (actions.Remove(action))
         {
-            if (debug)
+            if (debug || DEBUG_ALL)
                 Debug.Log(DEBUG_TAG + " Removing Action : " + action.getName());
             action.remove();
         }
@@ -42,10 +43,10 @@ public class ActionPendingList
         while (actions.Count > 0 && !result)
         {
             sortActions();
-            if (debug)
+            if (debug || DEBUG_ALL)
                 Debug.Log(DEBUG_TAG + " Executing : " + getActualAction().getName());
             result = actions[0].execute(deltaTime);
-            if (debug)
+            if (result && (debug || DEBUG_ALL))
                 Debug.Log(DEBUG_TAG + " The action didn't consumed the token" + (actions.Count > 0 ? ", looping for execute the next action" : " and the pending list is now empty"));
         }
         return result;
