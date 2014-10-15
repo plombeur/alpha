@@ -8,6 +8,6 @@ public class Loup : Animal {
         if (Living.DEBUG)
             Debug.Log("Loup.Start");
         MindLoup mind = new MindLoup(this);
-        base.construct(mind,100);
+        base.construct(mind,100,60);
 	}
 }

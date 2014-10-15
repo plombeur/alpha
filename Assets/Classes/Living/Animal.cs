@@ -3,14 +3,20 @@ using System.Collections;
 
 public abstract class Animal : Living {
 
-    private int vie;
-    private float direction;
+    public int VIE_MAX;
+    public int vie;
+    public float direction;
+    public int FAIM_MAX;
+    public int faim;
 
-    public void construct(MindAnimal mind, int vie)
+    public void construct(MindAnimal mind, int vie, int faim)
     {
         if (Living.DEBUG)
             Debug.Log("Animal.construct");
-        this.vie = vie;
+        VIE_MAX = vie;
+        vie = VIE_MAX;
+        FAIM_MAX = faim;
+        faim = FAIM_MAX;
         direction = 0;
         base.construct(mind);
     }

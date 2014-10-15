@@ -8,5 +8,7 @@ public abstract class MindAnimal : Mind
     }
     public override void vivre()
     {
+        Animal animal = (Animal) agent;
+        animal.faim-= Time;
     }
 }
