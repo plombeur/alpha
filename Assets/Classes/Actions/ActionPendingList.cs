@@ -2,8 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class ActionPendingList 
+public class ActionPendingList
 {
+    private Animal animal;
     private static string DEBUG_TAG = "[ActionPendingList]";
     private List<Action> actions = new List<Action>();
     private bool debug;
@@ -12,25 +13,25 @@ public class ActionPendingList
     public void addAction(Action action)
     {
         if (debug)
-            Debug.Log(DEBUG_TAG+" Adding new Action : " + action.getName());
+            Debug.Log(DEBUG_TAG + " Adding new Action : " + action.getName());
         actions.Add(action);
         action.setActionPendingList(this);
     }
-    
+
     public void removeAction(Action action)
     {
-      
+
         if (actions.Remove(action))
         {
             if (debug)
-                Debug.Log(DEBUG_TAG+" Removing Action : " + action.getName());
+                Debug.Log(DEBUG_TAG + " Removing Action : " + action.getName());
             action.remove();
         }
     }
     public bool execute(float deltaTime)
     {
         if (debug && actions.Count == 0)
-            Debug.Log(DEBUG_TAG+" Executing : Nothing to execute (empty)");
+            Debug.Log(DEBUG_TAG + " Executing : Nothing to execute (empty)");
         bool result = false;
         while (actions.Count > 0 && !result)
         {
@@ -39,7 +40,7 @@ public class ActionPendingList
                 Debug.Log(DEBUG_TAG + " Executing : " + getActualAction().getName());
             result = actions[0].execute(deltaTime);
             if (debug)
-                Debug.Log(DEBUG_TAG + " The action didn't consumed the token"+(actions.Count > 0 ? ", looping for execute the next action" : " and the pending list is now empty"));
+                Debug.Log(DEBUG_TAG + " The action didn't consumed the token" + (actions.Count > 0 ? ", looping for execute the next action" : " and the pending list is now empty"));
         }
         return result;
     }
@@ -54,6 +55,14 @@ public class ActionPendingList
     public int size()
     {
         return actions.Count;
+    }
+    public Animal getAnimal()
+    {
+        return animal;
+    }
+    public void setAnimal(Animal animal)
+    {
+        this.animal = animal;
     }
     public Action getActualAction()
     {

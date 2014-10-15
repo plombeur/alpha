@@ -61,6 +61,10 @@ public abstract class Action
     protected abstract void onRemove();
     protected abstract void onPause();
     protected abstract bool onResume(float deltaTime);
+    public Animal getAnimal()
+    {
+        return pendingList.getAnimal();
+    }
 }
 class ActionComparer : IComparer<Action>
 {
