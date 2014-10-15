@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Scenes/Dev-Tran.unity.meta
 guid: 7f355b4fe5472854488d67028dd54344
+=======
+guid: b7728d63dc503a747a04d9d9055b5482
+folderAsset: yes
+>>>>>>> origin/master:Assets/Scripts.meta
 DefaultImporter:
   userData: 
   assetBundleName: 
