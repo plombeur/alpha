@@ -21,6 +21,14 @@ public abstract class Animal : Living {
         GetComponent<Rigidbody2D>().velocity = transform.right * pas;
     }
 
+    public void wiggle(float pas, float wiggleValue)
+    {
+        lt(Random.Range(0, wiggleValue));
+        rt(Random.Range(0, wiggleValue));
+        GetComponent<Rigidbody2D>().rotation = direction;
+        GetComponent<Rigidbody2D>().velocity = transform.right * pas;
+    }
+
     public void rt(float pas)
     {
         direction -= pas;

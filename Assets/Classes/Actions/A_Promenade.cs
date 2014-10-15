@@ -5,6 +5,7 @@ public class A_Promenade : Action {
 
     private float vitesse;
     private float cptNouvelleTrajectoire = 0;
+    private float time = 0;
 
 	public A_Promenade(float vitesse = 1) : base("A_Promenade")
     {
@@ -18,26 +19,30 @@ public class A_Promenade : Action {
 
     protected override bool onUpdate(float deltaTime)
     {
+        time += deltaTime;
         Animal a = getAnimal();
         cptNouvelleTrajectoire -= deltaTime;
         if(cptNouvelleTrajectoire <= 0)
         {
             a.direction = Random.Range(0, 360);
-            cptNouvelleTrajectoire = -cptNouvelleTrajectoire + Random.Range(2, 40);
+            cptNouvelleTrajectoire = -cptNouvelleTrajectoire + Random.Range(1, 25);
+            Debug.Log("A_Promenade _ Nouvelle direction! cpt: " + cptNouvelleTrajectoire);
         }
-        a.fd(vitesse);
+        while (time >= 0.04)
+        {
+            time -= 0.04f;
+            a.wiggle(vitesse, 5);
+        }
         return true;
     }
 
     public override bool Equals(System.Object obj)
     {
-        // If parameter is null return false.
         if (obj == null)
         {
             return false;
         }
 
-        // If parameter cannot be cast to Point return false.
         A_Promenade action = obj as A_Promenade;
         if (action == null)
         {
