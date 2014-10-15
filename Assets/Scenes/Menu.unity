@@ -55,8 +55,7 @@ RenderSettings:
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
   m_DefaultReflectionMode: 0
   m_CustomReflection: {fileID: 0}
-  m_GeneratedSkyboxReflection: {fileID: 8900000, guid: 68720e82edf0995419d1c767f2904ed4,
-    type: 2}
+  m_GeneratedSkyboxReflection: {fileID: 0}
 --- !u!127 &3
 LevelGameManager:
   m_ObjectHideFlags: 0
