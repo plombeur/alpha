@@ -7,7 +7,7 @@ public class Ronce : Plant {
     {
         if (Living.DEBUG)
             Debug.Log("Ronce.Start");
-        MindLoup mind = new MindRonce(this);
+        MindRonce mind = new MindRonce(this);
         base.construct(mind, 100);
     }
 }

@@ -10,7 +10,7 @@ public class MindRonce : MindPlant {
         if (Living.DEBUG)
             Debug.Log("MindLoup.vivre ...");
         Plant plant = ((Plant)agent);
-        plant.fd(1);
+        //plant.fd(1);
         base.vivre();
     }
 
