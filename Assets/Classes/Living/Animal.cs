@@ -2,12 +2,32 @@
 using System.Collections;
 
 public abstract class Animal : Living {
-    protected int vie;
+
+    private int vie;
+    private float direction;
+
     public void construct(MindAnimal mind, int vie)
     {
         if (Living.DEBUG)
             Debug.Log("Animal.construct");
         this.vie = vie;
+        direction = 0;
         base.construct(mind);
+    }
+
+    public void fd(float pas)
+    {
+        GetComponent<Rigidbody2D>().rotation = direction;
+        GetComponent<Rigidbody2D>().velocity = transform.right * pas;
+    }
+
+    public void rt(float pas)
+    {
+        direction -= pas;
+    }
+
+    public void lt(float pas)
+    {
+        direction += pas;
     }
 }
