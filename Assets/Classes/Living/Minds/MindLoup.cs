@@ -10,7 +10,11 @@ public class MindLoup : MindAnimal {
         if (Living.DEBUG)
             Debug.Log("MindLoup.vivre ...");
         Loup loup = ((Loup)agent);
-        loup.fd(1);
+        if (loup.estMort())
+            return;
+        if (Living.DEBUG)
+            Debug.Log("Animal.construct Faim: " + loup.faim + ", Vie: " + loup.vie);
+        actionList.addAction(new A_Promenade(1));
         base.vivre();
     }
 

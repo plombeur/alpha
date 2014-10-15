@@ -7,7 +7,7 @@ public class ActionPendingList
     private Animal animal;
     private static string DEBUG_TAG = "[ActionPendingList]";
     private List<Action> actions = new List<Action>();
-    private bool debug;
+    private bool debug = true;
     private ActionComparer actionComparer = new ActionComparer();
 
     public void addAction(Action action)

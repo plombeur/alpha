@@ -298,11 +298,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d224028450fe0f54db40c16fe49cf156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VIE_MAX: 0
-  vie: 0
+  VIE_MAX: 100
+  vie: 100
   direction: 0
-  FAIM_MAX: 0
-  faim: 0
+  FAIM_MAX: 60
+  faim: 60
 --- !u!50 &1888873776
 Rigidbody2D:
   m_ObjectHideFlags: 0

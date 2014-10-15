@@ -6,7 +6,7 @@ using System.Collections;
  */
 public abstract class Living : MonoBehaviorAdapter
 {
-    public const bool DEBUG = true;
+    public const bool DEBUG = false;
     private Mind mind;
 
     public void construct(Mind mind)
@@ -32,5 +32,14 @@ public abstract class Living : MonoBehaviorAdapter
     {
         if (Living.DEBUG)
             Debug.Log("Living.fd " + pas);
+    }
+    protected override void OnTriggerEnter2D(Collider2D other)
+    {
+        mind.OnTriggerEnter2D(other);
+    }
+
+    protected override void OnCollisionEnter2D(Collision2D other)
+    {
+        mind.OnCollisionEnter2D(other);
     }
 }
