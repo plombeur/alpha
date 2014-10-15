@@ -8,9 +8,11 @@ public class MindRonce : MindPlant {
 	public override void vivre()
     {
         if (Living.DEBUG)
-            Debug.Log("MindLoup.vivre ...");
+            Debug.Log("MindRonce.vivre ...");
         Plant plant = ((Plant)agent);
-        //plant.fd(1);
+
+        plant.grow();
+
         base.vivre();
     }
 

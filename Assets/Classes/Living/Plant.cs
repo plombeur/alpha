@@ -11,4 +11,9 @@ public abstract class Plant : Living
         this.vie = vie;
         base.construct(mind);
     }
+
+    public void grow()
+    {
+
+    }
 }
