@@ -16,4 +16,7 @@ public abstract class Plant : Living
     {
 
     }
+	public void reproduce()
+	{
+	}
 }
