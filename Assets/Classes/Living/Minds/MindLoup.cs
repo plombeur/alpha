@@ -9,6 +9,8 @@ public class MindLoup : MindAnimal {
     {
         if (Living.DEBUG)
             Debug.Log("MindLoup.vivre ...");
+        Animal animal = ((Animal)agent);
+        animal.fd(1);
         base.vivre();
     }
 

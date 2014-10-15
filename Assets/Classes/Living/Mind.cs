@@ -3,7 +3,7 @@ using System.Collections;
 
 public abstract class Mind {
 
-    private Living agent;
+    protected Living agent;
     public Mind(Living agent)
     {
         this.agent = agent;

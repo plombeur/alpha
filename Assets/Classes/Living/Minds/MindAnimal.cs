@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 
-public class MindAnimal : Mind
+public abstract class MindAnimal : Mind
 {
     public MindAnimal(Animal agent) : base(agent)
     {

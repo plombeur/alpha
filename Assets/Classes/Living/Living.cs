@@ -8,7 +8,6 @@ public abstract class Living : MonoBehaviorAdapter
 {
     public const bool DEBUG = true;
     private Mind mind;
-    private float direction;
 
     public void construct(Mind mind)
     {
