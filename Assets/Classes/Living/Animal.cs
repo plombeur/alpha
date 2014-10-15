@@ -10,4 +10,8 @@ public abstract class Animal : Living {
         this.vie = vie;
         base.construct(mind);
     }
+    public void avancer(float pas)
+    {
+        GetComponent<Rigidbody2D>().velocity = pas;
+    }
 }

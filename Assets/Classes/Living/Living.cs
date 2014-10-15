@@ -17,14 +17,14 @@ public abstract class Living : MonoBehaviorAdapter
         this.mind = mind;
     }
 	
-	void Update () {
+	protected override void Update () {
         mind.vivre();
 	}
 
     /*
      * Start devra appeller le base.construct(...)
     */
-    void Start()
+    protected override void Start()
     {
         onCreate();
     }
@@ -33,13 +33,5 @@ public abstract class Living : MonoBehaviorAdapter
     {
         if (Living.DEBUG)
             Debug.Log("Living.fd " + pas);
-    }
-    protected void lt(float pas)
-    {
-        direction += pas;
-    }
-    protected void rt(float pas)
-    {
-        direction -= pas;
     }
 }
