@@ -106,4 +106,53 @@ public class MonoBehaviorAdapter : MonoBehaviour
     protected virtual void OnMouseUp()
     {
     }
+
+    protected virtual void OnCollisionEnter(Collision collision)
+    {
+
+    }
+    protected virtual void OnCollisionStay(Collision collision)
+    {
+
+    }
+    protected virtual void OnCollisionExit(Collision collision)
+    {
+
+    }
+    protected virtual void OnTriggerEnter(Collider collider)
+    {
+
+    }
+    protected virtual void OnTriggerStay(Collider collider)
+    {
+
+    }
+    protected virtual void OnTriggerExit(Collider collider)
+    {
+
+    }
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    {
+
+    }
+    protected virtual void OnCollisionStay2D(Collision2D collision)
+    {
+
+    }
+    protected virtual void OnCollisionExit2D(Collision2D collision)
+    {
+
+    }
+    protected virtual void OnTriggerEnter2D(Collider2D collider)
+    {
+
+    }
+    protected virtual void OnTriggerStay2D(Collider2D collider)
+    {
+
+    }
+    protected virtual void OnTriggerExit2D(Collider2D collider)
+    {
+
+    }
 }
