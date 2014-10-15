@@ -12,6 +12,12 @@ public class ActionPendingList
 
     public void addAction(Action action)
     {
+        if (actions.Contains(action))
+        {
+            if (debug)
+                Debug.Log(DEBUG_TAG + "Action already exist : " + action.getName()+", dont adding it");
+            return;
+        }
         if (debug)
             Debug.Log(DEBUG_TAG + " Adding new Action : " + action.getName());
         actions.Add(action);

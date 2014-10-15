@@ -56,11 +56,23 @@ public abstract class Action
         onRemove();
     }
     public abstract float getPriority();
-    protected abstract bool onStart(float deltaTime);
+    protected bool onStart(float deltaTime)
+    {
+        return onUpdate(deltaTime);
+    }
     protected abstract bool onUpdate(float deltaTime);
-    protected abstract void onRemove();
-    protected abstract void onPause();
-    protected abstract bool onResume(float deltaTime);
+    protected void onRemove()
+    {
+    
+    }
+    protected void onPause()
+    {
+    
+    }
+    protected bool onResume(float deltaTime)
+    {
+        return onUpdate(deltaTime);
+    }
     public Animal getAnimal()
     {
         return pendingList.getAnimal();
