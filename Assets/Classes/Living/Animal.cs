@@ -28,6 +28,10 @@ public abstract class Animal : Living {
 
     public void lt(float pas)
     {
+<<<<<<< HEAD
         direction += pas;
+=======
+        GetComponent<Rigidbody2D>().velocity = pas;
+>>>>>>> origin/master
     }
 }
