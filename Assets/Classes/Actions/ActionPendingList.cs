@@ -46,7 +46,7 @@ public class ActionPendingList
             if (debug || DEBUG_ALL)
                 Debug.Log(DEBUG_TAG + " Executing : " + getActualAction().getName());
             result = actions[0].execute(deltaTime);
-            if (result && (debug || DEBUG_ALL))
+            if (!result && (debug || DEBUG_ALL))
                 Debug.Log(DEBUG_TAG + " The action didn't consumed the token" + (actions.Count > 0 ? ", looping for execute the next action" : " and the pending list is now empty"));
         }
         return result;

@@ -28,4 +28,22 @@ public class A_Promenade : Action {
         a.fd(vitesse);
         return true;
     }
+
+    public override bool Equals(System.Object obj)
+    {
+        // If parameter is null return false.
+        if (obj == null)
+        {
+            return false;
+        }
+
+        // If parameter cannot be cast to Point return false.
+        A_Promenade action = obj as A_Promenade;
+        if (action == null)
+        {
+            return false;
+        }
+
+        return this.vitesse == action.vitesse;
+    }
 }
