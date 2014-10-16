@@ -43,4 +43,16 @@ public abstract class Animal : Living {
     {
         return vie <= 0;
     }
+
+    public void dors()
+    {
+        if(transform.localScale.y > 0)
+            transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, 0);
+    }
+
+    public void reveil()
+    {
+        if (transform.localScale.y < 0)
+            transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, 0);
+    }
 }

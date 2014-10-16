@@ -26,7 +26,6 @@ public class A_Promenade : Action {
         {
             a.direction = Random.Range(0, 360);
             cptNouvelleTrajectoire = -cptNouvelleTrajectoire + Random.Range(1, 25);
-            Debug.Log("A_Promenade _ Nouvelle direction! cpt: " + cptNouvelleTrajectoire);
         }
         while (time >= 0.04)
         {
