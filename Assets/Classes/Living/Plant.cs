@@ -17,12 +17,10 @@ public abstract class Plant : Living
         base.construct(mind);
     }
 
-    public void grow()
+    public virtual void grow()
     {
-        if (growth < 100)
-            growth += growSpeed * Time.deltaTime;
     }
-	public void reproduce()
+	public virtual void reproduce()
 	{
 	}
 }
