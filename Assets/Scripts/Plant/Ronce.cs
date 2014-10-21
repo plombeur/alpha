@@ -5,12 +5,12 @@ public class Ronce : Plant {
 
     GameObject[] seeds;
 
-    override void Awake()
+    override protected void Awake()
     {
         base.Awake();
     }
 
-    override void Update()
+    override protected void Update()
     {
         base.Update();
         print(growth.ToString());
