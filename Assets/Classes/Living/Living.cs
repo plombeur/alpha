@@ -6,7 +6,7 @@ using System.Collections;
  */
 public abstract class Living : MonoBehaviourAdapter
 {
-    public const bool DEBUG = true;
+    public const bool DEBUG = false;
     private Mind mind;
 
     public void construct(Mind mind)
@@ -23,7 +23,7 @@ public abstract class Living : MonoBehaviourAdapter
     /*
      * Start devra appeller le base.construct(...)
     */
-    protected override void Start()
+    protected override void Awake()
     {
         onCreate();
     }

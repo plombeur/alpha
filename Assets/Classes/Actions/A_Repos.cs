@@ -26,7 +26,7 @@ public class A_Repos : Action {
         {
             a.reveil();
             getActionPendlingList().removeAction(this);
-            return false;
+            return true;
         }
         a.dors();
         return true;

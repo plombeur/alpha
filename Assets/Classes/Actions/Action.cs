@@ -179,9 +179,9 @@ class ActionComparer : IComparer<Action>
     public int Compare(Action x, Action y)
     {
         if (x.getPriority() > y.getPriority())
-            return 1;
-        else if (x.getPriority() < y.getPriority())
             return -1;
+        else if (x.getPriority() < y.getPriority())
+            return 1;
         return 0;
     }
 }
