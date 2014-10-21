@@ -10,10 +10,19 @@ public class Ronce : Plant {
         base.Awake();
     }
 
+    protected override void Start()
+    {
+        base.Start();
+
+        health = 10;
+    }
+
     override protected void Update()
     {
         base.Update();
-        print(growth.ToString());
+        /*print("Health : " + health.ToString());
+        print("Nutriments :" + nutriments.ToString());
+        print("Growth : " + growth.ToString());*/
     }
 
     protected override void onCreate()
@@ -26,7 +35,18 @@ public class Ronce : Plant {
 
     public override void grow()
     {
-        if (growth < 100)
-            growth += growSpeed * Time.deltaTime;
+        base.grow();
+
+        float energyChangeValue = growSpeed * Time.deltaTime;
+
+        if (nutriments >= 0)
+        {
+            nutriments -= energyChangeValue;
+            growth += energyChangeValue;
+        }
+        else
+        {
+            health -= energyChangeValue;
+        }
     }
 }
