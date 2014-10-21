@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MonoBehaviorAdapter : MonoBehaviour
+public class MonoBehaviourAdapter : MonoBehaviour
 {
     protected virtual void OnApplicationFocus(bool focusStatus)
     {

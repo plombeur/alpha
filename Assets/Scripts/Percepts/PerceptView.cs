@@ -2,31 +2,48 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class PerceptView : MonoBehaviorAdapter 
+public class PerceptView : MonoBehaviourAdapter
 {
-    public float angle = 180;
+    public float shortRangeAngle = 180;
+    public Detector shortRangeDetector;
+    public float longRangeAngle = 90;
+    public Detector longRangeDetector;
     private List<Living> livings;
 
-    protected override void OnTriggerEnter2D(Collider2D collider)
+    void Start()
     {
-        base.OnTriggerEnter2D(collider);
-        float angle = Quaternion.Angle(collider.transform.rotation,transform.rotation);
-        if (angle > (this.angle / 2.0) || angle < -(this.angle / 2.0))
-            return;
-        Living living = collider.gameObject.GetComponent<Living>();
-        if (living != null)
-            livings.Add(living);
+        livings = new List<Living>();
     }
 
-    protected override void OnTriggerExit(Collider collider)
+    void Update()
     {
-        base.OnTriggerExit(collider);
+        foreach (GameObject objetSeen in shortRangeDetector.getEnteringGameObjets())
+        {
+            Living living = objetSeen.GetComponent<Living>();
+            if (living != null)
+            {
+                float angle = Quaternion.Angle(living.transform.rotation, transform.rotation);
+                if ((angle > (shortRangeAngle / 2.0) || angle < -(shortRangeAngle / 2.0)) && !livings.Contains(living))
+                    livings.Add(living);
+            }
+        }
+        foreach (GameObject objetSeen in shortRangeDetector.getEnteringGameObjets())
+        {
+            Living living = objetSeen.GetComponent<Living>();
+            if (living != null)
+            {
+                float angle = Quaternion.Angle(living.transform.rotation, transform.rotation);
+                if ((angle > (longRangeAngle / 2.0) || angle < -(longRangeAngle / 2.0)) && !livings.Contains(living))
+                    livings.Add(living);
+            }
+        }
+        foreach (GameObject objetSeen in shortRangeDetector.getExitingGameObjects())
+        {
 
-        livings.Remove(collider.gameObject.GetComponent<Living>());
-    }
+        }
+        foreach (GameObject objetSeen in longRangeDetector.getEnteringGameObjets())
+        {
 
-    public List<Living> getLivings()
-    {
-        return livings;
+        }
     }
 }
