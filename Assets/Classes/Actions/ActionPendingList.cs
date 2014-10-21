@@ -35,6 +35,11 @@ public class ActionPendingList
             action.remove();
         }
     }
+    /// <summary>
+    /// Execute the first action in the list
+    /// </summary>
+    /// <param name="deltaTime">the time elapsed between the previous frame and this frame</param>
+    /// <returns>true if a action is executed</returns>
     public bool execute(float deltaTime)
     {
         if (debug && actions.Count == 0)
@@ -59,6 +64,7 @@ public class ActionPendingList
     {
         this.debug = debug;
     }
+
     public int size()
     {
         return actions.Count;
@@ -71,6 +77,10 @@ public class ActionPendingList
     {
         this.animal = animal;
     }
+    /// <summary>
+    /// Return the first action in the list
+    /// </summary>
+    /// <returns>the first action or null if no action found</returns>
     public Action getActualAction()
     {
         if (actions.Count > 0)
