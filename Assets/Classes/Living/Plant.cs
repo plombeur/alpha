@@ -23,4 +23,12 @@ public abstract class Plant : Living
 	public virtual void reproduce()
 	{
 	}
+
+    protected override void OnCollisionEnter2D(Collision2D other)
+    {
+    }
+
+    protected override void OnTriggerEnter2D(Collider2D other)
+    {
+    }
 }
