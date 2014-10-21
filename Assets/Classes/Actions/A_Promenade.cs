@@ -19,18 +19,18 @@ public class A_Promenade : Action {
 
     protected override bool onUpdate(float deltaTime)
     {
-        time += deltaTime;
         Animal a = getAnimal();
         cptNouvelleTrajectoire -= deltaTime;
-        if(cptNouvelleTrajectoire <= 0)
+        if (cptNouvelleTrajectoire <= 0)
         {
             a.direction = Random.Range(0, 360);
-            cptNouvelleTrajectoire = -cptNouvelleTrajectoire + Random.Range(1, 25);
+            cptNouvelleTrajectoire = -cptNouvelleTrajectoire + Random.Range(2, 40);
         }
-        while (time >= 0.04)
+        time += deltaTime;
+        while (time >= 0.04f)
         {
+            a.wiggle(vitesse,2);
             time -= 0.04f;
-            a.wiggle(vitesse, 5);
         }
         return true;
     }

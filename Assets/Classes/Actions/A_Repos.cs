@@ -13,7 +13,7 @@ public class A_Repos : Action {
 
     public override float getPriority()
     {
-        return .1f;
+        return 0.1f;
     }
 
     protected override bool onUpdate(float deltaTime)
@@ -21,12 +21,14 @@ public class A_Repos : Action {
         if (Living.DEBUG)
             Debug.Log("Repos " + time);
         time += deltaTime;
+        Animal a = getAnimal();
         if(time >= duree)
         {
-            getAnimal().reveil();
+            a.reveil();
+            getActionPendlingList().removeAction(this);
             return false;
         }
-        getAnimal().dors();
+        a.dors();
         return true;
     }
 
@@ -37,7 +39,7 @@ public class A_Repos : Action {
             return false;
         }
 
-        A_Promenade action = obj as A_Promenade;
+        A_Repos action = obj as A_Repos;
         return action != null;
     }
 }

@@ -172,7 +172,7 @@ public abstract class Action
     /// </summary>
     /// <param name="obj">The other action with the same class</param>
     /// <returns>true if the action in parameter have exactly the same goal of this action</returns>
-    public abstract bool Equals(System.Object obj);
+    public override abstract bool Equals(System.Object obj);
 }
 class ActionComparer : IComparer<Action>
 {

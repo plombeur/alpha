@@ -25,8 +25,7 @@ public abstract class Animal : Living {
     {
         lt(Random.Range(0, wiggleValue));
         rt(Random.Range(0, wiggleValue));
-        GetComponent<Rigidbody2D>().rotation = direction;
-        GetComponent<Rigidbody2D>().velocity = transform.right * pas;
+        fd(pas);
     }
 
     public void rt(float pas)
@@ -46,13 +45,11 @@ public abstract class Animal : Living {
 
     public void dors()
     {
-        if(transform.localScale.y > 0)
-            transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, 0);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
     }
 
     public void reveil()
     {
-        if (transform.localScale.y < 0)
-            transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, 0);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
     }
 }

@@ -4,9 +4,9 @@ using System.Collections;
 /*
  * IMPORTANT: Un object Living doit être un rigidbody!!
  */
-public abstract class Living : MonoBehaviorAdapter
+public abstract class Living : MonoBehaviourAdapter
 {
-    public const bool DEBUG = false;
+    public const bool DEBUG = true;
     private Mind mind;
 
     public void construct(Mind mind)
