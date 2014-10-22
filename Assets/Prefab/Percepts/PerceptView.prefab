@@ -195,6 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 875d0f50b14ca3e47827478d5df182b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  angle: 90
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -206,6 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 875d0f50b14ca3e47827478d5df182b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  angle: 180
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -217,9 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82c8e5020d0b33145b4665395cccbfbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shortRangeAngle: 180
   shortRangeDetector: {fileID: 11400002}
-  longRangeAngle: 90
   longRangeDetector: {fileID: 11400000}
 --- !u!1001 &100100000
 Prefab:

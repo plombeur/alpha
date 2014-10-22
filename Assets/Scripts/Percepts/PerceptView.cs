@@ -4,11 +4,9 @@ using System.Collections.Generic;
 
 public class PerceptView : MonoBehaviourAdapter
 {
-    public float shortRangeAngle = 180;
     public Detector shortRangeDetector;
-    public float longRangeAngle = 90;
     public Detector longRangeDetector;
-    private List<Living> livings,livingsShortRange,livingLongRange;
+    private List<Living> livings, livingsShortRange, livingLongRange;
 
     void Start()
     {
@@ -23,35 +21,29 @@ public class PerceptView : MonoBehaviourAdapter
         {
             Living living = objetSeen.GetComponent<Living>();
             if (living != null)
-            {
-                float angle = Vector3.Angle(transform.up, living.transform.position - transform.position);
-                Debug.Log("long "+angle);
-                if (angle < (shortRangeAngle / 2.0) && !livings.Contains(living))
-                    livingsShortRange.Add(living);
-            }
+                livingsShortRange.Add(living);
+            Debug.Log("add short");
         }
         foreach (GameObject objetSeen in longRangeDetector.getEnteringGameObjets())
         {
             Living living = objetSeen.GetComponent<Living>();
             if (living != null)
-            {
-                float angle = Vector3.Angle(transform.up, living.transform.position - transform.position);
-                Debug.Log("short "+angle);
-                if (angle < (longRangeAngle / 2.0) && !livings.Contains(living))
-                    livingLongRange.Add(living);
-            }
+                livingLongRange.Add(living);
+            Debug.Log("add long");
         }
         foreach (GameObject objetSeen in shortRangeDetector.getExitingGameObjects())
         {
             Living living = objetSeen.GetComponent<Living>();
             if (living != null)
                 livingsShortRange.Remove(living);
+            Debug.Log("rm short");
         }
         foreach (GameObject objetSeen in longRangeDetector.getExitingGameObjects())
         {
             Living living = objetSeen.GetComponent<Living>();
             if (living != null)
                 livingLongRange.Remove(living);
+            Debug.Log("rm long");
         }
         livings.Clear();
         livings.AddRange(livingsShortRange);
@@ -61,9 +53,16 @@ public class PerceptView : MonoBehaviourAdapter
                 livings.Add(living);
         }
     }
-   
+
     public List<Living> getLiving()
     {
+       // Debug.Log("s "+livingsShortRange.Count);
+       // if (livingsShortRange.Count > 0)
+         //   Debug.Log(livingsShortRange[0]);
+       // Debug.Log("l "+livingLongRange.Count);
+        //if (livingLongRange.Count > 0)
+          //  Debug.Log(livingLongRange[0]);
+       
         return livings;
     }
 }

@@ -6,7 +6,7 @@ using System.Collections;
  */
 public abstract class Living : MonoBehaviourAdapter
 {
-    public const bool DEBUG = true;
+    public const bool DEBUG = false;
     private Mind mind;
 
     public void construct(Mind mind)

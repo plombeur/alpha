@@ -34,7 +34,7 @@ public class A_RejoindreTroupe : Action
         }
         else
         {
-            PerceptView percepts = getAnimal().GetComponent<PerceptView>();
+            PerceptView percepts = getAnimal().perceptView;
             if (percepts != null && percepts.getLiving().Count > 0)
             {
                 getAnimal().fd(Animal.VITESSE * 2);
