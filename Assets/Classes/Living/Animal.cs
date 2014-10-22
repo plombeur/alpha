@@ -8,6 +8,7 @@ public abstract class Animal : Living {
     public float direction;
     public int FAIM_MAX;
     public float faim;
+    public const float VITESSE = 1;
 
     public void construct(MindAnimal mind)
     {
