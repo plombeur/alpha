@@ -19,7 +19,7 @@ public abstract class Animal : Living {
     public void fd(float pas)
     {
         GetComponent<Rigidbody2D>().rotation = direction;
-        GetComponent<Rigidbody2D>().velocity = transform.right * pas;
+        GetComponent<Rigidbody2D>().velocity = transform.up * pas;
     }
 
     public void wiggle(float pas, float wiggleValue)
