@@ -25,17 +25,19 @@ public class PerceptView : MonoBehaviourAdapter
             if (living != null)
             {
                 float angle = Vector3.Angle(transform.up, living.transform.position - transform.position);
-                if ((angle > (shortRangeAngle / 2.0) || angle < -(shortRangeAngle / 2.0)) && !livings.Contains(living))
+                Debug.Log("long "+angle);
+                if (angle < (shortRangeAngle / 2.0) && !livings.Contains(living))
                     livingsShortRange.Add(living);
             }
         }
-        foreach (GameObject objetSeen in shortRangeDetector.getEnteringGameObjets())
+        foreach (GameObject objetSeen in longRangeDetector.getEnteringGameObjets())
         {
             Living living = objetSeen.GetComponent<Living>();
             if (living != null)
             {
                 float angle = Vector3.Angle(transform.up, living.transform.position - transform.position);
-                if ((angle > (longRangeAngle / 2.0) || angle < -(longRangeAngle / 2.0)) && !livings.Contains(living))
+                Debug.Log("short "+angle);
+                if (angle < (longRangeAngle / 2.0) && !livings.Contains(living))
                     livingLongRange.Add(living);
             }
         }
@@ -53,9 +55,13 @@ public class PerceptView : MonoBehaviourAdapter
         }
         livings.Clear();
         livings.AddRange(livingsShortRange);
-        livings.AddRange(livingLongRange);
+        foreach (Living living in livingLongRange)
+        {
+            if (!livings.Contains(living))
+                livings.Add(living);
+        }
     }
-
+   
     public List<Living> getLiving()
     {
         return livings;
