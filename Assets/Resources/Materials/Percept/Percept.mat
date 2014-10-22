@@ -79,6 +79,13 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _texture
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -103,7 +110,7 @@ Material:
       data:
         first:
           name: _Angle
-        second: 180
+        second: 90
       data:
         first:
           name: _Parallax
@@ -144,7 +151,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .0741782039, g: .170865685, b: .360294104, a: .435294122}
+        second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
           name: _EmissionColor
