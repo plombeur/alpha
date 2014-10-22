@@ -4,42 +4,33 @@ using System.Collections.Generic;
 
 public class PerceptView : MonoBehaviourAdapter
 {
-    public float shortRangeAngle = 180;
     public Detector shortRangeDetector;
-    public float longRangeAngle = 90;
     public Detector longRangeDetector;
-    private List<Living> livings,livingsShortRange,livingLongRange;
+    private List<Living> livings, livingsShortRange, livingLongRange;
 
-    void Start()
+
+    protected override void Start()
     {
+        base.Start();
         livings = new List<Living>();
         livingsShortRange = new List<Living>();
         livingLongRange = new List<Living>();
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         foreach (GameObject objetSeen in shortRangeDetector.getEnteringGameObjets())
         {
             Living living = objetSeen.GetComponent<Living>();
             if (living != null)
-            {
-                float angle = Vector3.Angle(transform.up, living.transform.position - transform.position);
-                Debug.Log("long "+angle);
-                if (angle < (shortRangeAngle / 2.0) && !livings.Contains(living))
-                    livingsShortRange.Add(living);
-            }
+                livingsShortRange.Add(living);
         }
         foreach (GameObject objetSeen in longRangeDetector.getEnteringGameObjets())
         {
             Living living = objetSeen.GetComponent<Living>();
             if (living != null)
-            {
-                float angle = Vector3.Angle(transform.up, living.transform.position - transform.position);
-                Debug.Log("short "+angle);
-                if (angle < (longRangeAngle / 2.0) && !livings.Contains(living))
-                    livingLongRange.Add(living);
-            }
+                livingLongRange.Add(living);
         }
         foreach (GameObject objetSeen in shortRangeDetector.getExitingGameObjects())
         {
@@ -61,9 +52,9 @@ public class PerceptView : MonoBehaviourAdapter
                 livings.Add(living);
         }
     }
-   
+
     public List<Living> getLiving()
-    {
+    {       
         return livings;
     }
 }

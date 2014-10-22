@@ -2,7 +2,7 @@
 using System.Collections;
 
 public abstract class Animal : Living {
-
+    public PerceptView perceptView;
     public int VIE_MAX;
     public float vie;
     public float direction;
