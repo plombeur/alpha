@@ -3,8 +3,6 @@ using System.Collections;
 
 public class Ronce : Plant {
 
-    GameObject[] seeds;
-
     override protected void Awake()
     {
         base.Awake();
@@ -43,6 +41,13 @@ public class Ronce : Plant {
         {
             nutriments -= energyChangeValue;
             growth += energyChangeValue;
+
+            foreach (Transform child in transform) {
+                if (child.gameObject.name == "Mures")
+                {
+                    child.GetComponent<Mures>().grow(this);
+                }
+            }
         }
         else
         {

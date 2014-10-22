@@ -3,7 +3,6 @@ using System.Collections;
 
 public class MindRonce : MindPlant
 {
-
     public MindRonce(Ronce agent)
         : base(agent)
     {

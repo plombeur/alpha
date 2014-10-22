@@ -3,17 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class RainZoneBehaviour : MonoBehaviour {
-    private float radius;
+    public float radius;
     private Collider2D[] plantsToUpdate;
-    private float intensity;
+    public float intensity;
+    public float minTimer;
+    public float maxTimer;
     private float timer;
 
     void Awake()
     {
-        radius = 5.0f;
-        intensity = 10.0f;
 
-        timer = Random.Range(10, 60);
+        timer = Random.Range(minTimer, maxTimer);
         print("Pluie pendant : " + timer.ToString());
 
         plantsToUpdate = Physics2D.OverlapCircleAll(transform.position, radius); // Find itself
@@ -37,7 +37,6 @@ public class RainZoneBehaviour : MonoBehaviour {
             Plant toUpdate = collider.gameObject.GetComponent<Plant>();
             if (toUpdate != null)
             {
-                print("is plant");
                 toUpdate.addNutriments(intensity);
             }
 
