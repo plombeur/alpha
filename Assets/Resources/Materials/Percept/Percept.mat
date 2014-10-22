@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Percept
-  m_Shader: {fileID: 45, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 38ed42c1a98bbb245ac0446f343664e2, type: 3}
   m_ShaderKeywords:
   - _LIGHTMAPPING_DYNAMIC_LIGHTMAPS
   - _UVSEC_UV1
@@ -82,6 +82,10 @@ Material:
     m_Floats:
       data:
         first:
+          name: _Cutoff
+        second: .5
+      data:
+        first:
           name: _AlphaTestRef
         second: .5
       data:
@@ -96,6 +100,10 @@ Material:
         first:
           name: _DstBlend
         second: 10
+      data:
+        first:
+          name: _Angle
+        second: 180
       data:
         first:
           name: _Parallax
@@ -141,6 +149,10 @@ Material:
         first:
           name: _EmissionColor
         second: {r: 0, g: 0, b: 0, a: .99999994}
+      data:
+        first:
+          name: _node_18
+        second: {r: 0, g: .0896549225, b: 1, a: .309803933}
       data:
         first:
           name: _SpecularColor
