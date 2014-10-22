@@ -9,6 +9,8 @@ public abstract class Animal : Living {
     public int FAIM_MAX;
     public float faim;
     public const float VITESSE = 1;
+    public Sprite normalSprite;
+    public Sprite sleepSprite;
 
     public void construct(MindAnimal mind)
     {

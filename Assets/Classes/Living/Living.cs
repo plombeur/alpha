@@ -42,4 +42,19 @@ public abstract class Living : MonoBehaviourAdapter
     {
         mind.OnCollisionEnter2D(other);
     }
+
+    public override bool Equals(System.Object obj)
+    {
+        if (obj == null)
+        {
+            return false;
+        }
+
+        Living agent = obj as Living;
+        if (agent == null)
+        {
+            return false;
+        }
+        return this.name == agent.name ;
+    }
 }

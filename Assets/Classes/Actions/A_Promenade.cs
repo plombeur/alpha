@@ -19,6 +19,9 @@ public class A_Promenade : Action {
 
     protected override bool onUpdate(float deltaTime)
     {
+        if (Living.DEBUG)
+            Debug.Log("[" + getName() + "] onUpdate");
+        getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().normalSprite;
         Animal a = getAnimal();
         cptNouvelleTrajectoire -= deltaTime;
         if (cptNouvelleTrajectoire <= 0)
@@ -33,6 +36,12 @@ public class A_Promenade : Action {
             time -= 0.04f;
         }
         return true;
+    }
+
+    protected override bool onStart(float deltaTime)
+    {
+        getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().normalSprite;
+        return onUpdate(deltaTime);
     }
 
     public override bool Equals(System.Object obj)

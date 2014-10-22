@@ -16,6 +16,12 @@ public class A_Repos : Action {
         return 0.1f;
     }
 
+    protected override bool onStart(float deltaTime)
+    {
+        getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().sleepSprite;
+        return base.onStart(deltaTime);
+    }
+
     protected override bool onUpdate(float deltaTime)
     {
         if (Living.DEBUG)

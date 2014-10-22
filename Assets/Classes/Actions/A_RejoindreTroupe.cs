@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class A_RejoindreTroupe : Action
 {
@@ -16,35 +17,28 @@ public class A_RejoindreTroupe : Action
         return 1;
     }
 
+    protected override bool onStart(float deltaTime)
+    {
+        getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().normalSprite;
+        return onUpdate(deltaTime);
+    }
+
     protected override bool onUpdate(float deltaTime)
     {
         if (Living.DEBUG)
             Debug.Log("A_RejoindreTroupe ...");
         /**** CODE A MODIFIER QUAND LES PERCEPTS SERONT FONCTIONNELS *****/
-        GameObject obj = GameObject.Find("AlphaWolf");
-        Vector2 posAlpha = obj.GetComponent<Transform>().position;
-        Vector2 posThis = getAnimal().GetComponent<Transform>().position;
-        float dist = Mathf.Sqrt(Mathf.Pow(posAlpha.x - posThis.x, 2) + Mathf.Pow(posAlpha.y - posThis.y, 2));
-        if (Living.DEBUG)
-            Debug.Log("dist from loup alpha: " + dist);
-        /*****************************************************************/
-        if (dist <= 10)
+        LoupAlpha alpha = GameObject.Find("AlphaWolf").GetComponent<LoupAlpha>();
+        PerceptView percepts = getAnimal().perceptView;
+        List<Living> list = percepts.getLiving();
+        if(list.Count>0)
         {
             getActionPendlingList().removeAction(this);
+            return false;
         }
-        else
-        {
-            PerceptView percepts = getAnimal().perceptView;
-            if (percepts != null && percepts.getLiving().Count > 0)
-            {
-                getAnimal().fd(Animal.VITESSE * 2);
-            }
-            else
-            {
-                getAnimal().rt(1);
-                getAnimal().fd(0.01f);
-            }
-        }
+
+        getAnimal().rt(1);
+        getAnimal().fd(0.01f);
         
         return true;
     }

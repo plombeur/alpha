@@ -5,7 +5,7 @@ using System;
 
 public abstract class Action
 {
-    private string name;
+    protected string name;
     private ActionPendingList pendingList;
     private bool isInit;
     private bool isEnabled;
@@ -127,7 +127,7 @@ public abstract class Action
     /// </summary>
     /// <param name="deltaTime">the time elapsed between the previous frame and this frame</param>
     /// <returns>true if the function did something (action token used)</returns>
-    protected bool onStart(float deltaTime)
+    protected virtual bool onStart(float deltaTime)
     {
         return onUpdate(deltaTime);
     }
@@ -141,14 +141,14 @@ public abstract class Action
     /// <summary>
     /// Called when the action is removed from the ActionPendingList (dont consume a action tocken)
     /// </summary>
-    protected void onRemove()
+    protected virtual void onRemove()
     {
 
     }
     /// <summary>
     /// Called when another action get the focus of the ActionPendingList
     /// </summary>
-    protected void onPause()
+    protected virtual void onPause()
     {
 
     }
@@ -158,7 +158,7 @@ public abstract class Action
     /// </summary>
     /// <param name="deltaTime">the time elapsed between the previous frame and this frame</param>
     /// <returns>true if the function did something (action token used)</returns>
-    protected bool onResume(float deltaTime)
+    protected virtual bool onResume(float deltaTime)
     {
         return onUpdate(deltaTime);
     }
