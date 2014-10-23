@@ -14,7 +14,7 @@ public class MindLoup : MindAnimal {
             return;
         if (Living.DEBUG)
             Debug.Log(".. Faim: " + loup.faim + ", Vie: " + loup.vie);
-        actionList.addAction(new A_Promenade(Animal.VITESSE));
+        actionList.addAction(new A_Promenade(((Animal)agent).vitesse));
         if (Random.Range(0, 700) == 0)
             actionList.addAction(new A_Repos(Random.Range(10,50)));
         base.vivre();

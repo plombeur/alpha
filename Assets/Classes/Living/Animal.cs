@@ -10,7 +10,7 @@ public abstract class Animal : Living {
     public float direction;
     public int FAIM_MAX;
     public float faim;
-    public const float VITESSE = 1;
+    public float vitesse = 1;
 
     //Sprites ..
     public Sprite normalSprite;
@@ -85,12 +85,11 @@ public abstract class Animal : Living {
 
     public void faceTo(Living agent)
     {
-        Vector2 position = agent.GetComponent<Transform>().position;
-        faceTo(position.x, position.y);
+        faceTo(agent.GetComponent<Transform>().position);
     }
 
-    public void faceTo(float x, float y)
+    public void faceTo(Vector2 positionToLook)
     {
-
+        /***** TODO *****/
     }
 }

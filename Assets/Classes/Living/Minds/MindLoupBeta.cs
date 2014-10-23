@@ -4,7 +4,7 @@ using System.Collections;
 public class MindLoupBeta : MindLoup
 {
     private float time = 0;
-    private float timeBeforeCheckAlpha = Random.Range(40,90);
+    private float timeBeforeCheckAlpha = 0;//Random.Range(40,90);
 
     public MindLoupBeta(LoupBeta agent)
         : base(agent)
@@ -15,7 +15,8 @@ public class MindLoupBeta : MindLoup
             Debug.Log("MindLoupBeta.vivre ...");
         Animal a = (Animal) agent;
         time += Time.deltaTime;
-        if (a.perceptView.getLiving().Count == 0&&time>=timeBeforeCheckAlpha)
+        LoupAlpha alpha = GameObject.Find("LoupAlpha").GetComponent<LoupAlpha>();
+        if (!a.perceptView.getLiving().Contains(alpha)&&time>=timeBeforeCheckAlpha)
         {
             time -= timeBeforeCheckAlpha;
             timeBeforeCheckAlpha = Random.Range(40, 90);

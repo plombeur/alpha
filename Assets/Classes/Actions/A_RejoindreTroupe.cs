@@ -39,9 +39,11 @@ public class A_RejoindreTroupe : Action
         List<Living> list = percepts.getLiving();
         if(list.Contains(alpha))
         {
-            getActionPendlingList().removeAction(this);
             getAnimal().hideStaticEmoticon();
-            return true;
+            /*getAnimal().faceTo(alpha);
+            getAnimal().fd(getAnimal().vitesse * 3);*/
+            getActionPendlingList().removeAction(this);
+            return false;
         }
 
         getAnimal().rt(4);
