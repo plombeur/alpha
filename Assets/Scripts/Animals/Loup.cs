@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Loup : Animal {
-
+public class Loup : Animal
+{
     protected override void onCreate()
     {
         if (Living.DEBUG)

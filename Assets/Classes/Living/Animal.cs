@@ -3,17 +3,44 @@ using System.Collections;
 
 public abstract class Animal : Living {
     public PerceptView perceptView;
+    public EmoticonSystem emoticonSystem;
+
     public int VIE_MAX;
     public float vie;
     public float direction;
     public int FAIM_MAX;
     public float faim;
     public const float VITESSE = 1;
+
+    //Sprites ..
     public Sprite normalSprite;
     public Sprite sleepSprite;
+    //Emoticon sprites
+    public Sprite sleepEmoticonSprite;
+    public Sprite questionEmoticonSprite;
+
+    public void displayAnimatedEmoticon(Sprite sprite)
+    {
+        if (emoticonSystem != null)
+            emoticonSystem.displayAnimatedEmoticon(sprite);
+    }
+
+    public void displayStaticEmoticon(Sprite sprite)
+    {
+        if (emoticonSystem != null)
+            emoticonSystem.displayStaticEmoticon(sprite);
+    }
+
+    public void hideStaticEmoticon()
+    {
+        if (emoticonSystem != null)
+            emoticonSystem.hideStaticEmoticon();
+    }
 
     public void construct(MindAnimal mind)
     {
+        if (emoticonSystem != null)
+            emoticonSystem.setAnimal(this);
         direction = 0;
         base.construct(mind);
     }
@@ -54,5 +81,16 @@ public abstract class Animal : Living {
     public void reveil()
     {
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+    }
+
+    public void faceTo(Living agent)
+    {
+        Vector2 position = agent.GetComponent<Transform>().position;
+        faceTo(position.x, position.y);
+    }
+
+    public void faceTo(float x, float y)
+    {
+
     }
 }

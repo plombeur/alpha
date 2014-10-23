@@ -5,6 +5,8 @@ public class A_Repos : Action {
 
     private float duree;
     private float time = 0;
+    private const float durationBetweenSleepEmoticons = 0.6f;
+    private float timeSleepIcon = durationBetweenSleepEmoticons;
 
     public A_Repos(float duree) : base("A_Repos")
     {
@@ -18,12 +20,18 @@ public class A_Repos : Action {
 
     protected override bool onStart(float deltaTime)
     {
-        getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().sleepSprite;
         return base.onStart(deltaTime);
     }
 
     protected override bool onUpdate(float deltaTime)
     {
+        timeSleepIcon += deltaTime;
+        while (timeSleepIcon >= 0.8)
+        {
+            timeSleepIcon -= 0.8f;
+            getAnimal().displayAnimatedEmoticon(getAnimal().sleepEmoticonSprite);
+        }
+        getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().sleepSprite;
         if (Living.DEBUG)
             Debug.Log("Repos " + time);
         time += deltaTime;

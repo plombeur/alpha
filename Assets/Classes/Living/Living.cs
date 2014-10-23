@@ -17,7 +17,13 @@ public abstract class Living : MonoBehaviourAdapter
     }
 	
 	protected override void Update () {
-        mind.vivre();
+        if (mind == null)
+        {
+            if (Living.DEBUG)
+                Debug.Log("[Living] Mind est null !!");
+        }
+        else
+            mind.vivre();
 	}
 
     /*

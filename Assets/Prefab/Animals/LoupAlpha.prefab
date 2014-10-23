@@ -73,6 +73,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &100008
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400008}
+  - 114: {fileID: 11400008}
+  m_Layer: 0
+  m_Name: EmoticonSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &400000
 Transform:
   m_ObjectHideFlags: 1
@@ -96,6 +112,7 @@ Transform:
   m_LocalScale: {x: 1.52793956, y: 1.52793992, z: 1.52793992}
   m_Children:
   - {fileID: 400004}
+  - {fileID: 400008}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &400004
@@ -124,6 +141,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 400004}
   m_RootOrder: 0
+--- !u!4 &400008
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100008}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .00217010011, y: .723259985, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400002}
+  m_RootOrder: 1
 --- !u!23 &2300000
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -196,7 +225,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
@@ -256,6 +285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   perceptView: {fileID: 11400002}
+  emoticonSystem: {fileID: 11400008}
   VIE_MAX: 100
   vie: 100
   direction: 0
@@ -263,6 +293,10 @@ MonoBehaviour:
   faim: 100
   normalSprite: {fileID: 21300000, guid: 53f92419c6b26ae48845b8d9b1f9dc84, type: 3}
   sleepSprite: {fileID: 21300000, guid: 521b52a7d75bbec4c8c746ad5ee61628, type: 3}
+  sleepEmoticonSprite: {fileID: 21300000, guid: 5c52b88407adcc049a8a40a1d13a864e,
+    type: 3}
+  questionEmoticonSprite: {fileID: 21300000, guid: d99880357a4ea7b42a62d9543e8f4400,
+    type: 3}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -300,6 +334,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   angle: 90
+--- !u!114 &11400008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a8add74b914f3d409b8016e5603835c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabEmoticon: {fileID: 100000, guid: 3a2017cb299e78449ba7ff88ec5e109d, type: 2}
+  hauteurAffichageEmoticon: 3
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -20,6 +20,7 @@ public class A_RejoindreTroupe : Action
     protected override bool onStart(float deltaTime)
     {
         getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().normalSprite;
+        getAnimal().displayStaticEmoticon(getAnimal().questionEmoticonSprite);
         return onUpdate(deltaTime);
     }
 
@@ -27,17 +28,23 @@ public class A_RejoindreTroupe : Action
     {
         if (Living.DEBUG)
             Debug.Log("A_RejoindreTroupe ...");
-        /**** CODE A MODIFIER QUAND LES PERCEPTS SERONT FONCTIONNELS *****/
-        LoupAlpha alpha = GameObject.Find("AlphaWolf").GetComponent<LoupAlpha>();
+        GameObject obj = GameObject.Find("LoupAlpha");
+        if (obj == null)
+        {
+            getAnimal().fd(0);
+            return true;
+        }
+        LoupAlpha alpha = obj.GetComponent<LoupAlpha>();
         PerceptView percepts = getAnimal().perceptView;
         List<Living> list = percepts.getLiving();
-        if(list.Count>0)
+        if(list.Contains(alpha))
         {
             getActionPendlingList().removeAction(this);
-            return false;
+            getAnimal().hideStaticEmoticon();
+            return true;
         }
 
-        getAnimal().rt(1);
+        getAnimal().rt(4);
         getAnimal().fd(0.01f);
         
         return true;

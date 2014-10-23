@@ -3,14 +3,12 @@ using System.Collections;
 
 public class FollowTarget : MonoBehaviour {
 
-    public string nomDeLaCible;
-    private GameObject alphaWolf;
+    public GameObject target;
     private float time = 0;
 
     // Use this for initialization
     void Start()
     {
-        alphaWolf = GameObject.Find(nomDeLaCible);
     }
 
     // Update is called once per frame
@@ -19,10 +17,10 @@ public class FollowTarget : MonoBehaviour {
         time += Time.deltaTime;
         while (time >= 0.04f)
         {
-            Vector3 positionAlpha = alphaWolf.GetComponent<Transform>().position;
+            Vector3 position = target.GetComponent<Transform>().position;
             Transform transf = GetComponent<Transform>();
-            positionAlpha.z -= 10;
-            transf.position = positionAlpha;
+            position.z -= 10;
+            transf.position = position;
             time -= 0.04f;
         }
     }
