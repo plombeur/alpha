@@ -90,6 +90,12 @@ public abstract class Animal : Living {
 
     public void faceTo(Vector2 positionToLook)
     {
-        /***** TODO *****/
+        Vector2 up = new Vector2(0, 1);
+        Transform transform = GetComponent<Transform>();
+        Vector2 pointToLook = positionToLook - new Vector2(transform.position.x,transform.position.y);
+        direction = Vector2.Angle(up, pointToLook);
+        float determinant = up.x * pointToLook.y - up.y * pointToLook.x;
+        if (determinant < 0)
+            direction *= -1;
     }
 }

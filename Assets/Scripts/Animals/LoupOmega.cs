@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LoupOmega : Loup
+public class LoupOmega : LoupInferieur
 {
     protected override void onCreate()
     {

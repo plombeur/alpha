@@ -40,8 +40,13 @@ public class A_RejoindreTroupe : Action
         if(list.Contains(alpha))
         {
             getAnimal().hideStaticEmoticon();
-            /*getAnimal().faceTo(alpha);
-            getAnimal().fd(getAnimal().vitesse * 3);*/
+            if (Vector2.Distance(alpha.GetComponent<Transform>().position, getAnimal().GetComponent<Transform>().position)>((LoupInferieur)getAnimal()).distanceAlpha)
+            {
+                getAnimal().faceTo(alpha);
+                getAnimal().fd(getAnimal().vitesse * 3);
+                return true;
+            }
+
             getActionPendlingList().removeAction(this);
             return false;
         }
