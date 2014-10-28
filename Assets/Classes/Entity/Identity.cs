@@ -33,4 +33,15 @@ public class Identity
     {
         return alive;
     }
+
+    public override bool Equals(System.Object obj)
+    {
+        if (obj == null)
+        {
+            return false;
+        }
+
+        Identity id = obj as Identity;
+        return id != null && this.ID == id.ID && id.entity == entity;
+    }
 }

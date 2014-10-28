@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class A_AffectionAuLoupAlpha : Action
 {
+    private bool diriged = false;
     public A_AffectionAuLoupAlpha()
         : base("A_AffectionAuLoupAlpha")
     {
@@ -35,6 +36,19 @@ public class A_AffectionAuLoupAlpha : Action
             return true;
         }
         LoupAlpha alpha = obj.GetComponent<LoupAlpha>();
+
+        if (!diriged)
+        {
+            diriged = true;
+            MemoryBloc memBlock = getAnimal().GetComponent<Memory>().getMemoryForIdentity(alpha.getIdentity());
+            if (memBlock != null)
+            {
+                getAnimal().faceTo(memBlock.getLastPosition());
+                getAnimal().fd(0.01f);
+            }
+            return true;
+        }
+
         PerceptView percepts = getAnimal().perceptView;
         List<Living> list = percepts.getLiving();
         if (list.Contains(alpha))

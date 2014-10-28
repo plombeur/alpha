@@ -45,6 +45,7 @@ public class A_Promenade : Action {
 
     protected override bool onResume(float deltaTime)
     {
+        cptNouvelleTrajectoire = 0;
         getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().normalSprite;
         return onUpdate(deltaTime);
     }

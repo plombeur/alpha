@@ -7,6 +7,7 @@ public class A_RejoindreTroupe : Action
     private float vitesse;
     private float cptNouvelleTrajectoire = 0;
     private float time = 0;
+    private bool diriged = false;
 
     public A_RejoindreTroupe()
         : base("A_RejoindreTroupe")
@@ -44,6 +45,19 @@ public class A_RejoindreTroupe : Action
         LoupAlpha alpha = obj.GetComponent<LoupAlpha>();
         PerceptView percepts = getAnimal().perceptView;
         List<Living> list = percepts.getLiving();
+
+        if (!diriged)
+        {
+            diriged = true;
+            MemoryBloc memBlock = getAnimal().GetComponent<Memory>().getMemoryForIdentity(alpha.getIdentity());
+            if (memBlock != null)
+            {
+                getAnimal().faceTo(memBlock.getLastPosition());
+                getAnimal().fd(0.01f);
+            }
+            return true;
+        }
+
         if(list.Contains(alpha))
         {
             getAnimal().hideStaticEmoticon();
@@ -57,6 +71,14 @@ public class A_RejoindreTroupe : Action
             getActionPendlingList().removeAction(this);
             return true;
         }
+
+        /*Loup randomLoup = getAnimal().randomLoupSeen();
+        if(randomLoup != null)
+        {
+            getAnimal().faceTo(randomLoup);
+            getAnimal().wiggle(getAnimal().vitesse * 3, 2);
+            return true;
+        }*/
 
         getAnimal().rt(4);
         getAnimal().wiggle(0.01f,2);

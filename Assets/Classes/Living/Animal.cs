@@ -120,4 +120,29 @@ public abstract class Animal : Living {
         }
         return result;
     }
+
+    public Loup randomLoupSeen()
+    {
+        List<Living> percepts = perceptView.getLiving();
+        int nbLoups = 0;
+        for (int i = 0; i < percepts.Count; ++i)
+            if (percepts[i] as Loup != null)
+                nbLoups++;
+        int indiceLoup = Random.Range(1, nbLoups);
+        Loup result = null;
+        if (nbLoups > 0)
+        {
+            for (int i = 0; i < percepts.Count; ++i)
+            {
+                result = percepts[i] as Loup;
+                if (result != null)
+                {
+                    indiceLoup--;
+                    if (indiceLoup == 0)
+                        break;
+                }
+            }
+        }
+        return result;
+    }
 }

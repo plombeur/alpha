@@ -57,10 +57,6 @@ public abstract class Living : Entity
         }
 
         Living agent = obj as Living;
-        if (agent == null)
-        {
-            return false;
-        }
-        return this.name == agent.name ;
+        return agent != null && this.getIdentity().getID() == agent.getIdentity().getID() ;
     }
 }
