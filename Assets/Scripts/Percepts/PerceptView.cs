@@ -10,7 +10,6 @@ public class PerceptView : MonoBehaviourAdapter
 
     protected override void Start()
     {
-        base.Start();
         livings = new List<Living>();
         livingsShortRange = new List<Living>();
         livingLongRange = new List<Living>();
@@ -18,7 +17,6 @@ public class PerceptView : MonoBehaviourAdapter
 
     protected override void Update()
     {
-        base.Update();
         foreach (GameObject objetSeen in shortRangeDetector.getEnteringGameObjets())
         {
             Living living = objetSeen.GetComponent<Living>();
