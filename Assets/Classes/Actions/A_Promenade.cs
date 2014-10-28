@@ -21,13 +21,12 @@ public class A_Promenade : Action {
     {
         if (Living.DEBUG)
             Debug.Log("[" + getName() + "] onUpdate");
-        getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().normalSprite;
         Animal a = getAnimal();
         cptNouvelleTrajectoire -= deltaTime;
         if (cptNouvelleTrajectoire <= 0)
         {
             a.direction = Random.Range(0, 360);
-            cptNouvelleTrajectoire = -cptNouvelleTrajectoire + Random.Range(2, 40);
+            cptNouvelleTrajectoire = -cptNouvelleTrajectoire + Random.Range(2, 30);
         }
         time += deltaTime;
         while (time >= 0.04f)
@@ -39,6 +38,12 @@ public class A_Promenade : Action {
     }
 
     protected override bool onStart(float deltaTime)
+    {
+        getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().normalSprite;
+        return onUpdate(deltaTime);
+    }
+
+    protected override bool onResume(float deltaTime)
     {
         getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().normalSprite;
         return onUpdate(deltaTime);

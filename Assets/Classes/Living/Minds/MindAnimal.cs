@@ -28,4 +28,14 @@ public abstract class MindAnimal : Mind
         }
         actionList.execute(Time.deltaTime);
     }
+
+    public Action getCurrentAction()
+    {
+        return actionList.getActualAction();
+    }
+
+    public void removeCurrentAction()
+    {
+        actionList.removeAction(actionList.getActualAction());
+    }
 }

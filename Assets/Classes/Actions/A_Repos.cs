@@ -20,8 +20,15 @@ public class A_Repos : Action {
 
     protected override bool onStart(float deltaTime)
     {
+        getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().sleepSprite;
         return base.onStart(deltaTime);
     }
+    protected override bool onResume(float deltaTime)
+    {
+        getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().sleepSprite;
+        return base.onStart(deltaTime);
+    }
+
 
     protected override bool onUpdate(float deltaTime)
     {
@@ -38,7 +45,6 @@ public class A_Repos : Action {
         Animal a = getAnimal();
         if(time >= duree)
         {
-            a.reveil();
             getActionPendlingList().removeAction(this);
             return true;
         }

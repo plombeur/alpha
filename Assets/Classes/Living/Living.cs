@@ -4,10 +4,10 @@ using System.Collections;
 /*
  * IMPORTANT: Un object Living doit être un rigidbody!!
  */
-public abstract class Living : MonoBehaviourAdapter
+public abstract class Living : Entity
 {
     public const bool DEBUG = false;
-    private Mind mind;
+    public Mind mind;
 
     public void construct(Mind mind)
     {

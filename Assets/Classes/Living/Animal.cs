@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public abstract class Animal : Living {
     public PerceptView perceptView;
@@ -18,6 +19,7 @@ public abstract class Animal : Living {
     //Emoticon sprites
     public Sprite sleepEmoticonSprite;
     public Sprite questionEmoticonSprite;
+    public Sprite heartEmoticonSprite;
 
     public void displayAnimatedEmoticon(Sprite sprite)
     {
@@ -78,11 +80,6 @@ public abstract class Animal : Living {
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
     }
 
-    public void reveil()
-    {
-        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-    }
-
     public void faceTo(Living agent)
     {
         faceTo(agent.GetComponent<Transform>().position);
@@ -97,5 +94,30 @@ public abstract class Animal : Living {
         float determinant = up.x * pointToLook.y - up.y * pointToLook.x;
         if (determinant < 0)
             direction *= -1;
+    }
+
+    public LoupOmega randomLoupOmegaSeen()
+    {
+        List<Living> percepts = perceptView.getLiving();
+        int nbOmega = 0;
+        for (int i = 0; i < percepts.Count; ++i)
+            if (percepts[i] as LoupOmega != null)
+                nbOmega++;
+        int indiceOmega = Random.Range(1, nbOmega);
+        LoupOmega result = null;
+        if (nbOmega > 0)
+        {
+            for (int i = 0; i < percepts.Count; ++i)
+            {
+                result = percepts[i] as LoupOmega;
+                if (result != null)
+                {
+                    indiceOmega--;
+                    if (indiceOmega == 0)
+                        break;
+                }
+            }
+        }
+        return result;
     }
 }

@@ -2,39 +2,32 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class A_RejoindreTroupe : Action
+public class A_AffectionAuLoupAlpha : Action
 {
-    private float vitesse;
-    private float cptNouvelleTrajectoire = 0;
-    private float time = 0;
-
-    public A_RejoindreTroupe()
-        : base("A_RejoindreTroupe")
-    {}
+    public A_AffectionAuLoupAlpha()
+        : base("A_AffectionAuLoupAlpha")
+    {
+    }
 
     public override float getPriority()
     {
-        return 1;
+        return 0.1f;
     }
 
     protected override bool onStart(float deltaTime)
     {
         getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().normalSprite;
-        getAnimal().displayStaticEmoticon(getAnimal().questionEmoticonSprite);
-        return onUpdate(deltaTime);
+        return base.onStart(deltaTime);
     }
 
     protected override bool onResume(float deltaTime)
     {
         getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().normalSprite;
-        getAnimal().displayStaticEmoticon(getAnimal().questionEmoticonSprite);
         return onUpdate(deltaTime);
     }
 
     protected override bool onUpdate(float deltaTime)
     {
-        if (Living.DEBUG)
-            Debug.Log("A_RejoindreTroupe ...");
         GameObject obj = GameObject.Find("LoupAlpha");
         if (obj == null)
         {
@@ -44,23 +37,25 @@ public class A_RejoindreTroupe : Action
         LoupAlpha alpha = obj.GetComponent<LoupAlpha>();
         PerceptView percepts = getAnimal().perceptView;
         List<Living> list = percepts.getLiving();
-        if(list.Contains(alpha))
+        if (list.Contains(alpha))
         {
             getAnimal().hideStaticEmoticon();
-            if (Vector2.Distance(alpha.GetComponent<Transform>().position, getAnimal().GetComponent<Transform>().position)>((LoupInferieur)getAnimal()).distanceAlpha)
+            if (Vector2.Distance(alpha.GetComponent<Transform>().position, getAnimal().GetComponent<Transform>().position) > 5)
             {
                 getAnimal().faceTo(alpha);
-                getAnimal().wiggle(getAnimal().vitesse * 3, 2);
+                getAnimal().wiggle(getAnimal().vitesse * 3,2);
                 return true;
             }
 
+            getAnimal().emoticonSystem.displayAnimatedEmoticon(getAnimal().heartEmoticonSprite);
+            getAnimal().lt(180);
             getActionPendlingList().removeAction(this);
-            return true;
+            return false;
         }
 
         getAnimal().rt(4);
-        getAnimal().wiggle(0.01f,2);
-        
+        getAnimal().wiggle(0.01f, 2);
+
         return true;
     }
 
@@ -71,7 +66,7 @@ public class A_RejoindreTroupe : Action
             return false;
         }
 
-        A_RejoindreTroupe action = obj as A_RejoindreTroupe;
+        A_AffectionAuLoupAlpha action = obj as A_AffectionAuLoupAlpha;
         return action != null;
     }
 }

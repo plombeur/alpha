@@ -3,7 +3,6 @@ using System.Collections;
 
 public class MindLoupOmega : MindLoupInferieur
 {
-
     public MindLoupOmega(LoupOmega agent)
         : base(agent)
     { }
