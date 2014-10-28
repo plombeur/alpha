@@ -15,14 +15,30 @@ public class Memory : MonoBehaviourAdapter
 
     protected override void Update()
     {
-      /*  if (perceptView != null)
+        foreach (MemoryBloc bloc in memoryBlocs.Values)
+            bloc.update(Time.deltaTime);
+
+        if (perceptView != null)
         {
             foreach (Living living in perceptView.getLiving())
             {
                 if (memoryBlocs.ContainsKey(living.getIdentity()))
                 {
+                    memoryBlocs[living.getIdentity()].updatePosition(living.transform.position);
                 }
+                else
+                    memoryBlocs.Add(living.getIdentity(), new MemoryBloc(living.getIdentity()));
             }
-        }*/
+        }
+    }
+    public MemoryBloc getMemoryForIdentity(Identity identity)
+    {
+        MemoryBloc bloc;
+        memoryBlocs.TryGetValue(identity, out bloc);
+        return bloc;
+    }
+    public Dictionary<Identity, MemoryBloc>.ValueCollection getMemoyBlocs()
+    {
+        return memoryBlocs.Values;
     }
 }

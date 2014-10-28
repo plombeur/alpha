@@ -263,14 +263,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16b2be58eac758d4090d251acb2724fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  perceptView: {fileID: 0}
+  perceptView: {fileID: 1950609341}
+  emoticonSystem: {fileID: 0}
   VIE_MAX: 100
   vie: 100
   direction: 0
   FAIM_MAX: 100
   faim: 0
+  vitesse: 1
   normalSprite: {fileID: 0}
   sleepSprite: {fileID: 0}
+  sleepEmoticonSprite: {fileID: 0}
+  questionEmoticonSprite: {fileID: 0}
+  heartEmoticonSprite: {fileID: 0}
 --- !u!1 &676828939
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,3 +483,9 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!114 &1950609341
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11400004, guid: b4d666715cd708d4db479dbc17dcdb59,
+    type: 2}
+  m_PrefabInternal: {fileID: 371964373}
+  m_Script: {fileID: 11500000, guid: 82c8e5020d0b33145b4665395cccbfbd, type: 3}
