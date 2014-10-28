@@ -71,6 +71,10 @@ public class MonoBehaviourAdapter : MonoBehaviour
     {
     }
 
+    protected virtual void OnDestroy()
+    {
+    }
+
     protected virtual void Start()
     {
     }

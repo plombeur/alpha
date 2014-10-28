@@ -8,7 +8,6 @@ public class PerceptView : MonoBehaviourAdapter
     public Detector longRangeDetector;
     private List<Living> livings, livingsShortRange, livingLongRange;
 
-
     protected override void Start()
     {
         base.Start();
