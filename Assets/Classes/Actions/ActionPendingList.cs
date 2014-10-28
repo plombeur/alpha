@@ -58,7 +58,13 @@ public class ActionPendingList
     }
     private void sortActions()
     {
-        actions.Sort(actionComparer);
+        if (actions.Count > 0)
+        {
+            Action save = actions[0];
+            actions.Sort(actionComparer);
+            if (save != actions[0])
+                save.pause();
+        }
     }
     public void setDebug(bool debug)
     {
