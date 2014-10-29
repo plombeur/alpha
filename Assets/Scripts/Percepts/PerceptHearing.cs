@@ -2,35 +2,35 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Percept : MonoBehaviourAdapter
+public class PerceptHearing : MonoBehaviourAdapter
 {
     public Detector hearingDetector;
-    private List<Living> livings;
+    private List<Sound> sounds;
 
     protected override void Start()
     {
-        livings = new List<Living>();
+        sounds = new List<Sound>();
     }
 
     protected override void Update()
     {
         foreach (GameObject objetSeen in hearingDetector.getEnteringGameObjets())
         {
-            Living living = objetSeen.GetComponent<Living>();
+            Sound living = objetSeen.GetComponent<Sound>();
             if (living != null)
-                livings.Add(living);
+                sounds.Add(living);
         }
 
         foreach (GameObject objetSeen in hearingDetector.getExitingGameObjects())
         {
-            Living living = objetSeen.GetComponent<Living>();
+            Sound living = objetSeen.GetComponent<Sound>();
             if (living != null)
-                livings.Remove(living);
+                sounds.Remove(living);
         }
     }
 
-    public List<Living> getLiving()
+    public List<Sound> getSounds()
     {
-        return livings;
+        return sounds;
     }
 }
