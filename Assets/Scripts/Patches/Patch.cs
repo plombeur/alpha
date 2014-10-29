@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Patch : MonoBehaviour {
+public class Patch : Entity {
 	protected float nutriments;
 	protected float maxNutriments;
 	protected float passabilite;
 	protected float temperature;
 	protected float evaporateSpeed;
 	// Use this for initialization
-	protected void Start () {
+	protected override void Start () {
 		maxNutriments = 10;
 		nutriments = maxNutriments;
 		temperature = 20;
@@ -17,7 +17,7 @@ public class Patch : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	protected void Update () {
+	protected override void Update () {
 		evaporate ();
 		checkValues ();
 	}
@@ -26,10 +26,12 @@ public class Patch : MonoBehaviour {
 	{
 		if (nutriments > maxNutriments)
 			nutriments = maxNutriments;
-		
-		if (nutriments < 0)
-			//Destroy(this.gameObject);
-			nutriments = 0;
+
+        if (nutriments < 0)
+        {
+            nutriments = 0;
+            //Destroy(this.gameObject);
+        }
 	}
 
 	public float getPassabilite(){
