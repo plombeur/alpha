@@ -96,6 +96,18 @@ public abstract class Animal : Living {
             direction *= -1;
     }
 
+    public float getFaceToDirection(Vector2 positionToLook)
+    {
+        Vector2 up = new Vector2(0, 1);
+        Transform transform = GetComponent<Transform>();
+        Vector2 pointToLook = positionToLook - new Vector2(transform.position.x, transform.position.y);
+        float result = Vector2.Angle(up, pointToLook);
+        float determinant = up.x * pointToLook.y - up.y * pointToLook.x;
+        if (determinant < 0)
+            result *= -1;
+        return result;
+    }
+
     public LoupOmega randomLoupOmegaSeen()
     {
         List<Living> percepts = perceptView.getLiving();
