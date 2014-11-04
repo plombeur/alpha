@@ -113,6 +113,14 @@ Material:
         second: 90
       data:
         first:
+          name: _angle
+        second: 90
+      data:
+        first:
+          name: _node_225
+        second: 2
+      data:
+        first:
           name: _Parallax
         second: .0199999996
       data:
@@ -151,19 +159,19 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: .0105428295, g: .07178808, b: .477941155, a: .576470613}
       data:
         first:
           name: _EmissionColor
         second: {r: 0, g: 0, b: 0, a: .99999994}
       data:
         first:
-          name: _node_18
-        second: {r: 0, g: .0896549225, b: 1, a: .309803933}
-      data:
-        first:
           name: _SpecularColor
         second: {r: .200000003, g: .200000003, b: .200000003, a: 1}
+      data:
+        first:
+          name: _node_18
+        second: {r: 0, g: .0896549225, b: 1, a: .309803933}
       data:
         first:
           name: _EmissionColorUI
