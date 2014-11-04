@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class Ronce : Plant {
+    public GameObject fruitPrefab;
 
     override protected void Awake()
     {
@@ -18,6 +19,7 @@ public class Ronce : Plant {
     override protected void Update()
     {
         base.Update();
+        checkValues();
         /*print("Health : " + health.ToString());
         print("Nutriments :" + nutriments.ToString());
         print("Growth : " + growth.ToString());*/
@@ -45,13 +47,31 @@ public class Ronce : Plant {
             foreach (Transform child in transform) {
                 if (child.gameObject.name == "Mures")
                 {
-                    child.GetComponent<Mures>().grow(this);
+                    Mures script = child.GetComponent<Mures>();
+                    script.addNutriment(0);
+                    script.grow(this);
                 }
             }
         }
         else
         {
             health -= energyChangeValue;
+        }
+    }
+
+    public override void reproduce()
+    {
+        base.reproduce();
+
+        if (base.isAdult && nutriments >= 90.0 * maxNutriments / 100.0)
+        {
+            if (fruitPrefab != null)
+            {
+                nutriments /= 2;
+                GameObject child = Instantiate(fruitPrefab);
+                child.transform.parent = transform;
+                child.gameObject.name = "Mures";
+            }
         }
     }
 }
