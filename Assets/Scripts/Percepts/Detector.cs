@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class Detector : MonoBehaviourAdapter
 {
     public float angle;
+    public SpriteRenderer fieldDrawer; // percept shader required
     private List<GameObject> objectsInTemp;
     private List<GameObject> objectsOutTemp;
 
@@ -94,7 +95,13 @@ public class Detector : MonoBehaviourAdapter
             if (!removed)
                 ++index;
         }
+
+        if (fieldDrawer != null)
+        {
+            fieldDrawer.material.SetFloat("_angle", angle);
+        }
     }
+   
     protected override void LateUpdate()
     {
         base.LateUpdate();

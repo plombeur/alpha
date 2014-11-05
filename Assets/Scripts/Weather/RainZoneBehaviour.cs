@@ -37,7 +37,7 @@ public class RainZoneBehaviour : MonoBehaviour {
             Plant toUpdate = collider.gameObject.GetComponent<Plant>();
             if (toUpdate != null)
             {
-                toUpdate.addNutriments(intensity);
+                toUpdate.addNutriments(intensity * Time.deltaTime);
             }
 
         }

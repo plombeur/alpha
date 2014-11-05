@@ -15,6 +15,7 @@ public class MindRonce : MindPlant
         Ronce ronce = ((Ronce)agent);
 
         ronce.grow();
+        ronce.reproduce();
 
         base.vivre();
     }
