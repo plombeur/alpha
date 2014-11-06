@@ -20,7 +20,21 @@ public class Detector : MonoBehaviourAdapter
         objectsOutTemp = new List<GameObject>();
     }
 
-
+    public bool isInDetector(Vector3 position)
+    {
+        if (this.angle < 360)
+        {
+            float angle = Vector3.Angle(transform.up, position - transform.position);
+            if (angle <= (this.angle / 2.0))
+                return true;
+        }
+        else
+        {
+            if ((position - transform.position).magnitude < GetComponent<CircleCollider2D>().radius)
+                return true;
+        }
+        return false;
+    }
 
     protected override void OnTriggerEnter2D(Collider2D collider)
     {

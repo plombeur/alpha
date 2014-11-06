@@ -4,9 +4,12 @@ using System.Collections.Generic;
 
 public class Memory : MonoBehaviourAdapter
 {
+    public const float MEMORY_CHECK_INTERVAL = 2;
+
     private PerceptView perceptView;
     private Dictionary<Identity, MemoryBloc> memoryBlocs;
     private List<MemoryListener> listeners;
+    private float timerMemoryCheck = MEMORY_CHECK_INTERVAL;
 
     public Memory()
     {
@@ -36,6 +39,29 @@ public class Memory : MonoBehaviourAdapter
     {
         return memoryBlocs.ContainsKey(identity);   
     }
+    private void memoryCheck()
+    {
+        if (perceptView != null)
+        {
+            List<MemoryBloc> blocsToRemove = new List<MemoryBloc>();
+            foreach (MemoryBloc bloc in memoryBlocs.Values)
+            {
+                if (perceptView.shortRangeDetector.isInDetector(bloc.getLastPosition()))
+                {
+                    if (bloc.getEntity() == null)
+                        blocsToRemove.Add(bloc);
+                    else
+                    {
+                        Living living = bloc.getEntity() as Living;
+                        if (!perceptView.getLiving().Contains(living))
+                            blocsToRemove.Add(bloc);
+                    }
+                }
+            }
+            foreach (MemoryBloc bloc in blocsToRemove)
+                removeMemoryBloc(bloc);
+        }
+    }
     protected override void Start()
     {
         memoryBlocs = new Dictionary<Identity, MemoryBloc>();
@@ -44,6 +70,13 @@ public class Memory : MonoBehaviourAdapter
 
     protected override void Update()
     {
+        timerMemoryCheck -= Time.deltaTime;
+        if (timerMemoryCheck <= 0)
+        {
+            memoryCheck();
+            timerMemoryCheck = MEMORY_CHECK_INTERVAL;
+        }
+
         foreach (MemoryBloc bloc in memoryBlocs.Values)
             bloc.update(Time.deltaTime);
 

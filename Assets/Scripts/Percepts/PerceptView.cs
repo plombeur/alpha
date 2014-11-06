@@ -14,7 +14,10 @@ public class PerceptView : MonoBehaviourAdapter
         livingsShortRange = new List<Living>();
         livingLongRange = new List<Living>();
     }
-
+    public bool isInFieldOfView(Vector2 position)
+    {
+        return (shortRangeDetector.isInDetector(position) || longRangeDetector.isInDetector(position));
+    }
     protected override void Update()
     {
         foreach (GameObject objetSeen in shortRangeDetector.getEnteringGameObjets())
