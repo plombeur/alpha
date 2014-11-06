@@ -73,6 +73,6 @@ public class Memory : MonoBehaviourAdapter
 
 public interface MemoryListener
 {
-    public void onMemoryAdd(Memory memory, MemoryBloc bloc);
-    public void onMemoryRemove(Memory memory, MemoryBloc bloc);
+    void onMemoryAdd(Memory memory, MemoryBloc bloc);
+    void onMemoryRemove(Memory memory, MemoryBloc bloc);
 }
