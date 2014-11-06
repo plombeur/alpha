@@ -6,7 +6,36 @@ public class Memory : MonoBehaviourAdapter
 {
     private PerceptView perceptView;
     private Dictionary<Identity, MemoryBloc> memoryBlocs;
+    private List<MemoryListener> listeners;
 
+    public Memory()
+    {
+        listeners = new List<MemoryListener>();
+    }
+    public void addMemoryListener(MemoryListener listener)
+    {
+        listeners.Add(listener);
+    }
+    public void removeMemoryListener(MemoryListener listener)
+    {
+        listeners.Remove(listener);
+    }
+    public void addMemoryBloc(MemoryBloc bloc)
+    {
+        memoryBlocs.Add(bloc.getIdentity(), bloc);
+        foreach (MemoryListener listener in listeners)
+            listener.onMemoryAdd(this, bloc);
+    }
+    public void removeMemoryBloc(MemoryBloc bloc)
+    {
+        if (memoryBlocs.Remove(bloc.getIdentity()))
+            foreach (MemoryListener listener in listeners)
+                listener.onMemoryRemove(this, bloc);
+    }
+    public bool containIdentity(Identity identity)
+    {
+        return memoryBlocs.ContainsKey(identity);   
+    }
     protected override void Start()
     {
         memoryBlocs = new Dictionary<Identity, MemoryBloc>();
@@ -22,12 +51,10 @@ public class Memory : MonoBehaviourAdapter
         {
             foreach (Living living in perceptView.getLiving())
             {
-                if (memoryBlocs.ContainsKey(living.getIdentity()))
-                {
+                if (containIdentity(living.getIdentity()))
                     memoryBlocs[living.getIdentity()].updatePosition(living.transform.position);
-                }
                 else
-                    memoryBlocs.Add(living.getIdentity(), new MemoryBloc(living.getIdentity()));
+                    addMemoryBloc(new MemoryBloc(living.getIdentity()));
             }
         }
     }
@@ -37,8 +64,15 @@ public class Memory : MonoBehaviourAdapter
         memoryBlocs.TryGetValue(identity, out bloc);
         return bloc;
     }
+
     public Dictionary<Identity, MemoryBloc>.ValueCollection getMemoyBlocs()
     {
         return memoryBlocs.Values;
     }
+}
+
+public interface MemoryListener
+{
+    public void onMemoryAdd(Memory memory, MemoryBloc bloc);
+    public void onMemoryRemove(Memory memory, MemoryBloc bloc);
 }
