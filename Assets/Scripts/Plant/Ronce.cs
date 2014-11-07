@@ -68,7 +68,7 @@ public class Ronce : Plant {
             if (fruitPrefab != null)
             {
                 nutriments /= 2;
-                GameObject child = Instantiate(fruitPrefab);
+                GameObject child = Instantiate(fruitPrefab) as GameObject;
                 child.transform.parent = transform;
                 child.gameObject.name = "Mures";
             }
