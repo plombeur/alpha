@@ -47,6 +47,11 @@ public abstract class Animal : Living {
         base.construct(mind);
     }
 
+    public void fd()
+    {
+        fd(vitesse);
+    }
+
     public void fd(float pas)
     {
         GetComponent<Rigidbody2D>().rotation = direction;
@@ -156,5 +161,10 @@ public abstract class Animal : Living {
             }
         }
         return result;
+    }
+
+    public Action getCurrentAction()
+    {
+        return ((MindAnimal)mind).getCurrentAction();
     }
 }

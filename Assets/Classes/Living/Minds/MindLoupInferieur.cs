@@ -4,7 +4,7 @@ using System.Collections;
 public class MindLoupInferieur : MindLoup
 {
     private float time = 0;
-    private float timeBeforeCheckAlpha = Random.Range(15,60);
+    private float timeBeforeCheckAlpha = Random.Range(8,15);
 
     public MindLoupInferieur(LoupInferieur agent)
         : base(agent)
@@ -16,10 +16,15 @@ public class MindLoupInferieur : MindLoup
         Animal a = (Animal)agent;
         time += Time.deltaTime;
         LoupAlpha alpha = GameObject.Find("LoupAlpha").GetComponent<LoupAlpha>();
+        if (alpha.getCurrentAction() as AU_MoveTo != null)
+        {
+            actionList.addAction(new AU_FollowAlpha());
+        }
+
         if (!a.perceptView.getLiving().Contains(alpha) && time >= timeBeforeCheckAlpha)
         {
             time -= timeBeforeCheckAlpha;
-            timeBeforeCheckAlpha = Random.Range(15, 30);
+            timeBeforeCheckAlpha = Random.Range(8,15);
             actionList.addAction(new A_RejoindreTroupe());
         }
         base.vivre();

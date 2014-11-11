@@ -42,6 +42,7 @@ public class A_RejoindreTroupe : Action
             getAnimal().fd(0);
             return true;
         }
+
         LoupAlpha alpha = obj.GetComponent<LoupAlpha>();
         PerceptView percepts = getAnimal().perceptView;
         List<Living> list = percepts.getLiving();
@@ -61,27 +62,38 @@ public class A_RejoindreTroupe : Action
         if(list.Contains(alpha))
         {
             getAnimal().hideStaticEmoticon();
+
+            if (alpha.getCurrentAction() as AU_MoveTo != null)
+            {
+                if (Vector2.Distance(alpha.GetComponent<Transform>().position, getAnimal().GetComponent<Transform>().position) > 8)
+                {
+                    getAnimal().faceTo(alpha);
+                    getAnimal().wiggle(getAnimal().vitesse * 1.2f, 2);
+                }
+                return true;
+            }
+
             if (Vector2.Distance(alpha.GetComponent<Transform>().position, getAnimal().GetComponent<Transform>().position)>((LoupInferieur)getAnimal()).distanceAlpha)
             {
                 getAnimal().faceTo(alpha);
                 getAnimal().wiggle(getAnimal().vitesse * 3, 2);
                 return true;
             }
-
             getActionPendlingList().removeAction(this);
             return true;
         }
 
-        /*Loup randomLoup = getAnimal().randomLoupSeen();
-        if(randomLoup != null)
+        MemoryBloc mem = getAnimal().GetComponent<Memory>().getMemoryForIdentity(alpha.getIdentity());
+        if (mem != null)
         {
-            getAnimal().faceTo(randomLoup);
-            getAnimal().wiggle(getAnimal().vitesse * 3, 2);
-            return true;
-        }*/
-
-        getAnimal().rt(4);
-        getAnimal().wiggle(0.01f,2);
+            getAnimal().faceTo(mem.getLastPosition());
+            getAnimal().wiggle(getAnimal().vitesse * 3f, 2);
+        }
+        else
+        {
+            getAnimal().rt(1);
+            getAnimal().fd(0.001f);
+        }
         
         return true;
     }

@@ -53,11 +53,10 @@ public class A_AffectionAuLoupAlpha : Action
         List<Living> list = percepts.getLiving();
         if (list.Contains(alpha))
         {
-            getAnimal().hideStaticEmoticon();
             if (Vector2.Distance(alpha.GetComponent<Transform>().position, getAnimal().GetComponent<Transform>().position) > 5)
             {
                 getAnimal().faceTo(alpha);
-                getAnimal().wiggle(getAnimal().vitesse * 3,2);
+                getAnimal().wiggle(getAnimal().vitesse * 1.1f,2);
                 return true;
             }
 
@@ -67,8 +66,17 @@ public class A_AffectionAuLoupAlpha : Action
             return false;
         }
 
-        getAnimal().rt(4);
-        getAnimal().wiggle(0.01f, 2);
+        MemoryBloc mem = getAnimal().GetComponent<Memory>().getMemoryForIdentity(alpha.getIdentity());
+        if (mem != null)
+        {
+            getAnimal().faceTo(mem.getLastPosition());
+            getAnimal().wiggle(getAnimal().vitesse * 3f, 2);
+        }
+        else
+        {
+            getAnimal().rt(1);
+            getAnimal().fd(0.001f);
+        }
 
         return true;
     }

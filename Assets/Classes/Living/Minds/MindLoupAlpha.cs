@@ -5,7 +5,8 @@ public class MindLoupAlpha : MindLoup
 {
 
     public MindLoupAlpha(LoupAlpha agent) : base(agent)
-    { }
+    {
+    }
 
     public override void vivre()
     {
