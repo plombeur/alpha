@@ -6,6 +6,7 @@ public class MindLoupAlpha : MindLoup
 
     public MindLoupAlpha(LoupAlpha agent) : base(agent)
     {
+        actionList.addAction(new AU_MoveTo(20, 20));
     }
 
     public override void vivre()
