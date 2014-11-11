@@ -13,7 +13,10 @@ public class MemoryBloc
         this.identity = identity;
         lastPosition = identity.getEntity().transform.position;
     }
-
+    public Identity getIdentity()
+    {
+        return identity;
+    }
     public Entity getEntity()
     {
         return identity.getEntity();
