@@ -19,7 +19,7 @@ public class Map : MonoBehaviour {
                 patches[i * size_x + j].gameObject.transform.SetParent(this.transform);
 			}
 		}
-        Destroy(getPatch(1.0f, 1.0f).gameObject);
+        //Destroy(getPatch(1.0f, 1.0f).gameObject);
         //Load patches into array
         /*patches = new Patch[size_x*size_y];
         int nChildren = this.gameObject.transform.childCount;
