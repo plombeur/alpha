@@ -45,21 +45,22 @@ public class Map : MonoBehaviour {
 
     public float getUpperBorder()
     {
-        return this.transform.position.x + size_x - 0.5f;
+
+        return this.transform.position.y + size_y - 0.5f;
     }
 
     public float getLowerBorder()
     {
-        return this.transform.position.x - 0.5f;
+        return this.transform.position.y - 0.5f;
     }
 
     public float getLeftBorder()
     {
-        return this.transform.position.y - 0.5f;
+        return this.transform.position.x - 0.5f;
     }
 
     public float getRightBorder()
     {
-        return this.transform.position.y + size_y - 0.5f;
+        return this.transform.position.x + size_x - 0.5f;
     }
 }
