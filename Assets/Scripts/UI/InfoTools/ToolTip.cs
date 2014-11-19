@@ -31,20 +31,20 @@ public class ToolTip : MonoBehaviour, MemoryListener
      * Check display condition on update.
      * Must be overidden.
      * */
-    public virtual void checkTrigger()
+    protected virtual void checkTrigger()
     {
     }
     /**
      * Check display condition on Memory modification (add only).
      * Must be overidden.
      * */
-    private virtual void checkMemoryModificationTrigger(MemoryBloc bloc)
+    protected virtual void checkMemoryModificationTrigger(MemoryBloc bloc)
     {
     }
     /**
      * Updates ToolTipManager + lock or destroy.
      * */
-    public void display()
+    protected void display()
     {
         if (mManager != null)
         {
