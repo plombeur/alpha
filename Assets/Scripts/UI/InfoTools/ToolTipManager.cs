@@ -4,11 +4,12 @@ using System.Collections.Generic;
 
 public class ToolTipManager : MonoBehaviour {
     public GameObject Alpha;
-    private Stack<ToolTip> mTops;
+    private Stack<ToolTip> mTips;
     private ToolTip mCurrentTip;
 
 	// Use this for initialization
 	void Start () {
+        mTips = new Stack<ToolTip>();
 	}
 	
 	// Update is called once per frame
@@ -21,7 +22,7 @@ public class ToolTipManager : MonoBehaviour {
      * */
     public void askDisplay(ToolTip tip)
     {
-
+        mTips.Push(tip);
     }
     /**
      * Freeze time.
@@ -36,7 +37,7 @@ public class ToolTipManager : MonoBehaviour {
     private void freezeTime()
     {
     }
-    private void displayToolTIp()
+    private void displayToolTipDescription()
     {
     }
     /**
@@ -44,5 +45,10 @@ public class ToolTipManager : MonoBehaviour {
      * */
     public void validateReading()
     {
+        if (mCurrentTip != null)
+        {
+            Destroy(mCurrentTip);
+            mCurrentTip = mTips.Pop();
+        }
     }
 }

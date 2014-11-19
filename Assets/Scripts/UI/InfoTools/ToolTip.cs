@@ -1,42 +1,67 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ToolTip : MonoBehaviour {
+public class ToolTip : MonoBehaviour, MemoryListener
+{
     public string description;
+    private ToolTipManager mManager;
 
-	// Use this for initialization
-	void Start () {
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    // Use this for initialization
+    void Start()
+    {
+        GameObject TTM = GameObject.Find("ToolTipManager");
+        if (TTM != null)
+        {
+            mManager = TTM.GetComponent<ToolTipManager>();
+            if (mManager == null)
+            {
+                Destroy(this);
+            }
+        }
+        else Destroy(this);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         checkTrigger();
-	}
+    }
 
     /**
-     * Check display condition.
+     * Check display condition on update.
      * Must be overidden.
      * */
     public virtual void checkTrigger()
     {
     }
-
+    /**
+     * Check display condition on Memory modification (add only).
+     * Must be overidden.
+     * */
+    private virtual void checkMemoryModificationTrigger(MemoryBloc bloc)
+    {
+    }
     /**
      * Updates ToolTipManager + lock or destroy.
      * */
     public void display()
     {
-        GameObject TTM = GameObject.Find("TollTipManager");
-        if (TTM != null)
+        if (mManager != null)
         {
-            ToolTipManager manager = TTM.GetComponent<ToolTipManager>();
-            if (manager != null)
-            {
-                manager.askDisplay(this);
-                this.enabled = false;
-            }
-            else Destroy(this);
+            mManager.askDisplay(this);
+            this.enabled = false;
         }
-        else Destroy(this);
+    }
+
+    /**
+     * Memory Listener things.
+     * */
+    public void onMemoryAdd(Memory memory, MemoryBloc bloc)
+    {
+        checkMemoryModificationTrigger(bloc);
+    }
+
+    public void onMemoryRemove(Memory memory, MemoryBloc bloc)
+    {
     }
 }
