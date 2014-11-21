@@ -47,7 +47,7 @@ public class ToolTipManager : MonoBehaviour {
     {
         if (mCurrentTip != null)
         {
-            Destroy(mCurrentTip);
+            Destroy(mCurrentTip.gameObject);
             mCurrentTip = mTips.Pop();
         }
     }

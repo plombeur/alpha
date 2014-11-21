@@ -15,10 +15,10 @@ public class ToolTip : MonoBehaviour, MemoryListener
             mManager = TTM.GetComponent<ToolTipManager>();
             if (mManager == null)
             {
-                Destroy(this);
+                Destroy(this.gameObject);
             }
         }
-        else Destroy(this);
+        else Destroy(this.gameObject);
     }
 
     // Update is called once per frame
