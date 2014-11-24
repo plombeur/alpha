@@ -14,7 +14,7 @@ public class Map : MonoBehaviour {
 		for (int i=0; i<size_x; i++) {
 			for (int j=0; j<size_y; j++) {
 				//patches[i*size_x+j] = new Cailloux();
-				Vector3 pos = new Vector3(i + this.transform.position.x,j + this.transform.position.y,-10);
+				Vector3 pos = new Vector3(i + this.transform.position.x,j + this.transform.position.y, 0);
 				patches[i*size_x+j] = ((GameObject)Instantiate(prefabPatch, pos, Quaternion.identity)).GetComponent<Patch>();
                 patches[i * size_x + j].gameObject.transform.SetParent(this.transform);
 			}
