@@ -3,7 +3,9 @@ using System.Collections;
 
 public class ToolTip : MonoBehaviour, MemoryListener
 {
+    public string title;
     public string description;
+    public Sprite icon;
     private ToolTipManager mManager;
 
     // Use this for initialization
