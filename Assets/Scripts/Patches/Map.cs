@@ -31,7 +31,7 @@ public class Map : MonoBehaviour {
             for (int j = 0; j < size_y; j++)
             {
                 //patches[i*size_x+j] = new Cailloux();
-                Vector3 pos = new Vector3(i + this.transform.position.x, j + this.transform.position.y, -10);
+                Vector3 pos = new Vector3(i + this.transform.position.x, j + this.transform.position.y, 0);
                 if ((i < 7 && j < 10) || (i > 40 && j > 20 && j < 35) || (i > 10 && i < 30 && j > 45))
                 {
                     patches[i * size_x + j] = ((GameObject)Instantiate(prefabGrass, pos, Quaternion.identity)).GetComponent<Patch>();
