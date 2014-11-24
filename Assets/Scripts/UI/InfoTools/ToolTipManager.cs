@@ -6,35 +6,33 @@ using UnityEngine.UI;
 public class ToolTipManager : MonoBehaviour
 {
     public GameObject Alpha;
+    public GameObject Displayer;
     private Stack<ToolTip> m_Tips;
     private ToolTip m_CurrentTip;
-    private Text m_Displayer;
+    private InfoWindow m_DisplayerScript;
+    private bool m_isFreezing;
 
     // Use this for initialization
     void Start()
     {
         m_Tips = new Stack<ToolTip>();
-        GameObject UIText = GameObject.Find("UI/ToolTipDisplayer");
-        if (UIText == null)
+        m_CurrentTip = null;
+        m_isFreezing = false;
+        m_DisplayerScript = Displayer.GetComponent<InfoWindow>();
+        if (m_DisplayerScript == null)
         {
-            Debug.Log("TTM::Impossible de trouver UI/ToolTipDisplayer.");
+            Debug.Log("Script missing (InfoWindow)");
             Destroy(this);
-        }
-        else
-        {
-            m_Displayer = UIText.GetComponent<Text>();
-            if (m_Displayer == null)
-            {
-                Debug.Log("TTM::Aucun component Text trouvé.");
-                Destroy(this);
-            }
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (m_isFreezing)
+        {
+            displayToolTip();
+        }
     }
 
     /**
@@ -43,18 +41,23 @@ public class ToolTipManager : MonoBehaviour
     public void askDisplay(ToolTip tip)
     {
         m_Tips.Push(tip);
+        if (m_CurrentTip == null)
+        {
+            getNextTip();
+            displayToolTip();
+        }
     }
     /**
      * Freeze time.
      * Display ToolTip.
-     * Destroy ToolTip.
-     * Check next ToolTIp to display.
      * */
     public void displayToolTip()
     {
+        m_isFreezing = true;
         if (freezeTime())
         {
             displayToolTipDescription();
+            m_isFreezing = false;
         }
     }
     /**
@@ -70,20 +73,11 @@ public class ToolTipManager : MonoBehaviour
         else if (Time.timeScale < 0.25F)
         {
             Time.timeScale = 0.0F;
-
-            Color displayColor = m_Displayer.color;
-            displayColor.a = 1.0F;
-            m_Displayer.color = displayColor;
-
             isFrozen = true;
         }
         else
         {
             Time.timeScale = Time.timeScale / 2.0F;
-
-            Color displayColor = m_Displayer.color;
-            displayColor.a = 1 - Time.timeScale;
-            m_Displayer.color = displayColor;
         }
         Time.fixedDeltaTime = Time.fixedDeltaTime * Time.timeScale;
         return isFrozen;
@@ -93,21 +87,24 @@ public class ToolTipManager : MonoBehaviour
      * */
     private void displayToolTipDescription()
     {
-        m_Displayer.text = m_CurrentTip.description;
+        m_DisplayerScript.showInfo(m_CurrentTip.title, m_CurrentTip.description, m_CurrentTip.icon);
     }
     /**
      * Called by the GUI to display the next ToolTip if existing.
+     * Unfreeze + change tip.
      * */
     public void validateReading()
+    {
+        getNextTip();
+        Time.timeScale = 1.0F;
+    }
+
+    private void getNextTip()
     {
         if (m_CurrentTip != null)
         {
             Destroy(m_CurrentTip.gameObject);
-            m_CurrentTip = m_Tips.Pop();
         }
-        Color baseColor = m_Displayer.color;
-        baseColor.a = 0.0F;
-        m_Displayer.color = baseColor;
-        Time.timeScale = 1.0F;
+        m_CurrentTip = m_Tips.Pop();
     }
 }
