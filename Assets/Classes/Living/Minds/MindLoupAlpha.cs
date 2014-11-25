@@ -6,7 +6,6 @@ public class MindLoupAlpha : MindLoup
 
     public MindLoupAlpha(LoupAlpha agent) : base(agent)
     {
-        actionList.addAction(new AU_MoveTo(20, 20));
     }
 
     public override void vivre()
@@ -23,6 +22,13 @@ public class MindLoupAlpha : MindLoup
             actionList.addAction(new A_TaquinerOmega(random));
         else
             base.randomAction();
+    }
+
+    public void addActionUserAction(A_ActionUser action)
+    {
+        if (getCurrentAction() as A_ActionUser != null)
+            removeCurrentAction();
+        actionList.addAction(action);
     }
 
 }

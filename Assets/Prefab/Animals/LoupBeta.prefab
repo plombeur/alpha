@@ -300,7 +300,7 @@ MonoBehaviour:
   direction: 0
   FAIM_MAX: 100
   faim: 100
-  vitesse: 1
+  vitesse: 3
   normalSprite: {fileID: 21300000, guid: 4b6ec019a93e97f48bec72470082958a, type: 3}
   sleepSprite: {fileID: 21300000, guid: ff2b46c1857bbc04eb3148bc64357fb1, type: 3}
   sleepEmoticonSprite: {fileID: 21300000, guid: 5c52b88407adcc049a8a40a1d13a864e,

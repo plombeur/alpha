@@ -26,6 +26,7 @@ public abstract class MindAnimal : Mind
             }
             animal.faim = 0;
         }
+        animal.fd(0);
         actionList.execute(Time.deltaTime);
     }
 

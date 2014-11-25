@@ -97,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.41044903, y: 2.60291576, z: 0}
+  m_LocalPosition: {x: 17.0219994, y: -20.0330009, z: 0}
   m_LocalScale: {x: 1.14950991, y: 1.14950979, z: 1.14950979}
   m_Children:
   - {fileID: 400002}
@@ -274,7 +274,7 @@ MonoBehaviour:
   direction: 0
   FAIM_MAX: 100
   faim: 100
-  vitesse: 1
+  vitesse: 2.79999995
   normalSprite: {fileID: 21300000, guid: 4b6ec019a93e97f48bec72470082958a, type: 3}
   sleepSprite: {fileID: 21300000, guid: ff2b46c1857bbc04eb3148bc64357fb1, type: 3}
   sleepEmoticonSprite: {fileID: 21300000, guid: 5c52b88407adcc049a8a40a1d13a864e,

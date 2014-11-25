@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 public class AU_FollowAlpha : A_ActionUser
 {
-
-    private float timerBlocked = 0;
-    private float timer = Random.Range(1, 6);
+    private float timer = (float)Random.Range(10, 30) * .1f;
     private float time = 0;
     private float cptNouvelleTrajectoire = 0;
+    private float timeRecul = 0;
+    private Living tmpLoupToDodge;
 
     public AU_FollowAlpha()
         : base("AU_MoveTo")
@@ -41,7 +41,7 @@ public class AU_FollowAlpha : A_ActionUser
         for (int i = 0; i < percepts.Count;++i)
         {
             currentLoup = percepts[i] as Loup;
-            if(currentLoup != null&& (getAnimal().direction - getAnimal().getFaceToDirection(currentLoup.transform.position))%360 < 40)
+            if(currentLoup != null && (getAnimal().direction - getAnimal().getFaceToDirection(currentLoup.transform.position))%360 < 45)
             {
                 if (loupLePlusProche == null || Vector2.Distance(currentLoup.transform.position, getAnimal().transform.position) < Vector2.Distance(loupLePlusProche.transform.position, getAnimal().transform.position))
                 {
@@ -50,18 +50,25 @@ public class AU_FollowAlpha : A_ActionUser
             }
         }
 
-        if (timerBlocked>3 || loupLePlusProche == null || Vector2.Distance(loupLePlusProche.transform.position, getAnimal().transform.position) > 5)
+        if ( timeRecul <= 0 && loupLePlusProche != null && Vector2.Distance(loupLePlusProche.transform.position, getAnimal().transform.position) <= 8)
+        {
+            timeRecul = (float)Random.Range(0, 11) * .1f + .9f;
+            tmpLoupToDodge = loupLePlusProche;
+        }
+        
+        if(timeRecul <= 0)
         {
             getAnimal().faceTo(alpha.GetComponent<Transform>().position);
             getAnimal().wiggle(getAnimal().vitesse, 2);
-            if (timerBlocked < 3)
-                timerBlocked = 0;
         }
         else
         {
-            timerBlocked += deltaTime;
-            getAnimal().fd(getAnimal().vitesse * .01f);
+            timeRecul -= Time.deltaTime;
+            getAnimal().faceTo(tmpLoupToDodge);
+            getAnimal().rt(180);
+            getAnimal().wiggle(getAnimal().vitesse * .9f, 3);
         }
+
         return true;
     }
 
@@ -74,6 +81,12 @@ public class AU_FollowAlpha : A_ActionUser
 
         AU_FollowAlpha action = obj as AU_FollowAlpha;
         return action != null;
+    }
+
+    protected override bool onStart(float deltaTime)
+    {
+        getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().normalSprite;
+        return base.onStart(deltaTime);
     }
 }
 
