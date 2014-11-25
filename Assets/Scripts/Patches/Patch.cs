@@ -11,7 +11,7 @@ public class Patch : Entity {
 	protected override void Start () {
 		maxNutriments = 10;
 		nutriments = maxNutriments;
-		temperature = 20;
+		temperature = 10;
 		passabilite = 1;
 		evaporateSpeed = 1;
 	}
