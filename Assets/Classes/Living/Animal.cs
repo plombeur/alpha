@@ -16,6 +16,7 @@ public abstract class Animal : Living {
     //Sprites ..
     public Sprite normalSprite;
     public Sprite sleepSprite;
+    public Sprite rugirSprite;
     //Emoticon sprites
     public Sprite sleepEmoticonSprite;
     public Sprite questionEmoticonSprite;
