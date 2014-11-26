@@ -9,6 +9,7 @@ public class MindLoup : MindAnimal {
     { }
 	public override void vivre()
     {
+        base.vivre();
         if (Living.DEBUG)
             Debug.Log("MindLoup.vivre ...");
         Loup loup = ((Loup)agent);
@@ -26,7 +27,6 @@ public class MindLoup : MindAnimal {
                 compteurActiviteAleatoire = Random.Range(10, 50);
             }
         }
-        base.vivre();
     }
 
     protected virtual void randomAction()

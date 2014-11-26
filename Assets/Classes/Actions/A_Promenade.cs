@@ -6,7 +6,7 @@ public class A_Promenade : Action {
     private float vitesse;
     private float cptNouvelleTrajectoire = 0;
     private float time = 0;
-
+    private bool dontMove = false;
 	public A_Promenade(float vitesse = 1) : base("A_Promenade")
     {
         this.vitesse = vitesse;
@@ -25,13 +25,18 @@ public class A_Promenade : Action {
         cptNouvelleTrajectoire -= deltaTime;
         if (cptNouvelleTrajectoire <= 0)
         {
-            a.direction = Random.Range(0, 360);
+            dontMove = false;
+            if (Random.Range(1, 5) == 1)
+                dontMove = true;
+            else
+                a.direction = Random.Range(0, 360);
             cptNouvelleTrajectoire = -cptNouvelleTrajectoire + Random.Range(2, 30);
         }
         time += deltaTime;
         while (time >= 0.04f)
         {
-            a.wiggle(vitesse,2);
+            if(!dontMove)
+                a.wiggle(vitesse,2);
             time -= 0.04f;
         }
         return true;

@@ -5,6 +5,7 @@ public class MindLoupInferieur : MindLoup
 {
     private float time = 0;
     private float timeBeforeCheckAlpha = Random.Range(8,15);
+    private float chronoBeforeFollowingAlpha = -1;
 
     public MindLoupInferieur(LoupInferieur agent)
         : base(agent)
@@ -18,7 +19,20 @@ public class MindLoupInferieur : MindLoup
         LoupAlpha alpha = GameObject.Find("LoupAlpha").GetComponent<LoupAlpha>();
         if (alpha.getCurrentAction() as AU_MoveTo != null)
         {
-            actionList.addAction(new AU_FollowAlpha());
+            if (chronoBeforeFollowingAlpha == -1 )
+            {
+                chronoBeforeFollowingAlpha = (float)Random.Range(13, 50) * .1f;
+            }
+           
+            if (chronoBeforeFollowingAlpha > 0 )
+            {
+                chronoBeforeFollowingAlpha -= Time.deltaTime;
+                if (chronoBeforeFollowingAlpha <= 0)
+                {
+                    chronoBeforeFollowingAlpha = -1;
+                    actionList.addAction(new AU_FollowAlpha());
+                }
+            }
         }
 
         if (!a.perceptView.getLiving().Contains(alpha) && time >= timeBeforeCheckAlpha)

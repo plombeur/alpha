@@ -11,4 +11,9 @@ public class LoupAlpha : Loup
         MindLoup mind = new MindLoupAlpha(this);
         base.construct(mind);
     }
+
+    public void moveTo(Vector2 position)
+    {
+        ((MindLoupAlpha)mind).addActionUserAction(new AU_MoveTo(position));
+    }
 }
