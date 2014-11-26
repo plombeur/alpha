@@ -9,7 +9,7 @@ public abstract class Plant : Living
     protected float growth;
     public float maxGrowth;
 
-    protected float growSpeed;
+    public float growSpeed;
 
     /*protected*/public float nutriments;
     public float maxNutriments;
@@ -24,10 +24,7 @@ public abstract class Plant : Living
         maxHealth = health;
 
         this.growth = 0;
-        this.maxGrowth = 50;
-        this.growSpeed = 1;
 
-        this.maxNutriments = 100;
         this.nutriments = maxNutriments;
 
         maxScale = transform.localScale;
@@ -77,5 +74,12 @@ public abstract class Plant : Living
 
     protected override void OnTriggerEnter2D(Collider2D other)
     {
+    }
+
+    public void setStartingGrowth(float startGrowth)
+    {
+        if (growth == 0)
+            growth = startGrowth;
+        else Debug.Log("Can't change a plant's growth, must be done at creation.");
     }
 }

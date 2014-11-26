@@ -15,4 +15,12 @@ public class MindArbre : MindPlant {
 		
 		base.vivre();
 	}
+
+    public override void OnCollisionEnter2D(Collision2D other)
+    {
+    }
+
+    public override void OnTriggerEnter2D(Collider2D other)
+    {
+    }
 }

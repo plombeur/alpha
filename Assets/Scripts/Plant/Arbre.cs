@@ -9,4 +9,21 @@ public class Arbre : Plant {
 		MindArbre mind = new MindArbre(this);
 		base.construct(mind, 100);
 	}
+
+    public override void grow()
+    {
+        base.grow();
+
+        float energyChangeValue = growSpeed * Time.deltaTime;
+
+        if (nutriments >= 0)
+        {
+            nutriments -= energyChangeValue;
+            growth += energyChangeValue;
+        }
+        else
+        {
+            health -= energyChangeValue;
+        }
+    }
 }
