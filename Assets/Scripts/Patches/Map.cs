@@ -3,25 +3,22 @@ using System.Collections;
 
 [ExecuteInEditMode]
 public class Map : MonoBehaviour {
-	public int size_x;
-	public int size_y;
-	protected Patch[] patches;
-	public GameObject prefabTerre;
-    public GameObject prefabGrass;
+	//private int size_x = 50;
+	//private int size_y = 50;
+    public GameObject grass;
+	//protected Patch[] patches;
 	// Use this for initialization
-
-    
 	void Start () {
-        generateMap();
+        //generateMap();
 	}
 
-    void generateMap()
+    /*void generateMap()
     {
         if (this.transform.childCount != 0)
         {
             for (int i = 0; i < this.transform.childCount; i++)
             {
-                Destroy(this.transform.GetChild(i).gameObject);
+                DestroyImmediate(this.transform.GetChild(i).gameObject);
             }
         }
         // Create array of patches with script
@@ -44,35 +41,78 @@ public class Map : MonoBehaviour {
             }
         }
         //Destroy(getPatch(1.0f, 1.0f).gameObject);
-    }
+    }*/
     // Update is called once per frame
     void Update()
     {
         
 	}
 
-	public Patch getPatch(float x,float y){
+	/*public Patch getPatch(float x,float y){
 		return patches [Mathf.FloorToInt (x - this.transform.position.x) * this.size_x + Mathf.FloorToInt (y - this.transform.position.y)];
-	}
+	}*/
 
     public float getUpperBorder()
     {
-
-        return this.transform.position.y + size_y - 0.5f;
+        Transform patches = this.transform.FindChild("Patches").transform.FindChild("Navigateable");
+        float maxY = patches.GetChild(0).transform.position.y;
+        float currentY;
+        for (int i = 1; i < patches.childCount; i++)
+        {
+            currentY = patches.GetChild(i).transform.position.y;
+            if (maxY < currentY)
+            {
+                maxY = currentY;
+            }
+        }
+        return maxY + patches.GetChild(0).gameObject.renderer.bounds.size.y / 2;
     }
 
     public float getLowerBorder()
     {
-        return this.transform.position.y - 0.5f;
+        Transform patches = this.transform.FindChild("Patches").transform.FindChild("Navigateable");
+        float minY = patches.GetChild(0).transform.position.y;
+        float currentY;
+        for (int i = 1; i < patches.childCount; i++)
+        {
+            currentY = patches.GetChild(i).transform.position.y;
+            if (minY > currentY)
+            {
+                minY = currentY;
+            }
+        }
+        return minY - patches.GetChild(0).gameObject.renderer.bounds.size.y / 2;
     }
 
     public float getLeftBorder()
     {
-        return this.transform.position.x - 0.5f;
+        Transform patches = this.transform.FindChild("Patches").transform.FindChild("Navigateable");
+        float minX = patches.GetChild(0).transform.position.x;
+        float currentX;
+        for (int i = 1; i < patches.childCount; i++)
+        {
+            currentX = patches.GetChild(i).transform.position.x;
+            if (minX > currentX)
+            {
+                minX = currentX;
+            }
+        }
+        return minX - patches.GetChild(0).gameObject.renderer.bounds.size.x / 2;
     }
 
     public float getRightBorder()
     {
-        return this.transform.position.x + size_x - 0.5f;
+        Transform patches = this.transform.FindChild("Patches").transform.FindChild("Navigateable");
+        float maxX = patches.GetChild(0).transform.position.x;
+        float currentX;
+        for (int i = 1; i < patches.childCount; i++)
+        {
+            currentX = patches.GetChild(i).transform.position.x;
+            if (maxX < currentX)
+            {
+                maxX = currentX;
+            }
+        }
+        return maxX + patches.GetChild(0).gameObject.renderer.bounds.size.x / 2;
     }
 }
