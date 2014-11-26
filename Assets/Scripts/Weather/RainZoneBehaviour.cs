@@ -14,9 +14,6 @@ public class RainZoneBehaviour : MonoBehaviour {
     {
 
         timer = Random.Range(minTimer, maxTimer);
-        print("Pluie pendant : " + timer.ToString());
-
-        plantsToUpdate = Physics2D.OverlapCircleAll(transform.position, radius); // Find itself
     }
 
 	// Use this for initialization
@@ -30,7 +27,7 @@ public class RainZoneBehaviour : MonoBehaviour {
         {
             Destroy(this.gameObject);
         }
-
+        plantsToUpdate = Physics2D.OverlapCircleAll(transform.position, radius); // Find itself
         foreach (Collider2D collider in plantsToUpdate)
         {
             //print(collider.gameObject.name);
