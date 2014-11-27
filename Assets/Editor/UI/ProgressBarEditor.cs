@@ -13,32 +13,33 @@ public class ProgressBarEditor : Editor
 
         ProgressBar myTarget = (ProgressBar)target;
 
+        myTarget.objectBar = EditorGUILayout.ObjectField("BarObject",myTarget.objectBar, typeof(RectTransform)) as RectTransform;
+
         if (myTarget.GetComponent<Image>() == null)
             myTarget.gameObject.AddComponent<Image>().color = new Color(0.2f,0.2f,0.2f,0.3f);
 
         if (myTarget.objectBar == null)
         {
-            myTarget.objectBar = new GameObject("ProgressPart");
+            GameObject objectBar = new GameObject("ProgressPart");
+            RectTransform rectObjectBar = objectBar.AddComponent<RectTransform>();
+            myTarget.objectBar = rectObjectBar;
             myTarget.objectBar.transform.parent = myTarget.transform;
-            RectTransform rectObjectBar = myTarget.objectBar.AddComponent<RectTransform>();
             rectObjectBar.pivot = new Vector2(0, 0);
             rectObjectBar.anchorMin = new Vector2();
             rectObjectBar.anchorMax = new Vector2();
-            myTarget.objectBar.AddComponent<Image>();
+            objectBar.AddComponent<Image>();
 
         }
 
+        RectTransform rect = myTarget.GetComponent<RectTransform>();
 
         myTarget.progress = Mathf.Clamp(EditorGUILayout.FloatField("Progress", myTarget.progress),0,100);
-        myTarget.padWidth = Mathf.Clamp(EditorGUILayout.FloatField("Pad Width", myTarget.padWidth), 0,myTarget.width/2);
-        myTarget.padHeight = Mathf.Clamp(EditorGUILayout.FloatField("Pad Height", myTarget.padHeight), 0, myTarget.height / 2);
-        myTarget.width = Mathf.Max(EditorGUILayout.FloatField("Width", myTarget.width), myTarget.padWidth * 2);
-        myTarget.height = Mathf.Max(EditorGUILayout.FloatField("Height", myTarget.height), myTarget.padHeight * 2);
+        myTarget.padWidth = Mathf.Clamp(EditorGUILayout.FloatField("Pad Width", myTarget.padWidth), 0,rect.sizeDelta.x/2);
+        myTarget.padHeight = Mathf.Clamp(EditorGUILayout.FloatField("Pad Height", myTarget.padHeight), 0, rect.sizeDelta.y / 2);
+        //myTarget.width = Mathf.Max(EditorGUILayout.FloatField("Width", myTarget.width), myTarget.padWidth * 2);
+        //myTarget.height = Mathf.Max(EditorGUILayout.FloatField("Height", myTarget.height), myTarget.padHeight * 2);
 
-        RectTransform rect = myTarget.GetComponent<RectTransform>();
-        if (rect.pivot.x != 0 || rect.pivot.y != 0)
-            rect.pivot = new Vector2();
-        rect.sizeDelta = new Vector2(myTarget.width, myTarget.height);
+       
 
         myTarget.updateProgressBar();
 

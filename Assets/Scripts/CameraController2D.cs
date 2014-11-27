@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class CameraController2D : MonoBehaviour
 {
@@ -16,15 +17,18 @@ public class CameraController2D : MonoBehaviour
 
     void Update()
     {
+
         if (Input.GetMouseButton(0))
         {
             Ray mouseRay = camera.ScreenPointToRay(Input.mousePosition);
             float distanceCast;
             groundPlane.Raycast(mouseRay, out distanceCast);
             Vector3 worldPosition = mouseRay.GetPoint(distanceCast);
-            if (!mouseDown)
+            if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+            {
                 mouseDown = true;
-            else
+            }
+            else if (mouseDown)
             {
                 followTarget = false;
                 Vector3 delta = worldPosition - lastMousePositonOnWorld;
