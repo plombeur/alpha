@@ -46,7 +46,7 @@ public class Memory : MonoBehaviourAdapter
             List<MemoryBloc> blocsToRemove = new List<MemoryBloc>();
             foreach (MemoryBloc bloc in memoryBlocs.Values)
             {
-                if (perceptView.shortRangeDetector.isInDetector(bloc.getLastPosition()))
+                if (perceptView.isInFieldOfView(bloc.getLastPosition()))
                 {
                     if (bloc.getEntity() == null)
                         blocsToRemove.Add(bloc);
