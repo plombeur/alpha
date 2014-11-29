@@ -5,32 +5,58 @@ using System.Collections.Generic;
 public class PerceptHearing : MonoBehaviourAdapter
 {
     public Detector hearingDetector;
-    private List<Sound> sounds;
+    private List<SoundPercepted> soundsPercepted;
+    private Dictionary<Sound, SoundPercepted> soundPerceptLinks;
 
     protected override void Start()
     {
-        sounds = new List<Sound>();
+        soundsPercepted = new List<SoundPercepted>();
+        soundPerceptLinks = new Dictionary<Sound, SoundPercepted>();
     }
 
     protected override void Update()
     {
         foreach (GameObject objetSeen in hearingDetector.getEnteringGameObjets())
         {
-            Sound living = objetSeen.GetComponent<Sound>();
-            if (living != null)
-                sounds.Add(living);
+            Sound sound = objetSeen.GetComponent<Sound>();
+            if (sound != null)
+            {
+                SoundPercepted percepted = new SoundPercepted();
+                soundPerceptLinks[sound] = percepted;
+                percepted.identity = sound.getOwner();
+                percepted.lastPosition = sound.transform.position;
+                percepted.soundInformation = sound.getInformation();
+                soundsPercepted.Add(percepted);
+            }
         }
 
         foreach (GameObject objetSeen in hearingDetector.getExitingGameObjects())
         {
-            Sound living = objetSeen.GetComponent<Sound>();
-            if (living != null)
-                sounds.Remove(living);
+            Sound sound = objetSeen.GetComponent<Sound>();
+            if (sound != null)
+            {
+                soundsPercepted.Remove(soundPerceptLinks[sound]);
+                soundPerceptLinks.Remove(sound);
+            }
+        }
+
+        foreach (Sound sound in soundPerceptLinks.Keys) // sound peut etre null si detruit en dehor ????
+        {
+            SoundPercepted sp = soundPerceptLinks[sound];
+            sp.lastPosition = sound.transform.position;
+            sp.soundInformation = sound.getInformation();
         }
     }
 
-    public List<Sound> getSounds()
+    public List<SoundPercepted> getSounds()
     {
-        return sounds;
+        return soundsPercepted;
     }
+}
+
+public struct SoundPercepted
+{
+    public Identity identity;
+    public SoundInformation soundInformation;
+    public Vector2 lastPosition;
 }
