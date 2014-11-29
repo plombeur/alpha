@@ -15,6 +15,7 @@ public class Voice : Sound
     protected override void Start()
     {
         soundCollider = GetComponent<CircleCollider2D>();
+        audio = GetComponent<AudioSource>();
         soundCollider.isTrigger = true;
         soundCollider.enabled = false;
     }
