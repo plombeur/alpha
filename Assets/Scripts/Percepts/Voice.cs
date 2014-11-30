@@ -2,27 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(FMOD_StudioEventEmitter))]
 [RequireComponent(typeof(CircleCollider2D))]
 public class Voice : Sound
 {
     public InformationVoiceLink[] songs;
+    public float maturity = 0;
 
-    private AudioSource audio;
     private InformationVoiceLink soundPlaying;
     private CircleCollider2D soundCollider;
+
+    private FMOD_StudioEventEmitter emitter;
 
     protected override void Start()
     {
         soundCollider = GetComponent<CircleCollider2D>();
-        audio = GetComponent<AudioSource>();
         soundCollider.isTrigger = true;
         soundCollider.enabled = false;
+        emitter = GetComponent<FMOD_StudioEventEmitter>();
     }
 
     protected override void Update()
     {
-        if (soundPlaying != null && !audio.isPlaying)
+        if (soundPlaying != null && emitter.HasFinished())
         {
             soundCollider.enabled = false;
             soundPlaying = null;
@@ -45,11 +47,12 @@ public class Voice : Sound
         else
         {
             setOwner(owner);
-            if (audio.isPlaying)
-                audio.Stop();
+            if (!emitter.HasFinished())
+                emitter.Stop();
             soundPlaying = soundLink;
-            audio.clip = soundLink.clip;
-            audio.Play();
+            emitter.asset = soundLink.clip;
+            emitter.getParameter("Maturity").setValue(maturity);
+            emitter.Play();
             soundCollider.enabled = true;
         }
     }
@@ -64,9 +67,10 @@ public class Voice : Sound
         return soundPlaying.information;
     }
 }
+
 [Serializable]
 public class InformationVoiceLink
 {
     public SoundInformation information;
-    public AudioClip clip;
+    public FMODAsset clip;
 }

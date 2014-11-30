@@ -1,29 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(AudioSource))]
 public class SoundSimple : Sound 
 {
-    public AudioClip clipToPlay;
+    public FMODAsset clipToPlay;
     public SoundInformation information;
 
+    private FMOD_StudioEventEmitter emiter;
+
     private bool started;
-    private AudioSource audio;
     private CircleCollider2D soundCollider;
 
     protected override void Start()
     {
+        emiter = gameObject.AddComponent<FMOD_StudioEventEmitter>();
+        emiter.asset = clipToPlay;
         soundCollider = GetComponent<CircleCollider2D>();
         soundCollider.isTrigger = true;
         started = false;
-        this.audio = GetComponent<AudioSource>();
-        audio.clip = clipToPlay;
-        audio.loop = false;
     }
 
     protected override void Update()
     {
-        if (started && !audio.isPlaying)
+        if (started && emiter.HasFinished())
             Destroy(gameObject);
     }
 
@@ -31,7 +30,7 @@ public class SoundSimple : Sound
     {
         transform.position = owner.getEntity().transform.position;
         setOwner(owner);
-        audio.Play();
+        emiter.Play();
         started = true;
     }
     public override SoundInformation getInformation()
