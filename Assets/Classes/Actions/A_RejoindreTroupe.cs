@@ -79,8 +79,8 @@ public class A_RejoindreTroupe : Action
         }
         else
         {
-            getAnimal().rt(1);
-            getAnimal().fd(0.001f);
+            getAnimal().rt(5);
+            getAnimal().fd(0.001f,false,false);
         }
         
         return true;

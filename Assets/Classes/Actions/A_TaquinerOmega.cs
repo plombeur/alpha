@@ -43,6 +43,8 @@ public class A_TaquinerOmega : Action
 
         if(goAtk)
         {
+            a.faceTo(cible);
+            a.fd(.001f, false, false);
             if(!goRetourAtk)
             {
                 getAnimal().transform.localScale += new Vector3(.7f,.7f,.7f);
