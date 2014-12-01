@@ -55,6 +55,7 @@ public class A_AffectionAuLoupAlpha : Action
         {
             if (Vector2.Distance(alpha.GetComponent<Transform>().position, getAnimal().GetComponent<Transform>().position) > 5)
             {
+                getAnimal().setAgentToDontDodge(alpha);
                 getAnimal().faceTo(alpha);
                 getAnimal().wiggle(getAnimal().vitesse * 1.1f,2);
                 return true;

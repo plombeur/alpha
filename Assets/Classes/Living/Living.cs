@@ -16,7 +16,7 @@ public abstract class Living : Entity
         this.mind = mind;
     }
 	
-	protected override void Update () {
+	protected override void FixedUpdate () {
         if (mind == null)
         {
             if (Living.DEBUG)

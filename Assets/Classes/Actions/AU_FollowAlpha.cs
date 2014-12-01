@@ -12,8 +12,7 @@ public class AU_FollowAlpha : A_ActionUser
 
     public AU_FollowAlpha()
         : base("AU_MoveTo")
-    {
-    }
+    {}
 
     protected override bool onUpdate(float deltaTime)
     {
@@ -29,44 +28,16 @@ public class AU_FollowAlpha : A_ActionUser
 
             timer -= deltaTime;
 
-            getAnimal().fd();
+            getAnimal().wiggle(getAnimal().vitesse,3);
 
             return true;
         }
 
-        //Gestion de l'approchement des loups
-        List<Living> percepts = getAnimal().perceptView.getLiving();
-        Loup loupLePlusProche = null;
-        Loup currentLoup;
-        for (int i = 0; i < percepts.Count;++i)
+        if(Vector2.Distance(getAnimal().transform.position,alpha.transform.position)>5)
         {
-            currentLoup = percepts[i] as Loup;
-            if(currentLoup != null && (getAnimal().direction - getAnimal().getFaceToDirection(currentLoup.transform.position))%360 < 45)
-            {
-                if (loupLePlusProche == null || Vector2.Distance(currentLoup.transform.position, getAnimal().transform.position) < Vector2.Distance(loupLePlusProche.transform.position, getAnimal().transform.position))
-                {
-                    loupLePlusProche = currentLoup;
-                }
-            }
-        }
-
-        if ( timeRecul <= 0 && loupLePlusProche != null && Vector2.Distance(loupLePlusProche.transform.position, getAnimal().transform.position) <= 8)
-        {
-            timeRecul = (float)Random.Range(0, 11) * .1f + .9f;
-            tmpLoupToDodge = loupLePlusProche;
-        }
-        
-        if(timeRecul <= 0)
-        {
-            getAnimal().faceTo(alpha.GetComponent<Transform>().position);
+            getAnimal().setAgentToDontDodge(alpha);
+            getAnimal().faceTo(alpha.transform.position);
             getAnimal().wiggle(getAnimal().vitesse, 2);
-        }
-        else
-        {
-            timeRecul -= Time.deltaTime;
-            getAnimal().faceTo(tmpLoupToDodge);
-            getAnimal().rt(180);
-            getAnimal().wiggle(getAnimal().vitesse * .9f, 3);
         }
 
         return true;

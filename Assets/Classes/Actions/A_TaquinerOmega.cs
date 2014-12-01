@@ -6,7 +6,8 @@ public class A_TaquinerOmega : Action
 {
     private LoupOmega cible;
     private bool goAtk = false;
-    private float goInCpt = 0.1f;
+    private bool goRetourAtk = false;
+    private Vector3 tailleInitiale;
 
     public A_TaquinerOmega(LoupOmega cible)
         : base("A_TaquinerOmega")
@@ -37,39 +38,36 @@ public class A_TaquinerOmega : Action
         if(!goAtk && Vector2.Distance(a.GetComponent<Transform>().position,cible.GetComponent<Transform>().position) <= 5)
         {
             goAtk = true;
+            tailleInitiale = getAnimal().transform.localScale;
         }
-        else
+
+        if(goAtk)
         {
-            if(goAtk)
+            if(!goRetourAtk)
             {
-                if(goInCpt<=0)
-                {
-                    goInCpt += deltaTime;
-                    a.fd(a.vitesse * 30);
-                    if (goInCpt >= 0)
-                    {
-                        getActionPendlingList().removeAction(this);
-                        return true;
-                    }
-                }
-                else
-                {
-                    goInCpt -= deltaTime;
-                    a.fd(a.vitesse * 30);
-                    if (goInCpt <= 0)
-                    {
-                        MindLoupOmega mindLoupOmega = (MindLoupOmega)cible.mind;
-                        if (mindLoupOmega.getCurrentAction() as A_Repos != null)
-                            mindLoupOmega.removeCurrentAction();
-                        goInCpt = -0.1f;
-                        a.rt(180);
-                    }
-                }
-                return true;
+                getAnimal().transform.localScale += new Vector3(.7f,.7f,.7f);
+                if (getAnimal().transform.localScale.x >= tailleInitiale.x * 3)
+                    goRetourAtk = true;
             }
-            a.faceTo(cible);
-            a.wiggle(getAnimal().vitesse,2);
+            else
+            {
+                getAnimal().transform.localScale -= new Vector3(.4f, .4f, .4f);
+                if (getAnimal().transform.localScale.x <= tailleInitiale.x)
+                {
+                    getAnimal().transform.localScale = tailleInitiale;
+                    if (cible.getCurrentAction() as A_Repos != null)
+                        ((MindAnimal)cible.mind).removeCurrentAction();
+                    getActionPendlingList().removeAction(this);
+                }
+
+            }
+
+            return true;
         }
+
+        a.setAgentToDontDodge(cible);
+        a.faceTo(cible);
+        a.wiggle(getAnimal().vitesse, 2);
         return true;
     }
 

@@ -27,10 +27,16 @@ public class A_Promenade : Action {
         {
             dontMove = false;
             if (Random.Range(1, 5) == 1)
+            {
                 dontMove = true;
+                cptNouvelleTrajectoire = -cptNouvelleTrajectoire + Random.Range(1, 13);
+            }
             else
+            {
                 a.direction = Random.Range(0, 360);
-            cptNouvelleTrajectoire = -cptNouvelleTrajectoire + Random.Range(2, 30);
+                cptNouvelleTrajectoire = -cptNouvelleTrajectoire + Random.Range(2, 30);
+            }
+                
         }
         time += deltaTime;
         while (time >= 0.04f)

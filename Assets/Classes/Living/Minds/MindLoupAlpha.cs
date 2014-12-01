@@ -27,7 +27,12 @@ public class MindLoupAlpha : MindLoup
     public void addActionUserAction(A_ActionUser action)
     {
         if (getCurrentAction() as A_ActionUser != null)
-            removeCurrentAction();
+        {
+            if (action as AU_MoveTo != null && getCurrentAction() as AU_MoveTo != null)
+                ((AU_MoveTo)getCurrentAction()).changeTarget(((AU_MoveTo)action).getTarget().x, ((AU_MoveTo)action).getTarget().y);
+            else
+                removeCurrentAction();
+        }
         actionList.addAction(action);
     }
 

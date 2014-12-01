@@ -109,7 +109,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.64485431, y: .00270223361, z: 0}
+  m_LocalPosition: {x: -48.7989998, y: .558329999, z: 0}
   m_LocalScale: {x: 1.52793956, y: 1.52793992, z: 1.52793992}
   m_Children:
   - {fileID: 400004}
@@ -269,6 +269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   perceptView: {fileID: 11400002}
   emoticonSystem: {fileID: 11400008}
+  vectorDisplayer: {fileID: 0}
   VIE_MAX: 100
   vie: 100
   direction: 0
@@ -308,7 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 875d0f50b14ca3e47827478d5df182b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angle: 180
+  angle: 300
   fieldDrawer: {fileID: 0}
 --- !u!114 &11400006
 MonoBehaviour:

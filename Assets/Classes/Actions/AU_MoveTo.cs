@@ -62,4 +62,15 @@ public class AU_MoveTo : A_ActionUser
         getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().rugirSprite;
         return base.onStart(deltaTime);
     }
+
+    public void changeTarget(float x, float y)
+    {
+        xTarget = x;
+        yTarget = y;
+    }
+
+    public Vector2 getTarget()
+    {
+        return new Vector2(xTarget, yTarget);
+    }
 }

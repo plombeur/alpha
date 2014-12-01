@@ -269,6 +269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   perceptView: {fileID: 11400002}
   emoticonSystem: {fileID: 11400004}
+  vectorDisplayer: {fileID: 0}
   VIE_MAX: 100
   vie: 100
   direction: 0
@@ -277,6 +278,7 @@ MonoBehaviour:
   vitesse: 2.79999995
   normalSprite: {fileID: 21300000, guid: 4b6ec019a93e97f48bec72470082958a, type: 3}
   sleepSprite: {fileID: 21300000, guid: ff2b46c1857bbc04eb3148bc64357fb1, type: 3}
+  rugirSprite: {fileID: 0}
   sleepEmoticonSprite: {fileID: 21300000, guid: 5c52b88407adcc049a8a40a1d13a864e,
     type: 3}
   questionEmoticonSprite: {fileID: 21300000, guid: d99880357a4ea7b42a62d9543e8f4400,
@@ -321,7 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 875d0f50b14ca3e47827478d5df182b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angle: 180
+  angle: 300
   fieldDrawer: {fileID: 0}
 --- !u!114 &11400008
 MonoBehaviour:

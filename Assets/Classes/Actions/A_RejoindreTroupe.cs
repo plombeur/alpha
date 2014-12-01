@@ -9,6 +9,9 @@ public class A_RejoindreTroupe : Action
     private float time = 0;
     private bool diriged = false;
 
+    private bool animationAttaque = false;
+    private float tailleInitiale;
+
     public A_RejoindreTroupe()
         : base("A_RejoindreTroupe")
     {}
@@ -63,22 +66,7 @@ public class A_RejoindreTroupe : Action
         {
             getAnimal().hideStaticEmoticon();
 
-            if (alpha.getCurrentAction() as AU_MoveTo != null)
-            {
-                if (Vector2.Distance(alpha.GetComponent<Transform>().position, getAnimal().GetComponent<Transform>().position) > 8)
-                {
-                    getAnimal().faceTo(alpha);
-                    getAnimal().wiggle(getAnimal().vitesse * 1.2f, 2);
-                }
-                return true;
-            }
-
-            if (Vector2.Distance(alpha.GetComponent<Transform>().position, getAnimal().GetComponent<Transform>().position)>((LoupInferieur)getAnimal()).distanceAlpha)
-            {
-                getAnimal().faceTo(alpha);
-                getAnimal().wiggle(getAnimal().vitesse * 3, 2);
-                return true;
-            }
+            
             getActionPendlingList().removeAction(this);
             return true;
         }
