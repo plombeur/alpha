@@ -7,7 +7,7 @@ public class Arbre : Plant {
 		if (Living.DEBUG)
 			Debug.Log("Arbre.Start");
 		MindArbre mind = new MindArbre(this);
-		base.construct(mind, 100);
+		base.construct(mind);
 	}
 
     public override void grow()
@@ -25,5 +25,10 @@ public class Arbre : Plant {
         {
             health -= energyChangeValue;
         }
+    }
+
+    public void setStartingGrowth(float startGrowth)
+    {
+        base.setStartingGrowth(startGrowth);
     }
 }

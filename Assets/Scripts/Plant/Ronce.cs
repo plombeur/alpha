@@ -20,9 +20,6 @@ public class Ronce : Plant {
     {
         base.Update();
         checkValues();
-        /*print("Health : " + health.ToString());
-        print("Nutriments :" + nutriments.ToString());
-        print("Growth : " + growth.ToString());*/
     }
 
     protected override void onCreate()
@@ -30,7 +27,7 @@ public class Ronce : Plant {
         if (Living.DEBUG)
             Debug.Log("Ronce.Start");
         MindRonce mind = new MindRonce(this);
-        base.construct(mind, 1000);
+        base.construct(mind);
     }
 
     public override void grow()
@@ -63,15 +60,25 @@ public class Ronce : Plant {
     {
         base.reproduce();
 
-        if (base.isAdult && nutriments >= 90.0 * maxNutriments / 100.0)
+        if (base.isAdult && nutriments >= 2 * maxHealth / 3)
         {
             if (fruitPrefab != null)
             {
                 nutriments /= 2;
                 GameObject child = Instantiate(fruitPrefab) as GameObject;
                 child.transform.parent = transform;
+                Vector2 pos = transform.position;
+                pos.x += (Random.Range(-1, 1) * 0.25F);
+                pos.y += (Random.Range(-1, 1) * 0.25F);
+
+                child.transform.position = pos;
                 child.gameObject.name = "Mures";
             }
         }
+    }
+
+    public void setStartingGrowth(float startGrowth)
+    {
+        base.setStartingGrowth(startGrowth);
     }
 }

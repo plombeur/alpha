@@ -3,6 +3,8 @@ using System.Collections;
 
 public abstract class Plant : Living
 {
+    Vector3 maxScale;
+
     protected float health;
     public float maxHealth;
 
@@ -10,22 +12,18 @@ public abstract class Plant : Living
     public float maxGrowth;
 
     public float growSpeed;
-
-    /*protected*/public float nutriments;
-    public float maxNutriments;
-    public Vector3 maxScale;
+    public float nutriments;
     public bool isAdult;
 
-    public void construct(MindPlant mind, float health)
+    public void construct(MindPlant mind)
     {
         if (Living.DEBUG)
             Debug.Log("Plant.construct");
-        this.health = health;
-        maxHealth = health;
+        health = maxHealth;
 
         this.growth = 0;
 
-        this.nutriments = maxNutriments;
+        this.nutriments = maxHealth / 2;
 
         maxScale = transform.localScale;
         transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
@@ -46,9 +44,6 @@ public abstract class Plant : Living
     }
     protected void checkValues()
     {
-        if (nutriments > maxNutriments)
-            nutriments = maxNutriments;
-
         if (growth > maxGrowth)
             growth = maxGrowth;
 
