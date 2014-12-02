@@ -6,7 +6,7 @@ public class ToolTip : MonoBehaviour, MemoryListener
     public string title;
     public string description;
     public Sprite icon;
-    private ToolTipManager mManager;
+    protected ToolTipManager mManager;
 
     // Use this for initialization
     void Start()
