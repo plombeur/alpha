@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ToolTipManager : MonoBehaviour
 {
-    public GameObject Alpha;
+    public Loup Alpha;
     public GameObject Displayer;
     private Stack<ToolTip> m_Tips;
     private ToolTip m_CurrentTip;
