@@ -559,7 +559,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &100064
 GameObject:
   m_ObjectHideFlags: 1
@@ -906,8 +906,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectBar: {fileID: 22400016}
   progress: 100
-  padWidth: 5
-  padHeight: 5
+  padLeft: 5
+  padRight: 5
+  padTop: 5
+  padBottom: 5
 --- !u!114 &11400024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1004,8 +1006,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectBar: {fileID: 22400022}
   progress: 100
-  padWidth: 5
-  padHeight: 5
+  padLeft: 5
+  padRight: 5
+  padTop: 5
+  padBottom: 5
 --- !u!114 &11400032
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1429,6 +1433,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: validateReading
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &11400066
@@ -1538,8 +1554,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 11400072}
   m_HandleRect: {fileID: 22400050}
   m_Direction: 2
-  m_Value: .999999642
-  m_Size: .735251844
+  m_Value: .999999523
+  m_Size: .78231287
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2579,7 +2595,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -58.2445526}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22400052
