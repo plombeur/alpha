@@ -39,6 +39,8 @@ public class A_TaquinerOmega : Action
         {
             goAtk = true;
             tailleInitiale = getAnimal().transform.localScale;
+            getAnimal().faceTo(cible);
+            getAnimal().fd(0.001f, false, false);
         }
 
         if(goAtk)
@@ -47,13 +49,13 @@ public class A_TaquinerOmega : Action
             a.fd(.001f, false, false);
             if(!goRetourAtk)
             {
-                getAnimal().transform.localScale += new Vector3(.2f,.2f,.2f);
-                if (getAnimal().transform.localScale.x >= tailleInitiale.x * 3)
+                getAnimal().transform.localScale += new Vector3(.1f,.15f,.1f);
+                if (getAnimal().transform.localScale.x >= tailleInitiale.x * 2)
                     goRetourAtk = true;
             }
             else
             {
-                getAnimal().transform.localScale -= new Vector3(.1f, .1f, .1f);
+                getAnimal().transform.localScale -= new Vector3(.05f, .075f, .05f);
                 if (getAnimal().transform.localScale.x <= tailleInitiale.x)
                 {
                     getAnimal().transform.localScale = tailleInitiale;

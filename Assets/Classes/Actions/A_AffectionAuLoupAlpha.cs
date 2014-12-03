@@ -15,6 +15,18 @@ public class A_AffectionAuLoupAlpha : Action
         return 0.1f;
     }
 
+    protected override void onPause()
+    {
+        getAnimal().hideStaticEmoticon();
+        base.onPause();
+    }
+
+    protected override void onRemove()
+    {
+        getAnimal().hideStaticEmoticon();
+        base.onPause();
+    }
+
     protected override bool onStart(float deltaTime)
     {
         getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().normalSprite;
@@ -44,7 +56,7 @@ public class A_AffectionAuLoupAlpha : Action
             if (memBlock != null)
             {
                 getAnimal().faceTo(memBlock.getLastPosition());
-                getAnimal().fd(0.01f);
+                getAnimal().fd(0.01f,false,false);
             }
             return true;
         }
@@ -76,7 +88,7 @@ public class A_AffectionAuLoupAlpha : Action
         else
         {
             getAnimal().rt(1);
-            getAnimal().fd(0.001f);
+            getAnimal().fd(0.0001f,false,false);
         }
 
         return true;
