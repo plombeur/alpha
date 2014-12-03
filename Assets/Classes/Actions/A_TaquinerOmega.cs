@@ -35,7 +35,7 @@ public class A_TaquinerOmega : Action
     protected override bool onUpdate(float deltaTime)
     {
         Animal a = getAnimal();
-        if(!goAtk && Vector2.Distance(a.GetComponent<Transform>().position,cible.GetComponent<Transform>().position) <= 5)
+        if(!goAtk && Vector2.Distance(a.GetComponent<Transform>().position,cible.GetComponent<Transform>().position) <= 1)
         {
             goAtk = true;
             tailleInitiale = getAnimal().transform.localScale;

@@ -28,6 +28,18 @@ public class A_RejoindreTroupe : Action
         return onUpdate(deltaTime);
     }
 
+    protected override void onPause()
+    {
+        getAnimal().hideStaticEmoticon();
+        base.onPause();
+    }
+
+    protected override void onRemove()
+    {
+        getAnimal().hideStaticEmoticon();
+        base.onPause();
+    }
+
     protected override bool onResume(float deltaTime)
     {
         getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().normalSprite;

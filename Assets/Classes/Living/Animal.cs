@@ -83,13 +83,13 @@ public abstract class Animal : Living {
                     float angle = Vector2.Angle(vectorDirection, vectorFaceToLastPosition);
 
                     //Ajout d'un vecteur pour éviter et passer sur le côté de l'obstacle
-                    if (angle <= 90 && distance < 15)
+                    if (angle <= 90 && distance < 5)
                     {
                         //Calcul de la force ( priorité ) de l'évitement afin de pondérer les différents vecteur
-                        float force = (distance <= 6) ? 1f : (1f - (distance - 6f) / 9f);
+                        float force = (distance <= 1) ? 1f : (1f - (distance - 1f) / 4f);
 
                         Vector2 vectorDirectionCurrentLoup = Utils.vectorFromAngle(currentLoup.direction);
-                        if (distance < 6 || Vector2.Angle(vectorDirection, vectorDirectionCurrentLoup) > 18)
+                        if (distance < 3.5 || Vector2.Angle(vectorDirection, vectorDirectionCurrentLoup) > 18)
                         {
                             Vector2 subVector = vectorDirection - vectorDirectionCurrentLoup;
                             List<Vector2> orthogonaux = Utils.getOrthogonalsVectors(vectorFaceToLastPosition);

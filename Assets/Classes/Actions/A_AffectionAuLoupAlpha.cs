@@ -53,7 +53,7 @@ public class A_AffectionAuLoupAlpha : Action
         List<Living> list = percepts.getLiving();
         if (list.Contains(alpha))
         {
-            if (Vector2.Distance(alpha.GetComponent<Transform>().position, getAnimal().GetComponent<Transform>().position) > 5)
+            if (Vector2.Distance(alpha.GetComponent<Transform>().position, getAnimal().GetComponent<Transform>().position) > 1)
             {
                 getAnimal().setAgentToDontDodge(alpha);
                 getAnimal().faceTo(alpha);

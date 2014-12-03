@@ -129,7 +129,6 @@ public abstract class Action
     /// <returns>true if the function did something (action token used)</returns>
     protected virtual bool onStart(float deltaTime)
     {
-        getAnimal().hideStaticEmoticon();   //peut être à virer
         return onUpdate(deltaTime);
     }
     /// <summary>

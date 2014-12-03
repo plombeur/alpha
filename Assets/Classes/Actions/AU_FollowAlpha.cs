@@ -33,7 +33,7 @@ public class AU_FollowAlpha : A_ActionUser
             return true;
         }
 
-        if(Vector2.Distance(getAnimal().transform.position,alpha.transform.position)>5)
+        if(Vector2.Distance(getAnimal().transform.position,alpha.transform.position)>1)
         {
             getAnimal().setAgentToDontDodge(alpha);
             getAnimal().faceTo(alpha.transform.position);
