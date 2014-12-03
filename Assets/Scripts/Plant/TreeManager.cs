@@ -38,7 +38,14 @@ public class TreeManager : MonoBehaviour {
             Vector2 position = new Vector2(Random.Range(m_Bounds.x, m_Bounds.xMax), Random.Range(m_Bounds.y, m_Bounds.yMax));
             int treeType = Random.Range(0, prefabs.Length);
 
-            if (Physics2D.OverlapCircle(position, 2.0F) == null)
+            bool canpop = true;
+            Collider2D[] overlap = Physics2D.OverlapCircleAll(position, 2.0F);
+            foreach(Collider2D collide in overlap) {
+                if (collide.gameObject.GetComponent<Plant>() != null)
+                    canpop = false;
+            }
+
+            if (canpop)
             {
                 GameObject Tree = (GameObject)Instantiate(prefabs[treeType], new Vector3(position.x, position.y), transform.rotation);
                 
