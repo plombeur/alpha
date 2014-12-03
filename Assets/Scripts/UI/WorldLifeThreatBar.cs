@@ -14,7 +14,7 @@ public class WorldLifeThreatBar : MonoBehaviour
         {
             transform.position = target.transform.position + new Vector3(0, 0.5f);
             progressBarLife.progress = target.vie / (float)target.VIE_MAX * 100;
-            //progressBarThreat.progress = target.men / (float)target.VIE_MAX * 100;
+            progressBarThreat.progress = target.threat / (float)target.THREAT_MAX * 100;
 
         }
         else

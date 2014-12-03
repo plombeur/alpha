@@ -18,10 +18,10 @@ public class UIWorld : MonoBehaviour
         return instance;
     }
 
-    public void registerWorldLifeThreatBar(Loup target)
+    public void registerWorldLifeThreatBar(LoupBeta target)
     {
         GameObject worldLifeBarObject = GameObject.Instantiate(prefabLifeThreatBar.gameObject) as GameObject;
-        WorldLifeBar worldLifeBarScript = worldLifeBarObject.GetComponent<WorldLifeThreatBar>();
+        WorldLifeThreatBar worldLifeBarScript = worldLifeBarObject.GetComponent<WorldLifeThreatBar>();
         worldLifeBarScript.target = target;
         worldLifeBarObject.transform.parent = transform;
         Canvas.ForceUpdateCanvases();
