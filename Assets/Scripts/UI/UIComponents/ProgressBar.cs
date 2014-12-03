@@ -6,7 +6,8 @@ public class ProgressBar : MonoBehaviour
 {
     public RectTransform objectBar;
     public float progress = 100;
-    public float padWidth = 5, padHeight = 5;
+    public float padLeft = 5, padRight = 5;
+    public float padTop = 5, padBottom = 5;
 	
 	void Update () 
     {
@@ -19,10 +20,10 @@ public class ProgressBar : MonoBehaviour
         RectTransform rect = objectBar.GetComponent<RectTransform>();
 
         Vector2 size;
-        size.x = (thisRect.sizeDelta.x- (2 * padWidth)) * Mathf.Clamp(progress / 100, 0, 1);
-        size.y = thisRect.sizeDelta.y - (2 * padHeight);
+        size.x = (thisRect.sizeDelta.x- (padRight+padLeft)) * Mathf.Clamp(progress / 100, 0, 1);
+        size.y = thisRect.sizeDelta.y - (padTop+padBottom);
         rect.sizeDelta = size;
-        rect.localPosition = new Vector2(padWidth, padHeight);
+        rect.localPosition = new Vector2(padLeft, padBottom);
     }
     
 }

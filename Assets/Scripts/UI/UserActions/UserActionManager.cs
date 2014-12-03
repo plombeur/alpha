@@ -34,7 +34,7 @@ public class UserActionManager
         {
             foreach (UserActionListener listener in listeners)
                 listener.onCancelUserAction(actionInExecute);
-            GameObject.Destroy(actionInExecute);
+            GameObject.Destroy(actionInExecute.gameObject);
         }
 
         actionInExecute = action;
@@ -48,7 +48,7 @@ public class UserActionManager
     {
         foreach (UserActionListener listener in listeners)
             listener.onFinishUserAction(actionInExecute,result);
-        GameObject.Destroy(actionInExecute);
+        GameObject.Destroy(actionInExecute.gameObject);
         actionInExecute = null;
     }
     public void lockUserActions()
