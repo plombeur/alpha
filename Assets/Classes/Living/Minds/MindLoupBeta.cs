@@ -3,12 +3,18 @@ using System.Collections;
 
 public class MindLoupBeta : MindLoupInferieur
 {
+    private bool worldBarInit = false;
 
     public MindLoupBeta(LoupBeta agent)
         : base(agent)
     { }
     public override void vivre()
     {
+        if (!worldBarInit)
+        {
+            UIWorld.getInstance().registerWorldLifeThreatBar((LoupBeta)agent);
+            worldBarInit = true;
+        }
         base.vivre();
     }
     protected override void randomAction()

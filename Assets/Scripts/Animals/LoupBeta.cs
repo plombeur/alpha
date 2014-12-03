@@ -3,6 +3,9 @@ using System.Collections;
 
 public class LoupBeta : LoupInferieur
 {
+    public float THREAT_MAX = 100;
+    public float threat = 0;
+
     protected override void onCreate()
     {
         if (Living.DEBUG)

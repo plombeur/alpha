@@ -6,7 +6,6 @@ public class MindLoupInferieur : MindLoup
     private float time = 0;
     private float timeBeforeCheckAlpha = Random.Range(8,15);
     private float chronoBeforeFollowingAlpha = -1;
-    private bool worldBarInit = false;
 
     public MindLoupInferieur(LoupInferieur agent)
         : base(agent)
@@ -16,11 +15,6 @@ public class MindLoupInferieur : MindLoup
         if (Living.DEBUG)
             Debug.Log("MindLoupInferieur.vivre ...");
         Animal a = (Animal)agent;
-        if (!worldBarInit)
-        {
-            UIWorld.getInstance().registerWorldLifeBar(a);
-            worldBarInit = true;
-        }
         time += Time.deltaTime;
         LoupAlpha alpha = GameObject.Find("LoupAlpha").GetComponent<LoupAlpha>();
         if (alpha.getCurrentAction() as AU_MoveTo != null)
