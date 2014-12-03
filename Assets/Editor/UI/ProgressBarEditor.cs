@@ -34,8 +34,10 @@ public class ProgressBarEditor : Editor
         RectTransform rect = myTarget.GetComponent<RectTransform>();
 
         myTarget.progress = Mathf.Clamp(EditorGUILayout.FloatField("Progress", myTarget.progress),0,100);
-        myTarget.padWidth = Mathf.Clamp(EditorGUILayout.FloatField("Pad Width", myTarget.padWidth), 0,rect.sizeDelta.x/2);
-        myTarget.padHeight = Mathf.Clamp(EditorGUILayout.FloatField("Pad Height", myTarget.padHeight), 0, rect.sizeDelta.y / 2);
+        myTarget.padLeft = Mathf.Clamp(EditorGUILayout.FloatField("Pad Left", myTarget.padLeft), 0, rect.sizeDelta.x / 2);
+        myTarget.padRight = Mathf.Clamp(EditorGUILayout.FloatField("Pad Right", myTarget.padRight), 0, rect.sizeDelta.x / 2);
+        myTarget.padTop = Mathf.Clamp(EditorGUILayout.FloatField("Pad Top", myTarget.padTop), 0, rect.sizeDelta.y / 2);
+        myTarget.padBottom = Mathf.Clamp(EditorGUILayout.FloatField("Pad Bottom", myTarget.padBottom), 0, rect.sizeDelta.y / 2);
         //myTarget.width = Mathf.Max(EditorGUILayout.FloatField("Width", myTarget.width), myTarget.padWidth * 2);
         //myTarget.height = Mathf.Max(EditorGUILayout.FloatField("Height", myTarget.height), myTarget.padHeight * 2);
 
