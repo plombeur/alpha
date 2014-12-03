@@ -5,12 +5,15 @@ using UnityEngine.UI;
 
 public class ToolTipManager : MonoBehaviour
 {
-    public GameObject Alpha;
+    public Loup Alpha;
     public GameObject Displayer;
     private Stack<ToolTip> m_Tips;
     private ToolTip m_CurrentTip;
     private InfoWindow m_DisplayerScript;
+
     private bool m_isFreezing;
+    public float toFreezeTime;
+    private float m_timer;
 
     // Use this for initialization
     void Start()
@@ -24,6 +27,8 @@ public class ToolTipManager : MonoBehaviour
             Debug.Log("Script missing (InfoWindow)");
             Destroy(this);
         }
+        toFreezeTime = Mathf.Clamp(toFreezeTime, 0.0f, 5.0f);
+        m_timer = toFreezeTime;
     }
 
     // Update is called once per frame
@@ -40,7 +45,7 @@ public class ToolTipManager : MonoBehaviour
      * */
     public void askDisplay(ToolTip tip)
     {
-        m_Tips.Push(tip);
+        m_Tips.Push(tip);        
         if (m_CurrentTip == null)
         {
             getNextTip();
@@ -57,7 +62,6 @@ public class ToolTipManager : MonoBehaviour
         if (freezeTime())
         {
             displayToolTipDescription();
-            m_isFreezing = false;
         }
     }
     /**
@@ -77,9 +81,9 @@ public class ToolTipManager : MonoBehaviour
         }
         else
         {
-            Time.timeScale = Time.timeScale / 2.0F;
+            m_timer -= Time.deltaTime;
+            Time.timeScale = m_timer / toFreezeTime;
         }
-        Time.fixedDeltaTime = Time.fixedDeltaTime * Time.timeScale;
         return isFrozen;
     }
     /**
@@ -95,16 +99,29 @@ public class ToolTipManager : MonoBehaviour
      * */
     public void validateReading()
     {
-        getNextTip();
-        Time.timeScale = 1.0F;
+        if (getNextTip())
+        {
+            displayToolTip();
+        }
+        else
+        {
+            Time.timeScale = 1.0F;
+            m_isFreezing = false;
+        }
     }
 
-    private void getNextTip()
+    private bool getNextTip()
     {
         if (m_CurrentTip != null)
         {
             Destroy(m_CurrentTip.gameObject);
         }
-        m_CurrentTip = m_Tips.Pop();
+        if (m_Tips.Count != 0)
+        {
+            m_CurrentTip = m_Tips.Pop();
+            return true;
+        }
+        m_timer = toFreezeTime;
+        return false;
     }
 }

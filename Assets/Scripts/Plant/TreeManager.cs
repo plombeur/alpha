@@ -31,7 +31,7 @@ public class TreeManager : MonoBehaviour {
         float rangeY = Mathf.Sqrt(Mathf.Pow(m_Bounds.yMax - m_Bounds.yMin, 2)); 
 
         int nbTrees = (int)((density / 100) * rangeX * rangeY);
-        Debug.Log("Pop de " + nbTrees + " arbres (max).");
+        //Debug.Log("Pop de " + nbTrees + " arbres (max).");
 
         for (int i = 0; i < nbTrees; ++i)
         {

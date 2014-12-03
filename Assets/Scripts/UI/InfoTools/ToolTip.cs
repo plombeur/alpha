@@ -6,21 +6,11 @@ public class ToolTip : MonoBehaviour, MemoryListener
     public string title;
     public string description;
     public Sprite icon;
-    protected ToolTipManager mManager;
+    public ToolTipManager mManager;
 
     // Use this for initialization
     void Start()
     {
-        GameObject TTM = GameObject.Find("ToolTipManager");
-        if (TTM != null)
-        {
-            mManager = TTM.GetComponent<ToolTipManager>();
-            if (mManager == null)
-            {
-                Destroy(this.gameObject);
-            }
-        }
-        else Destroy(this.gameObject);
     }
 
     // Update is called once per frame
