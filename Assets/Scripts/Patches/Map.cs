@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[ExecuteInEditMode]
 public class Map : MonoBehaviour {
 	//private int size_x = 50;
 	//private int size_y = 50;
