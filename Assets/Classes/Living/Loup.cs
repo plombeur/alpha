@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Loup : Animal
+public abstract class Loup : Animal
 {
-    protected override void onCreate()
+    public override void construct(Mind mind)
     {
         if (Living.DEBUG)
             Debug.Log("Loup.Start");
-        MindLoup mind = new MindLoup(this);
         base.construct(mind);
 	}
 }

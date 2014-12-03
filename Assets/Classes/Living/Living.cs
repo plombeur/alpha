@@ -8,8 +8,7 @@ public abstract class Living : Entity
 {
     public const bool DEBUG = false;
     public Mind mind;
-
-    public void construct(Mind mind)
+    public virtual void construct(Mind mind)
     {
         if (DEBUG)
             Debug.Log("Living.construct");

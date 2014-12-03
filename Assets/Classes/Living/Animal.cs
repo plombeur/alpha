@@ -44,7 +44,7 @@ public abstract class Animal : Living {
             emoticonSystem.hideStaticEmoticon();
     }
 
-    public void construct(MindAnimal mind)
+    public override void construct(Mind mind)
     {
         if (emoticonSystem != null)
             emoticonSystem.setAnimal(this);
