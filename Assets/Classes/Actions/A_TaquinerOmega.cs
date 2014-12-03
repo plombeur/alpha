@@ -47,13 +47,13 @@ public class A_TaquinerOmega : Action
             a.fd(.001f, false, false);
             if(!goRetourAtk)
             {
-                getAnimal().transform.localScale += new Vector3(.7f,.7f,.7f);
+                getAnimal().transform.localScale += new Vector3(.2f,.2f,.2f);
                 if (getAnimal().transform.localScale.x >= tailleInitiale.x * 3)
                     goRetourAtk = true;
             }
             else
             {
-                getAnimal().transform.localScale -= new Vector3(.4f, .4f, .4f);
+                getAnimal().transform.localScale -= new Vector3(.1f, .1f, .1f);
                 if (getAnimal().transform.localScale.x <= tailleInitiale.x)
                 {
                     getAnimal().transform.localScale = tailleInitiale;
