@@ -13,19 +13,7 @@ public abstract class MindAnimal : Mind
     }
     public override void vivre()
     {
-        Animal animal = (Animal) agent;
-        animal.faim -= Time.deltaTime;
-        if(animal.faim < 0)
-        {
-            animal.vie += animal.faim;
-            if(animal.vie <= 0)
-            {
-                animal.vie = 0;
-                if (agent.DEBUG)
-                    Debug.Log("Mort.");
-            }
-            animal.faim = 0;
-        }
+        Animal animal = (Animal)agent;
         animal.resetAgentToDontDodge();
         animal.fd(0);
         if (agent.DEBUG)

@@ -41,7 +41,6 @@ public class Emoticon : MonoBehaviour {
         else
         {
             timeTotal += Time.deltaTime;
-
             if (timeTotal >= duration)
             {
                 GameObject.Destroy(this.gameObject);

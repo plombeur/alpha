@@ -10,8 +10,6 @@ public abstract class Animal : Living {
     public int VIE_MAX;
     public float vie;
     public float direction;
-    public int FAIM_MAX;
-    public float faim;
     public float vitesse = 1;
 
     //Sprites ..
@@ -21,7 +19,9 @@ public abstract class Animal : Living {
     //Emoticon sprites
     public Sprite sleepEmoticonSprite;
     public Sprite questionEmoticonSprite;
+    public Sprite exclamationEmoticonSprite;
     public Sprite heartEmoticonSprite;
+    public Sprite hungryEmoticonSprite;
 
     //Variables privées utilisées pour le déplacement avec évitement de foule
     private Animal agentToDontDodge;
@@ -71,14 +71,14 @@ public abstract class Animal : Living {
 
             Vector2 vectorDirection = Utils.vectorFromAngle(direction, 1f);
 
-            Animal currentLoup;
+            Animal currentAnimal;
             List<MemoryBloc> memoryBlocs = new List<MemoryBloc>(GetComponent<Memory>().getMemoyBlocs());
             MemoryBloc currentBloc;
             for (int i = 0; i < memoryBlocs.Count; ++i)
             {
                 currentBloc = memoryBlocs[i];
-                currentLoup = currentBloc.getEntity() as Loup;
-                if (currentLoup != null && currentLoup != agentToDontDodge)
+                currentAnimal = currentBloc.getEntity() as Animal;
+                if (currentAnimal != null && currentAnimal != agentToDontDodge)
                 {
                     float distance = Vector2.Distance(currentBloc.getLastPosition(), transform.position);
                     Vector2 vectorFaceToLastPosition = Utils.vectorFromAngle(getFaceToDirection(currentBloc.getLastPosition()));
@@ -90,7 +90,7 @@ public abstract class Animal : Living {
                         //Calcul de la force ( priorité ) de l'évitement afin de pondérer les différents vecteur
                         float force = (distance <= 1) ? 1f : (1f - (distance - 1f) / 4f);
 
-                        Vector2 vectorDirectionCurrentLoup = Utils.vectorFromAngle(currentLoup.direction);
+                        Vector2 vectorDirectionCurrentLoup = Utils.vectorFromAngle(currentAnimal.direction);
                         if (distance < .75f || Vector2.Angle(vectorDirection, vectorDirectionCurrentLoup) > 18)
                         {
                             Vector2 subVector = vectorDirection - vectorDirectionCurrentLoup;
@@ -286,4 +286,5 @@ public abstract class Animal : Living {
     {
         agentToDontDodge = agent;
     }
+
 }

@@ -10,7 +10,24 @@ public class MindLoup : MindAnimal {
 	public override void vivre()
     {
         base.vivre();
+
         Loup loup = ((Loup)agent);
+
+
+        loup.faim -= Time.deltaTime;
+        if (loup.faim < 0)
+        {
+            loup.displayStaticEmoticon(loup.hungryEmoticonSprite);
+            loup.vie += loup.faim;
+            if (loup.vie <= 0)
+            {
+                loup.vie = 0;
+                if (agent.DEBUG)
+                    Debug.Log("Mort.");
+            }
+            loup.faim = 0;
+        }
+
         if (loup.estMort())
             return;
         actionList.addAction(new A_Promenade(((Animal)agent).vitesse));
