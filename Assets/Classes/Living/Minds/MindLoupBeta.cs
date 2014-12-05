@@ -10,6 +10,8 @@ public class MindLoupBeta : MindLoupInferieur
     { }
     public override void vivre()
     {
+        LoupBeta beta = (LoupBeta)agent;
+        beta.threat += Mathf.Min(Time.deltaTime * beta.getAggressivite(), beta.THREAT_MAX - beta.threat);
         if (!worldBarInit)
         {
             UIWorld.getInstance().registerWorldLifeThreatBar((LoupBeta)agent);

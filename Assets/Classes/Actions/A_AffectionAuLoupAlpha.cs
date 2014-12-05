@@ -43,10 +43,7 @@ public class A_AffectionAuLoupAlpha : Action
     {
         GameObject obj = GameObject.Find("LoupAlpha");
         if (obj == null)
-        {
-            getAnimal().fd(0);
             return true;
-        }
         LoupAlpha alpha = obj.GetComponent<LoupAlpha>();
 
         if (!diriged)
@@ -76,6 +73,11 @@ public class A_AffectionAuLoupAlpha : Action
             getAnimal().emoticonSystem.displayAnimatedEmoticon(getAnimal().heartEmoticonSprite);
             getAnimal().lt(180);
             getActionPendlingList().removeAction(this);
+            if (getAnimal() as LoupBeta != null)
+            {
+                LoupBeta beta = (LoupBeta)getAnimal();
+                beta.threat -= Mathf.Min(beta.THREAT_MAX * .65f, beta.threat);
+            }
             return false;
         }
 
@@ -83,7 +85,7 @@ public class A_AffectionAuLoupAlpha : Action
         if (mem != null)
         {
             getAnimal().faceTo(mem.getLastPosition());
-            getAnimal().wiggle(getAnimal().vitesse * 3f, 2);
+            getAnimal().wiggle(getAnimal().vitesse, 2);
         }
         else
         {

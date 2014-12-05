@@ -24,7 +24,7 @@ public class Ronce : Plant {
 
     protected override void onCreate()
     {
-        if (Living.DEBUG)
+        if (DEBUG)
             Debug.Log("Ronce.Start");
         MindRonce mind = new MindRonce(this);
         base.construct(mind);

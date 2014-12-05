@@ -39,7 +39,7 @@ public class A_Repos : Action {
             getAnimal().displayAnimatedEmoticon(getAnimal().sleepEmoticonSprite);
         }
         getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().sleepSprite;
-        if (Living.DEBUG)
+        if (getAnimal().DEBUG)
             Debug.Log("Repos " + time);
         time += deltaTime;
         Animal a = getAnimal();

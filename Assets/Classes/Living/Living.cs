@@ -6,7 +6,7 @@ using System.Collections;
  */
 public abstract class Living : Entity
 {
-    public const bool DEBUG = false;
+    public bool DEBUG = false;
     public Mind mind;
     public virtual void construct(Mind mind)
     {
@@ -18,7 +18,7 @@ public abstract class Living : Entity
 	protected override void FixedUpdate () {
         if (mind == null)
         {
-            if (Living.DEBUG)
+            if (DEBUG)
                 Debug.Log("[Living] Mind est null !!");
         }
         else
@@ -35,7 +35,7 @@ public abstract class Living : Entity
     protected abstract void onCreate();
     protected void fd(float pas)
     {
-        if (Living.DEBUG)
+        if (DEBUG)
             Debug.Log("Living.fd " + pas);
     }
     protected override void OnTriggerEnter2D(Collider2D other)

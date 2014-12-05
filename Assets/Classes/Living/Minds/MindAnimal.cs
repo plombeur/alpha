@@ -21,13 +21,15 @@ public abstract class MindAnimal : Mind
             if(animal.vie <= 0)
             {
                 animal.vie = 0;
-                if (Living.DEBUG)
+                if (agent.DEBUG)
                     Debug.Log("Mort.");
             }
             animal.faim = 0;
         }
         animal.resetAgentToDontDodge();
         animal.fd(0);
+        if (agent.DEBUG)
+            Debug.Log("** Action en cours : " + actionList.getActualAction());
         actionList.execute(Time.deltaTime);
     }
 

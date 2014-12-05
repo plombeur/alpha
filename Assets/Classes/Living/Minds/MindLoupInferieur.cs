@@ -12,12 +12,9 @@ public class MindLoupInferieur : MindLoup
     { }
     public override void vivre()
     {
-        if (Living.DEBUG)
-            Debug.Log("MindLoupInferieur.vivre ...");
         Animal a = (Animal)agent;
         time += Time.deltaTime;
-        LoupAlpha alpha = GameObject.Find("LoupAlpha").GetComponent<LoupAlpha>();
-        if (alpha.getCurrentAction() as AU_MoveTo != null)
+        if (LoupInferieur.alpha.getCurrentAction() as AU_MoveTo != null)
         {
             if (chronoBeforeFollowingAlpha == -1 )
             {
@@ -35,7 +32,7 @@ public class MindLoupInferieur : MindLoup
             }
         }
 
-        if (!a.perceptView.getLiving().Contains(alpha) && time >= timeBeforeCheckAlpha)
+        if (!a.perceptView.getLiving().Contains(LoupInferieur.alpha) && time >= timeBeforeCheckAlpha)
         {
             time -= timeBeforeCheckAlpha;
             timeBeforeCheckAlpha = Random.Range(8,15);

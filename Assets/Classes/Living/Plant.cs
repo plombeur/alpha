@@ -17,7 +17,7 @@ public abstract class Plant : Living
 
     public void construct(MindPlant mind)
     {
-        if (Living.DEBUG)
+        if (DEBUG)
             Debug.Log("Plant.construct");
         health = maxHealth;
 

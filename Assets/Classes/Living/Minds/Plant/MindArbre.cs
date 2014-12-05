@@ -7,7 +7,7 @@ public class MindArbre : MindPlant {
 	{ }
 	public override void vivre()
 	{
-		if (Living.DEBUG)
+		if (agent.DEBUG)
 			Debug.Log("MindArbre.vivre ...");
 		Plant plant = ((Plant)agent);
 		

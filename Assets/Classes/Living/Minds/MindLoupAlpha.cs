@@ -10,8 +10,6 @@ public class MindLoupAlpha : MindLoup
 
     public override void vivre()
     {
-        if (Living.DEBUG)
-            Debug.Log("MindLoupAlpha.vivre ...");
         base.vivre();
     }
 

@@ -10,13 +10,9 @@ public class MindLoup : MindAnimal {
 	public override void vivre()
     {
         base.vivre();
-        if (Living.DEBUG)
-            Debug.Log("MindLoup.vivre ...");
         Loup loup = ((Loup)agent);
         if (loup.estMort())
             return;
-        if (Living.DEBUG)
-            Debug.Log(".. Faim: " + loup.faim + ", Vie: " + loup.vie);
         actionList.addAction(new A_Promenade(((Animal)agent).vitesse));
         if (actionList.size() == 1)  //Si l'agent ne fait que se promener et qu'il s'embête ... ajout d'une action d'occupation aléatoire spécifiée par randomAction()
         {

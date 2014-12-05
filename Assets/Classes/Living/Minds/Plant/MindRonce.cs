@@ -10,7 +10,7 @@ public class MindRonce : MindPlant
 
     public override void vivre()
     {
-        if (Living.DEBUG)
+        if (agent.DEBUG)
             Debug.Log("MindRonce.vivre ...");
         Ronce ronce = ((Ronce)agent);
 

@@ -19,11 +19,23 @@ public class A_Promenade : Action {
 
     protected override bool onUpdate(float deltaTime)
     {
-        if (Living.DEBUG)
-            Debug.Log("[" + getName() + "] onUpdate");
         Animal a = getAnimal();
         cptNouvelleTrajectoire -= deltaTime;
-        if (cptNouvelleTrajectoire <= 0)
+        bool demiTour = false;
+        if(a as LoupInferieur != null)
+        {
+            LoupInferieur loupInf = (LoupInferieur) a;
+            float distanceFromAlpha = Vector2.Distance(a.transform.position, LoupInferieur.alpha.transform.position);
+            if(distanceFromAlpha > loupInf.distanceAlpha)
+            {
+                dontMove = false;
+                demiTour = true;
+                a.faceTo(LoupInferieur.alpha.transform.position);
+                cptNouvelleTrajectoire = -cptNouvelleTrajectoire + Random.Range(2, 30);
+            }
+        }
+
+        if (!demiTour && cptNouvelleTrajectoire <= 0)
         {
             dontMove = false;
             if (Random.Range(1, 5) == 1)

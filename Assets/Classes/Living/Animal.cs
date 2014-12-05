@@ -65,9 +65,11 @@ public abstract class Animal : Living {
         {
             //Liste des vecteurs générés pour éviter/fuir les obstacles et leurs poids
             List<Vector2> evitements = new List<Vector2>();
-            List<float> poids = new List<float>();
+            List<float> poidsEvitements = new List<float>();
+            List<Vector2> repulsions = new List<Vector2>();
+            List<float> poidsRepulsions = new List<float>();
 
-            Vector2 vectorDirection = Utils.vectorFromAngle(direction, .8f);
+            Vector2 vectorDirection = Utils.vectorFromAngle(direction, 1f);
 
             Animal currentLoup;
             List<MemoryBloc> memoryBlocs = new List<MemoryBloc>(GetComponent<Memory>().getMemoyBlocs());
@@ -83,13 +85,13 @@ public abstract class Animal : Living {
                     float angle = Vector2.Angle(vectorDirection, vectorFaceToLastPosition);
 
                     //Ajout d'un vecteur pour éviter et passer sur le côté de l'obstacle
-                    if (angle <= 90 && distance < 5)
+                    if (angle <= 90 && distance < 1.5f)
                     {
                         //Calcul de la force ( priorité ) de l'évitement afin de pondérer les différents vecteur
                         float force = (distance <= 1) ? 1f : (1f - (distance - 1f) / 4f);
 
                         Vector2 vectorDirectionCurrentLoup = Utils.vectorFromAngle(currentLoup.direction);
-                        if (distance < 3.5 || Vector2.Angle(vectorDirection, vectorDirectionCurrentLoup) > 18)
+                        if (distance < .75f || Vector2.Angle(vectorDirection, vectorDirectionCurrentLoup) > 18)
                         {
                             Vector2 subVector = vectorDirection - vectorDirectionCurrentLoup;
                             List<Vector2> orthogonaux = Utils.getOrthogonalsVectors(vectorFaceToLastPosition);
@@ -98,23 +100,28 @@ public abstract class Animal : Living {
                             else
                                 evitements.Add(orthogonaux[0]);
 
-                            poids.Add(force);
+                            poidsEvitements.Add(force);
                         }
 
                         //Ajout d'un vecteur pour reculer par rapport à l'obstacle
                         if (force > .5f)
                         {
-                            evitements.Add(Utils.vectorFromAngle(getFaceToDirection(currentBloc.getLastPosition()) + 180));
-                            poids.Add((force - .5f) / .5f);
+                            repulsions.Add(Utils.vectorFromAngle(getFaceToDirection(currentBloc.getLastPosition()) + 180));
+                            poidsRepulsions.Add((force - .5f) / .5f);
                         }
                     }
                 }
             }
 
-            Vector2 sommeVecteurs = new Vector2(0, 0);
+            Vector2 sommeEvitements = new Vector2(0, 0);
             for (int i = 0; i < evitements.Count; ++i)
             {
-                sommeVecteurs += evitements[i] * poids[i];
+                sommeEvitements += evitements[i] * poidsEvitements[i];
+            }
+            Vector2 sommeRepulsions = new Vector2(0, 0);
+            for(int i=0; i < repulsions.Count; ++i)
+            {
+                sommeRepulsions += repulsions[i] * poidsRepulsions[i];
             }
 
             //Affichage des vecteurs si un vectorDisplayer est assigné au script
@@ -123,16 +130,17 @@ public abstract class Animal : Living {
                 VectorDisplayer displayer = vectorDisplayer.GetComponent<VectorDisplayer>();
                 displayer.transform.position = transform.position;
                 displayer.setBluePosition(vectorDirection * 6);
-                if (sommeVecteurs != Vector2.zero)
+                if (sommeEvitements != Vector2.zero)
                 {
-                    displayer.setRedPosition(sommeVecteurs * 6);
+                    displayer.setRedPosition(sommeEvitements * 6);
                 }
                 else
                     displayer.hideRedVector();
                 displayer.transform.Rotate(new Vector3(0, 0, 1), 90);
             }
-
-            finalDirection = Utils.angleFromVector(vectorDirection + sommeVecteurs);
+            sommeEvitements.Normalize();
+            sommeRepulsions.Normalize();
+            finalDirection = Utils.angleFromVector(vectorDirection + .8f * sommeEvitements + sommeRepulsions);
         }
 
         float currentDirection = direction;

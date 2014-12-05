@@ -4,7 +4,7 @@ using System.Collections;
 public class Arbre : Plant {
 	protected override void onCreate()
 	{
-		if (Living.DEBUG)
+		if (DEBUG)
 			Debug.Log("Arbre.Start");
 		MindArbre mind = new MindArbre(this);
 		base.construct(mind);
