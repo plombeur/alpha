@@ -52,7 +52,7 @@ public class A_Fuite : Action
         else
         {
             sheep.direction = directionDeFuite;
-            sheep.fd(sheep.vitesse * 2, false, true);
+            sheep.fd(sheep.vitesse * 3, false, true);
             return true;
         }
     }

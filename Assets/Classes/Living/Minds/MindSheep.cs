@@ -16,7 +16,7 @@ public class MindSheep : MindAnimal
         {
             actionList.addAction(new A_Fuite());
         }
-        actionList.addAction(new A_Promenade(animal.vitesse));
+        actionList.addAction(new A_PromenadeEtFlocking());
     }
 
 }

@@ -148,7 +148,7 @@ public abstract class Animal : Living {
         {
             //Limitation du degré de rotation à parcourir à chaque tick
             currentDirection = GetComponent<Rigidbody2D>().rotation;
-            float rotateValue = 2;
+            float rotateValue = 4;
             Vector2 vectorCurrentDirection = Utils.vectorFromAngle(currentDirection);
             Vector2 vectorFinalDirection = Utils.vectorFromAngle(finalDirection);
             if (Vector2.Angle(vectorCurrentDirection, vectorFinalDirection) <= rotateValue)
