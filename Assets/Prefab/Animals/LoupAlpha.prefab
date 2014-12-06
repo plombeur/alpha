@@ -231,7 +231,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Radius: 1.37
   m_Center: {x: 0, y: 0}
 --- !u!58 &5800002
@@ -243,7 +243,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Radius: 53
+  m_Radius: 87.8600006
   m_Center: {x: 0, y: 0}
 --- !u!58 &5800004
 CircleCollider2D:
@@ -267,14 +267,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16b2be58eac758d4090d251acb2724fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DEBUG: 0
   perceptView: {fileID: 11400002}
   emoticonSystem: {fileID: 11400008}
   vectorDisplayer: {fileID: 0}
   VIE_MAX: 100
   vie: 100
   direction: 0
-  FAIM_MAX: 100
-  faim: 100
   vitesse: 1
   normalSprite: {fileID: 21300000, guid: 53f92419c6b26ae48845b8d9b1f9dc84, type: 3}
   sleepSprite: {fileID: 21300000, guid: 521b52a7d75bbec4c8c746ad5ee61628, type: 3}
@@ -283,8 +282,13 @@ MonoBehaviour:
     type: 3}
   questionEmoticonSprite: {fileID: 21300000, guid: d99880357a4ea7b42a62d9543e8f4400,
     type: 3}
+  exclamationEmoticonSprite: {fileID: 0}
   heartEmoticonSprite: {fileID: 21300000, guid: 2aa3f190f34b0bb41bdacd9b3cd8772b,
     type: 3}
+  hungryEmoticonSprite: {fileID: 21300000, guid: 2f51e136faf9d754aa893765ae4756eb,
+    type: 3}
+  FAIM_MAX: 100
+  faim: 100
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -336,7 +340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabEmoticon: {fileID: 100000, guid: 3a2017cb299e78449ba7ff88ec5e109d, type: 2}
-  hauteurAffichageEmoticon: 1.20000005
+  hauteurAffichageEmoticon: 1.35000002
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
