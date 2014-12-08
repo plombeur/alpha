@@ -10,7 +10,7 @@ public class InfoWindow : MonoBehaviour
 
 	void Start ()
     {
-	
+        infoWindowPanel.SetActive(false);
 	}
 	
 	void Update () 

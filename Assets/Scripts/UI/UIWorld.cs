@@ -23,7 +23,7 @@ public class UIWorld : MonoBehaviour
         GameObject worldLifeBarObject = GameObject.Instantiate(prefabLifeThreatBar.gameObject) as GameObject;
         WorldLifeThreatBar worldLifeBarScript = worldLifeBarObject.GetComponent<WorldLifeThreatBar>();
         worldLifeBarScript.target = target;
-        worldLifeBarObject.transform.parent = transform;
+        worldLifeBarObject.transform.SetParent(transform);
         Canvas.ForceUpdateCanvases();
     }
 
@@ -32,7 +32,7 @@ public class UIWorld : MonoBehaviour
         GameObject worldLifeBarObject = GameObject.Instantiate(prefabLifeBar.gameObject) as GameObject;
         WorldLifeBar worldLifeBarScript = worldLifeBarObject.GetComponent<WorldLifeBar>();
         worldLifeBarScript.target = target;
-        worldLifeBarObject.transform.parent = transform;
+        worldLifeBarObject.transform.SetParent(transform);
         Canvas.ForceUpdateCanvases();
     }
 }
