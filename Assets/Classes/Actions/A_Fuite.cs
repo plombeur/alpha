@@ -40,19 +40,19 @@ public class A_Fuite : Action
 
     protected override bool onUpdate(float deltaTime)
     {
-        Sheep sheep = (Sheep) getAnimal();
-        float directionDeFuite = sheep.getDirectionFuiteLoups();
+        Animal animal = getAnimal();
+        float directionDeFuite = animal.getDirectionFuite();
         if(directionDeFuite == -1)
         {
-            sheep.lt(180);
-            sheep.fd(.1f, false, false);
+            animal.lt(180);
+            animal.fd(.1f, false, false);
             getActionPendlingList().removeAction(this);
             return true;
         }
         else
         {
-            sheep.direction = directionDeFuite;
-            sheep.fd(sheep.vitesse * 3, false, true);
+            animal.direction = directionDeFuite;
+            animal.fd(animal.vitesse * 3, false, true);
             return true;
         }
     }

@@ -10,8 +10,7 @@ class MindRabbit : MindAnimal
 
     public override void vivre()
     {
+        actionList.addAction(new A_Promenade(((Animal)agent).vitesse));
         base.vivre();
-
-
     }
 }

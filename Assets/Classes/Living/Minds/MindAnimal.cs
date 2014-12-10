@@ -18,6 +18,13 @@ public abstract class MindAnimal : Mind
         animal.fd(0);
         if (agent.DEBUG)
             Debug.Log("** Action en cours : " + actionList.getActualAction());
+
+        //Gestion des reflexes, fuite automatique
+        if (animal.besoinDeFuir())
+        {
+            actionList.addAction(new A_Fuite());
+        }
+
         actionList.execute(Time.deltaTime);
     }
 

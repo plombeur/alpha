@@ -9,14 +9,8 @@ public class MindSheep : MindAnimal
     { }
     public override void vivre()
     {
-        base.vivre();
-        Sheep animal = (Sheep) agent;
-        float directionDeFuite = animal.getDirectionFuiteLoups();
-        if (directionDeFuite != -1)
-        {
-            actionList.addAction(new A_Fuite());
-        }
         actionList.addAction(new A_PromenadeEtFlocking());
+        base.vivre();
     }
 
 }

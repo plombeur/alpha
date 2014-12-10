@@ -2,7 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 
+
 public abstract class Animal : Living {
+
+    public float distanceDeSecurite = 2.5f;
     public PerceptView perceptView;
     public EmoticonSystem emoticonSystem;
     public GameObject vectorDisplayer;
@@ -286,5 +289,8 @@ public abstract class Animal : Living {
     {
         agentToDontDodge = agent;
     }
+
+    public abstract float getDirectionFuite();
+    public abstract bool besoinDeFuir();
 
 }

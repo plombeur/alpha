@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class Sheep : Animal
 {
-    public float distanceDeSecurite = 2.5f;
 
     protected override void onCreate()
     {
@@ -15,7 +14,26 @@ public class Sheep : Animal
     /*
     * Retourne -1 si aucun loup n'est à une portée dangeureuse
     */
-    public float getDirectionFuiteLoups()
+    public override bool besoinDeFuir()
+    {
+        List<MemoryBloc> memoryBlocs = new List<MemoryBloc>(GetComponent<Memory>().getMemoyBlocs());
+        for (int i = 0; i < memoryBlocs.Count; ++i)
+        {
+            Loup currentLoup = memoryBlocs[i].getEntity() as Loup;
+            if (currentLoup != null)
+            {
+                Vector2 lastPosition = memoryBlocs[i].getLastPosition();
+                float distance = Vector2.Distance(lastPosition, transform.position);
+                if (distance < distanceDeSecurite)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public override float getDirectionFuite()
     {
         List<MemoryBloc> memoryBlocs = new List<MemoryBloc>(GetComponent<Memory>().getMemoyBlocs());
         List<Vector2> vecteursDeFuite = new List<Vector2>();

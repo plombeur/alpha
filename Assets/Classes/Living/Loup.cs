@@ -13,4 +13,20 @@ public abstract class Loup : Animal
             Debug.Log("Loup.Start");
         base.construct(mind);
 	}
+
+    public override float getDirectionFuite()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override bool besoinDeFuir()
+    {
+        return false;
+    }
+
+    protected override void onCreate()
+    {
+        //A implementer quand des animaux feront peur aux loups
+        throw new System.NotImplementedException();
+    }
 }
