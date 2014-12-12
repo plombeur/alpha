@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(FMOD_StudioEventEmitter))]
+[RequireComponent(typeof(CircleCollider2D))]
 public class SoundSimple : Sound 
 {
-    public FMODAsset clipToPlay;
+    //public FMODAsset clipToPlay;
     public SoundInformation information;
 
     private FMOD_StudioEventEmitter emiter;
@@ -19,8 +21,8 @@ public class SoundSimple : Sound
 
     protected override void Start()
     {
-        emiter = gameObject.AddComponent<FMOD_StudioEventEmitter>();
-        emiter.asset = clipToPlay;
+        emiter = gameObject.GetComponent<FMOD_StudioEventEmitter>();
+        //emiter.asset = clipToPlay;
         soundCollider = GetComponent<CircleCollider2D>();
         soundCollider.isTrigger = true;
         started = false;
