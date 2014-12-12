@@ -19,9 +19,6 @@ public class Rabbit : Animal
 
     public override bool besoinDeFuir()
     {
-        if (Vector2.Distance(transform.position, trou.transform.position) <= .3f)
-            return false;
-
         List<MemoryBloc> memoryBlocs = new List<MemoryBloc>(GetComponent<Memory>().getMemoyBlocs());
         for (int i = 0; i < memoryBlocs.Count; ++i)
         {
@@ -88,6 +85,13 @@ public class Rabbit : Animal
     public bool dansLeTerrier()
     {
         return Vector2.Distance(transform.position, trou.transform.position) <= .3f && !GetComponent<SpriteRenderer>().enabled;
+    }
+
+    public override System.Collections.Generic.List<SoundInformation> getSonsInterpellant()
+    {
+        System.Collections.Generic.List<SoundInformation> sons =  new System.Collections.Generic.List<SoundInformation>();
+        sons.Add(SoundInformation.WolfWalk);
+        return sons;
     }
 
 }

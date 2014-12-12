@@ -121,7 +121,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -42.5897446, y: 4.45411825, z: 0}
+  m_LocalPosition: {x: -43.8232155, y: 3.89246106, z: 0}
   m_LocalScale: {x: .200000003, y: .200000003, z: 1}
   m_Children:
   - {fileID: 400006}
@@ -294,13 +294,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DEBUG: 0
+  distanceDeSecurite: 2.5
   perceptView: {fileID: 11400006}
+  perceptHearing: {fileID: 0}
   emoticonSystem: {fileID: 11400008}
   vectorDisplayer: {fileID: 0}
   VIE_MAX: 100
   vie: 100
   direction: 0
   vitesse: 1
+  prefabSoundWalk: {fileID: 100000, guid: 4b2c4a7fa3469e9488f36a4d554998c0, type: 2}
   normalSprite: {fileID: 21300000, guid: 4b6ec019a93e97f48bec72470082958a, type: 3}
   sleepSprite: {fileID: 21300000, guid: ff2b46c1857bbc04eb3148bc64357fb1, type: 3}
   rugirSprite: {fileID: 0}
@@ -313,6 +316,7 @@ MonoBehaviour:
     type: 3}
   hungryEmoticonSprite: {fileID: 21300000, guid: 2f51e136faf9d754aa893765ae4756eb,
     type: 3}
+  peutAvoirPeur: 1
   FAIM_MAX: 100
   faim: 100
   distanceAlpha: 5
@@ -374,7 +378,7 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 4b6ec019a93e97f48bec72470082958a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000

@@ -22,19 +22,6 @@ class MindRabbit : MindAnimal
             rabbit.peutAvoirPeur = false;
         else
             rabbit.peutAvoirPeur = true;
-        if(rabbit.perceptHearing != null)
-        {
-            List<SoundPercepted> sounds = rabbit.perceptHearing.getSounds();
-            if (sounds.Count > 0)
-            {
-                Debug.Log("Sons percus : ");
-                for (int i = 0; i < sounds.Count; ++i)
-                {
-                    Debug.Log(sounds[i].soundInformation);
-                }
-                Debug.Log("Finis.");
-            }
-        }
 
         if (tempsAvantRentrerTerrier <= 0)
         {

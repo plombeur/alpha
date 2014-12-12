@@ -70,12 +70,11 @@ public abstract class Animal : Living {
 
     public void fd(float pas, bool smoothRotation = true, bool evitementDesAutresAgents = true)
     {
-        if ( prefabSoundWalk != null )
+        /*if ( prefabSoundWalk != null )
         {
             if (sound == null)
             {
                 sound = (GameObject)Instantiate(prefabSoundWalk, transform.position, Quaternion.identity);
-                sound.transform.parent = transform;
             }
             else
             {
@@ -84,7 +83,7 @@ public abstract class Animal : Living {
                     //sound.GetComponent<SoundSimple>().play(getIdentity());
                 }
             }
-        }
+        }*/
 
         float finalDirection = direction;
         if (evitementDesAutresAgents)
@@ -315,5 +314,7 @@ public abstract class Animal : Living {
 
     public abstract float getDirectionFuite();
     public abstract bool besoinDeFuir();
+
+    public abstract List<SoundInformation> getSonsInterpellant();
 
 }

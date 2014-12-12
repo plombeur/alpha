@@ -29,4 +29,9 @@ public abstract class Loup : Animal
         //A implementer quand des animaux feront peur aux loups
         throw new System.NotImplementedException();
     }
+
+    public override System.Collections.Generic.List<SoundInformation> getSonsInterpellant()
+    {
+        return new System.Collections.Generic.List<SoundInformation>();
+    }
 }

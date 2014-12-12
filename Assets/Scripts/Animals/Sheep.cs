@@ -62,4 +62,11 @@ public class Sheep : Animal
             return Utils.angleFromVector(somme);
         }
     }
+
+    public override System.Collections.Generic.List<SoundInformation> getSonsInterpellant()
+    {
+        System.Collections.Generic.List<SoundInformation> sons =  new System.Collections.Generic.List<SoundInformation>();
+        sons.Add(SoundInformation.WolfWalk);
+        return sons;
+    }
 }

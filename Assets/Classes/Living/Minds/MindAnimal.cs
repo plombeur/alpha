@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class MindAnimal : Mind
@@ -21,9 +22,26 @@ public abstract class MindAnimal : Mind
             Debug.Log("** Action en cours : " + actionList.getActualAction());
 
         //Gestion des reflexes, fuite automatique
-        if ( animal.besoinDeFuir() && animal.peutAvoirPeur )
+        if ( animal.peutAvoirPeur && animal.besoinDeFuir() )
         {
             actionList.addAction(new A_Fuite());
+        }
+
+        //Gestion des bruits qui interpellent l'agent.
+        if (animal.perceptHearing != null)
+        {
+            List<SoundPercepted> sounds = animal.perceptHearing.getSounds();
+            List<SoundInformation> sonQuiInterpellent = animal.getSonsInterpellant();
+            if (sounds.Count > 0)
+            {
+                for (int i = 0; i < sounds.Count; ++i)
+                {
+                    if (animal.getSonsInterpellant().Contains(sounds[i].soundInformation))
+                    {
+                        actionList.addAction(new A_RegarderVersLeBruit(sounds[i].identity));
+                    }
+                }
+            }
         }
 
         actionList.execute(Time.deltaTime);
