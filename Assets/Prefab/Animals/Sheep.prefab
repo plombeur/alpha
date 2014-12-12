@@ -201,7 +201,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100012}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -39.0340004, y: 5.14799976, z: 0}
+  m_LocalPosition: {x: -44.3418808, y: 3.1090126, z: 0}
   m_LocalScale: {x: .234411091, y: .234411076, z: .234411076}
   m_Children:
   - {fileID: 400010}
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   angle: 90
-  fieldDrawer: {fileID: 21200000}
+  fieldDrawer: {fileID: 0}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -294,7 +294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   angle: 180
-  fieldDrawer: {fileID: 21200002}
+  fieldDrawer: {fileID: 0}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -331,6 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DEBUG: 0
+  distanceDeSecurite: 8
   perceptView: {fileID: 11400006}
   emoticonSystem: {fileID: 11400000}
   vectorDisplayer: {fileID: 0}
@@ -347,7 +348,6 @@ MonoBehaviour:
     type: 3}
   heartEmoticonSprite: {fileID: 0}
   hungryEmoticonSprite: {fileID: 0}
-  distanceDeSecurite: 8
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

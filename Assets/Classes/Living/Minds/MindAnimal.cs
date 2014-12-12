@@ -16,11 +16,12 @@ public abstract class MindAnimal : Mind
         Animal animal = (Animal)agent;
         animal.resetAgentToDontDodge();
         animal.fd(0);
+
         if (agent.DEBUG)
             Debug.Log("** Action en cours : " + actionList.getActualAction());
 
         //Gestion des reflexes, fuite automatique
-        if (animal.besoinDeFuir())
+        if ( animal.besoinDeFuir() && animal.peutAvoirPeur )
         {
             actionList.addAction(new A_Fuite());
         }

@@ -7,6 +7,7 @@ public abstract class Animal : Living {
 
     public float distanceDeSecurite = 2.5f;
     public PerceptView perceptView;
+    public PerceptHearing perceptHearing;
     public EmoticonSystem emoticonSystem;
     public GameObject vectorDisplayer;
 
@@ -14,6 +15,10 @@ public abstract class Animal : Living {
     public float vie;
     public float direction;
     public float vitesse = 1;
+
+    //Sounds
+    public GameObject prefabSoundWalk;
+    private GameObject sound;
 
     //Sprites ..
     public Sprite normalSprite;
@@ -25,6 +30,9 @@ public abstract class Animal : Living {
     public Sprite exclamationEmoticonSprite;
     public Sprite heartEmoticonSprite;
     public Sprite hungryEmoticonSprite;
+
+    //Variable qui définit si le systeme de réflexe fuite doit être activé
+    public bool peutAvoirPeur = true;
 
     //Variables privées utilisées pour le déplacement avec évitement de foule
     private Animal agentToDontDodge;
@@ -62,6 +70,21 @@ public abstract class Animal : Living {
 
     public void fd(float pas, bool smoothRotation = true, bool evitementDesAutresAgents = true)
     {
+        if ( prefabSoundWalk != null )
+        {
+            if (sound == null)
+            {
+                sound = (GameObject)Instantiate(prefabSoundWalk, transform.position, Quaternion.identity);
+                sound.transform.parent = transform;
+            }
+            else
+            {
+                if (!sound.GetComponent<SoundSimple>().isStarted())
+                {
+                    //sound.GetComponent<SoundSimple>().play(getIdentity());
+                }
+            }
+        }
 
         float finalDirection = direction;
         if (evitementDesAutresAgents)

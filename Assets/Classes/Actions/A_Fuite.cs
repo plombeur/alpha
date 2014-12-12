@@ -3,6 +3,10 @@ using System.Collections;
 
 public class A_Fuite : Action
 {
+
+    private float time = 0;
+    private float lastDirection = -1;
+
     protected override bool onStart(float deltaTime)
     {
         getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().normalSprite;
@@ -41,19 +45,46 @@ public class A_Fuite : Action
     protected override bool onUpdate(float deltaTime)
     {
         Animal animal = getAnimal();
-        float directionDeFuite = animal.getDirectionFuite();
-        if(directionDeFuite == -1)
+
+        if(time <= 0)
         {
-            animal.lt(180);
-            animal.fd(.1f, false, false);
-            getActionPendlingList().removeAction(this);
+            time = Random.Range(10, 25) * .1f;
+            lastDirection = animal.getDirectionFuite();
+        }
+        else
+            time -= deltaTime;
+
+        if(animal.DEBUG)
+            Debug.Log("A_Fuite : time = " + time + ", direction = " + lastDirection);
+
+        Rabbit lapin = animal as Rabbit;
+        if (lapin != null && lapin.aCoteDuTerrier())
+        {
+            if (time <= 0)
+            {
+                getActionPendlingList().removeAction(this);
+                lapin.GetComponent<SpriteRenderer>().enabled = true;
+                return false;
+            }
+            lapin.GetComponent<SpriteRenderer>().enabled = false;
             return true;
         }
         else
         {
-            animal.direction = directionDeFuite;
-            animal.fd(animal.vitesse * 3, false, true);
-            return true;
+            animal.GetComponent<SpriteRenderer>().enabled = true;
+            if (time <= 0)
+            {
+                animal.lt(180);
+                animal.fd(.1f, false, false);
+                getActionPendlingList().removeAction(this);
+                return true;
+            }
+            else
+            {
+                animal.direction = lastDirection;
+                animal.fd(animal.vitesse * 3, false, true);
+                return true;
+            }
         }
     }
 
