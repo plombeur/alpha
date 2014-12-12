@@ -18,6 +18,7 @@ public class SoundSimple : Sound
         soundCollider = GetComponent<CircleCollider2D>();
         soundCollider.isTrigger = true;
         started = false;
+        soundCollider.enabled = false;
     }
 
     protected override void Update()
@@ -28,6 +29,7 @@ public class SoundSimple : Sound
 
     public void play(Identity owner)
     {
+        soundCollider.enabled = true;
         transform.position = owner.getEntity().transform.position;
         setOwner(owner);
         emiter.Play();
