@@ -35,7 +35,7 @@ public class A_Fuite : Action
 
     public override float getPriority()
     {
-        return 100;
+        return 90;
     }
 
     public A_Fuite() : base("A_Fuite")

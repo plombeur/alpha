@@ -87,6 +87,11 @@ public class Rabbit : Animal
         return Vector2.Distance(transform.position, trou.transform.position) <= .3f && !GetComponent<SpriteRenderer>().enabled;
     }
 
+    public override bool targetable()
+    {
+ 	    return !dansLeTerrier();
+    }
+
     public override System.Collections.Generic.List<SoundInformation> getSonsInterpellant()
     {
         System.Collections.Generic.List<SoundInformation> sons =  new System.Collections.Generic.List<SoundInformation>();
