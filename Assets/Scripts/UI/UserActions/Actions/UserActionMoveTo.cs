@@ -8,7 +8,8 @@ public class UserActionMoveTo : UserAction
 
     protected override UserActionResult onExecuteAction()
     {
-       ((MindLoupAlpha) alphaWolf.mind).addActionUserAction(new AU_MoveTo(position));
+        Debug.Log("CHASSE a modifier par MOVETO");
+       ((MindLoupAlpha) alphaWolf.mind).addActionUserAction(new AU_Chasse(position));
        return UserActionResult.SUCESS;
     }
     public override string getActionLabel()

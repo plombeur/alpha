@@ -4,24 +4,29 @@ using System.Collections.Generic;
 
 public class AU_Chasse : A_ActionUser
 {
-    private Vector2 targetPosition;
+    public Vector2 targetPosition;
     private Animal target;
     private GameObject cible;
+    public Vector3 tailleInitiale;
+    private bool goAtk = false;
 
     protected override bool onStart(float deltaTime)
     {
+        tailleInitiale = getAnimal().transform.localScale;
         getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().normalSprite;
         return onUpdate(deltaTime);
     }
 
     protected override void onPause()
     {
+        GameObject.Destroy(cible.gameObject);
         getAnimal().hideStaticEmoticon();
         base.onPause();
     }
 
     protected override void onRemove()
     {
+        GameObject.Destroy(cible.gameObject);
         getAnimal().hideStaticEmoticon();
         base.onPause();
     }
@@ -47,6 +52,7 @@ public class AU_Chasse : A_ActionUser
             GameObject.Destroy(cible.gameObject);
             cible = null;
             target = null;
+            goAtk = false;
         }
 
         if (target == null)
@@ -68,9 +74,32 @@ public class AU_Chasse : A_ActionUser
         }
         else
         {
-            animal.setAgentToDontDodge((Animal)target);
-            animal.faceTo(target);
-            animal.fd(animal.vitesse * 3);
+            if (Vector2.Distance(animal.transform.position, target.transform.position) <= .25f)
+            {
+                goAtk = true;
+            }
+                
+            if(goAtk)
+            {
+                if (animal.animationAttaque(target, tailleInitiale))
+                {
+                    Debug.Log("Blesse!");
+                    target.blesse(10);
+                    if (target.estMort())
+                    {
+                        GameObject.Destroy(cible.gameObject);
+                        cible = null;
+                        target = null;
+                        goAtk = false;
+                    }
+                }
+            }
+            else
+            {
+                animal.setAgentToDontDodge((Animal)target);
+                animal.faceTo(target);
+                animal.fd(animal.vitesse * 3);
+            }
         }
 
         return true;

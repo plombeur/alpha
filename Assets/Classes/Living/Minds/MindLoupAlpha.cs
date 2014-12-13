@@ -28,6 +28,8 @@ public class MindLoupAlpha : MindLoup
         {
             if (action as AU_MoveTo != null && getCurrentAction() as AU_MoveTo != null)
                 ((AU_MoveTo)getCurrentAction()).changeTarget(((AU_MoveTo)action).getTarget().x, ((AU_MoveTo)action).getTarget().y);
+            else if (action as AU_Chasse != null && getCurrentAction() as AU_Chasse != null)
+                ((AU_Chasse)getCurrentAction()).targetPosition = ((AU_Chasse) action ).targetPosition;
             else
                 removeCurrentAction();
         }
