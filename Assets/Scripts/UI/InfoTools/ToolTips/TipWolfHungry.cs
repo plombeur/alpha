@@ -5,6 +5,12 @@ using System.Collections.Generic;
 public class TipWolfHungry : ToolTip
 {
 
+    void Start()
+    {
+        title = "Un membre de votre meute à faim !";
+        description = "Il faut ordonner à votre meute d'aller chasser, sinon il va mourir de faim...";
+    }
+
     protected override void checkTrigger()
     {
         bool isHungry = false;
