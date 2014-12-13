@@ -105,7 +105,6 @@ public class ToolTipManager : MonoBehaviour
         }
         else
         {
-            Time.timeScale = 1.0F;
             m_isFreezing = false;
         }
     }
@@ -119,9 +118,11 @@ public class ToolTipManager : MonoBehaviour
         if (m_Tips.Count != 0)
         {
             m_CurrentTip = m_Tips.Pop();
+            //Debug.Log("Next tip !");
             return true;
         }
         m_timer = toFreezeTime;
+        Time.timeScale = 1.0F;
         return false;
     }
 }

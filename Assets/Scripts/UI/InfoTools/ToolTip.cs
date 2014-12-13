@@ -9,7 +9,7 @@ public class ToolTip : MonoBehaviour, MemoryListener
     public ToolTipManager mManager;
 
     // Use this for initialization
-    void Start()
+    protected void Start()
     {
     }
 
@@ -41,6 +41,7 @@ public class ToolTip : MonoBehaviour, MemoryListener
         if (mManager != null)
         {
             mManager.askDisplay(this);
+            //Debug.Log("Add " + this);
             this.enabled = false;
         }
     }
@@ -50,7 +51,16 @@ public class ToolTip : MonoBehaviour, MemoryListener
      * */
     public void onMemoryAdd(Memory memory, MemoryBloc bloc)
     {
-        checkMemoryModificationTrigger(bloc);
+        if (!this.enabled)
+        {
+            //Debug.Log("Disabled");
+            return;
+        }
+        else
+        {
+            //Debug.Log("Enabled");
+            checkMemoryModificationTrigger(bloc);
+        }
     }
 
     public void onMemoryRemove(Memory memory, MemoryBloc bloc)

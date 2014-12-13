@@ -15,7 +15,10 @@ public class InfoWindow : MonoBehaviour
 	
 	void Update () 
     {
-	
+        if (infoWindowPanel == null)
+        {
+
+        }
 	}
 
     public void showInfo(string title, string textContent,Sprite icon)
