@@ -8,7 +8,7 @@ public class TipWolfDead : ToolTip
     void Start()
     {
         title = "Un membre de votre meute est mort !";
-        description = "Vos loups ne sont pas immortels ! Cette évenement pousse votre meute à douter de votre position de chef…";
+        description = "Vos loups ne sont pas immortels ! Cet évenement pousse votre meute à douter de votre position de chef…";
     }
 
     protected override void checkTrigger()

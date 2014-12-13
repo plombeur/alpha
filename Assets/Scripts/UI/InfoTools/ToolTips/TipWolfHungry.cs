@@ -29,7 +29,7 @@ public class TipWolfHungry : ToolTip
             {
                 isHungry = true;
             }
-        if (m_Alpha.faim <= 0)
+        if (m_Alpha.faim <= 50)
         {
             isHungry = true;
         }
