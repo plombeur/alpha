@@ -39,10 +39,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77063a211d5c8fa44a2385be452332ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Famine
-  description: Un loup dans votre meute a faim! Il faut diriger une chasse, sinon
-    il va mourir de faim...
+  title: 
+  description: 
   icon: {fileID: 0}
+  mManager: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
