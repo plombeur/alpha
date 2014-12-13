@@ -293,6 +293,7 @@ MonoBehaviour:
   peutAvoirPeur: 1
   FAIM_MAX: 100
   faim: 100
+  prefabTarget: {fileID: 100000, guid: 7424a3f4eb749054aab6d6765d14ae90, type: 2}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

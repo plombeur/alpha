@@ -82,7 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asset: {fileID: 11400000, guid: f1926c9c2f4083e47a3a393dac1e8176, type: 2}
   path: '{2cd48a84-a478-44bb-ad55-02675f887233}'
-  startEventOnAwake: 1
+  startEventOnAwake: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
