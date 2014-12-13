@@ -43,27 +43,12 @@ public class A_TaquinerOmega : Action
             getAnimal().fd(0.001f, false, false);
         }
 
-        if(goAtk)
+        if (goAtk)
         {
-            a.faceTo(cible);
-            a.fd(.001f, false, false);
-            if(!goRetourAtk)
+            if(a.animationAttaque(cible,tailleInitiale))
             {
-                getAnimal().transform.localScale += new Vector3(.1f,.15f,.1f);
-                if (getAnimal().transform.localScale.x >= tailleInitiale.x * 2)
-                    goRetourAtk = true;
-            }
-            else
-            {
-                getAnimal().transform.localScale -= new Vector3(.05f, .075f, .05f);
-                if (getAnimal().transform.localScale.x <= tailleInitiale.x)
-                {
-                    getAnimal().transform.localScale = tailleInitiale;
-                    if (cible.getCurrentAction() as A_Repos != null)
-                        ((MindAnimal)cible.mind).removeCurrentAction();
-                    getActionPendlingList().removeAction(this);
-                }
-
+                getActionPendlingList().removeAction(this);
+                return true;
             }
 
             return true;

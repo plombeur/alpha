@@ -27,9 +27,6 @@ public class MindLoup : MindAnimal {
             }
             loup.faim = 0;
         }
-
-        if (loup.estMort())
-            return;
         actionList.addAction(new A_Promenade(((Animal)agent).vitesse));
         if (actionList.size() == 1)  //Si l'agent ne fait que se promener et qu'il s'embête ... ajout d'une action d'occupation aléatoire spécifiée par randomAction()
         {

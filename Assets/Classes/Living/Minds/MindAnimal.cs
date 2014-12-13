@@ -15,8 +15,13 @@ public abstract class MindAnimal : Mind
     public override void vivre()
     {
         Animal animal = (Animal)agent;
+
+        if (animal.estMort())
+            return;
+
         animal.resetAgentToDontDodge();
         animal.fd(0);
+
 
         if (agent.DEBUG)
             Debug.Log("** Action en cours : " + actionList.getActualAction());

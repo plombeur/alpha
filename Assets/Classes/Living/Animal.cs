@@ -24,6 +24,7 @@ public abstract class Animal : Living {
     public Sprite normalSprite;
     public Sprite sleepSprite;
     public Sprite rugirSprite;
+    public Sprite deathSprite;
     //Emoticon sprites
     public Sprite sleepEmoticonSprite;
     public Sprite questionEmoticonSprite;
@@ -317,7 +318,53 @@ public abstract class Animal : Living {
 
     public virtual bool targetable()
     {
-        return true;
+        return !estMort();
+    }
+
+    private bool goAtk = true;
+    private bool goRetourAtk = false;
+    public bool animationAttaque(Animal cible, Vector3 tailleInitiale)
+    {
+        if (goAtk)
+        {
+            faceTo(cible);
+            fd(.001f, false, false);
+            if (!goRetourAtk)
+            {
+                transform.localScale += new Vector3(.1f, .15f, .1f);
+                if (transform.localScale.x >= tailleInitiale.x * 2)
+                    goRetourAtk = true;
+            }
+            else
+            {
+                transform.localScale -= new Vector3(.05f, .075f, .05f);
+                if (transform.localScale.x <= tailleInitiale.x)
+                {
+                    transform.localScale = tailleInitiale;
+                    if (cible.getCurrentAction() as A_Repos != null)
+                        ((MindAnimal)cible.mind).removeCurrentAction();
+                    goAtk = true;
+                    goRetourAtk = false;
+                    return true;
+                }
+
+            }
+        }
+        return false;
+    }
+
+    public void blesse(float damage)
+    {
+        vie -= damage;
+        if (vie <= 0)
+            meurt();
+    }
+
+    public void meurt()
+    {
+        GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        GetComponent<SpriteRenderer>().sprite = this.deathSprite;
+        hideStaticEmoticon();
     }
 
     public abstract List<SoundInformation> getSonsInterpellant();

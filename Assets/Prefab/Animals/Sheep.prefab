@@ -234,7 +234,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100012}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -57.5780106, y: 5.02078152, z: 0}
+  m_LocalPosition: {x: -32.0875816, y: 5.57160854, z: 0}
   m_LocalScale: {x: .234411091, y: .234411076, z: .234411076}
   m_Children:
   - {fileID: 400010}
@@ -406,14 +406,15 @@ MonoBehaviour:
   perceptHearing: {fileID: 11400014}
   emoticonSystem: {fileID: 11400000}
   vectorDisplayer: {fileID: 0}
-  VIE_MAX: 10
-  vie: 10
+  VIE_MAX: 60
+  vie: 60
   direction: 0
   vitesse: .449999988
   prefabSoundWalk: {fileID: 0}
   normalSprite: {fileID: 21300000, guid: 80e61d0b1afe79444a51098251cf7f42, type: 3}
   sleepSprite: {fileID: 0}
   rugirSprite: {fileID: 0}
+  deathSprite: {fileID: 21300000, guid: 6442916e14075ce4faba5ba262225d41, type: 3}
   sleepEmoticonSprite: {fileID: 0}
   questionEmoticonSprite: {fileID: 0}
   exclamationEmoticonSprite: {fileID: 21300000, guid: 70c2cd1a5cfb25a4bb723d539b898cfd,

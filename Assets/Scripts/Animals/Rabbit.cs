@@ -89,7 +89,7 @@ public class Rabbit : Animal
 
     public override bool targetable()
     {
- 	    return !dansLeTerrier();
+ 	    return !dansLeTerrier()&&base.targetable();
     }
 
     public override System.Collections.Generic.List<SoundInformation> getSonsInterpellant()
