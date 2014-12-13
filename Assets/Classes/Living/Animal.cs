@@ -15,6 +15,7 @@ public abstract class Animal : Living {
     public float vie;
     public float direction;
     public float vitesse = 1;
+    public float quantiteDeViande;
 
     //Sounds
     public GameObject prefabSoundWalk;
@@ -69,6 +70,18 @@ public abstract class Animal : Living {
         fd(vitesse);
     }
 
+    /*
+     * Retourne la quantité de viande effectivement mangée
+     */
+    public float mangeCadavre(float value)
+    {
+        float result = Mathf.Min(value, quantiteDeViande);
+        quantiteDeViande -= result;
+        if (quantiteDeViande <= 0)
+            GetComponent<SpriteRenderer>().enabled = false;
+        return result;
+    }
+
     public void fd(float pas, bool smoothRotation = true, bool evitementDesAutresAgents = true)
     {
         if ( prefabSoundWalk != null )
@@ -104,7 +117,7 @@ public abstract class Animal : Living {
             {
                 currentBloc = memoryBlocs[i];
                 currentAnimal = currentBloc.getEntity() as Animal;
-                if (currentAnimal != null && currentAnimal != agentToDontDodge)
+                if (currentAnimal != null && !currentAnimal.estMort() && currentAnimal != agentToDontDodge)
                 {
                     float distance = Vector2.Distance(currentBloc.getLastPosition(), transform.position);
                     Vector2 vectorFaceToLastPosition = Utils.vectorFromAngle(getFaceToDirection(currentBloc.getLastPosition()));

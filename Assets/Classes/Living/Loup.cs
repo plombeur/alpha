@@ -7,8 +7,6 @@ public abstract class Loup : Animal
     public int FAIM_MAX;
     public float faim;
 
-    //Pour la chasse
-    public GameObject prefabTarget;
 
     public override void construct(Mind mind)
     {
@@ -36,13 +34,5 @@ public abstract class Loup : Animal
     public override System.Collections.Generic.List<SoundInformation> getSonsInterpellant()
     {
         return new System.Collections.Generic.List<SoundInformation>();
-    }
-
-    public GameObject cibler(Living living)
-    {
-        GameObject cible = (GameObject)GameObject.Instantiate(prefabTarget);
-        cible.transform.parent = living.transform;
-        cible.GetComponent<FollowTarget>().target = living.gameObject;
-        return cible;
     }
 }

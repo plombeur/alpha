@@ -14,14 +14,17 @@ public class FollowTarget : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
-        while (time >= 0.04f)
+        if (target != null)
         {
-            Vector3 position = target.GetComponent<Transform>().position;
-            Transform transf = GetComponent<Transform>();
-            position.z -= 10;
-            transf.position = position;
-            time -= 0.04f;
+            time += Time.deltaTime;
+            while (time >= 0.04f)
+            {
+                Vector3 position = target.GetComponent<Transform>().position;
+                Transform transf = GetComponent<Transform>();
+                position.z -= 10;
+                transf.position = position;
+                time -= 0.04f;
+            }
         }
     }
 }

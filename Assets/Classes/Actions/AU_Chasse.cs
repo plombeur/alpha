@@ -5,13 +5,18 @@ using System.Collections.Generic;
 public class AU_Chasse : A_ActionUser
 {
     public Vector2 targetPosition;
-    private Animal target;
+    private GameObject ciblePosition;
+    public Animal target;
     private GameObject cible;
     public Vector3 tailleInitiale;
     private bool goAtk = false;
+    private float timeRugissement = 1.2f;
+    private float atkDelay = 0;
 
     protected override bool onStart(float deltaTime)
     {
+        ciblePosition = (GameObject)GameObject.Instantiate(((LoupAlpha)getAnimal()).prefabTarget);
+        ciblePosition.transform.localScale = ciblePosition.transform.localScale * .5f;
         tailleInitiale = getAnimal().transform.localScale;
         getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().normalSprite;
         return onUpdate(deltaTime);
@@ -19,14 +24,22 @@ public class AU_Chasse : A_ActionUser
 
     protected override void onPause()
     {
-        GameObject.Destroy(cible.gameObject);
+        if (ciblePosition != null)
+            GameObject.Destroy(ciblePosition.gameObject);
+
+        if (cible != null)
+            GameObject.Destroy(cible.gameObject);
         getAnimal().hideStaticEmoticon();
         base.onPause();
     }
 
     protected override void onRemove()
     {
-        GameObject.Destroy(cible.gameObject);
+        if (ciblePosition != null)
+            GameObject.Destroy(ciblePosition.gameObject);
+
+        if(cible != null)
+            GameObject.Destroy(cible.gameObject);
         getAnimal().hideStaticEmoticon();
         base.onPause();
     }
@@ -45,10 +58,26 @@ public class AU_Chasse : A_ActionUser
 
     protected override bool onUpdate(float deltaTime)
     {
+        if (atkDelay > 0)
+            atkDelay -= deltaTime;
+
+        if (ciblePosition != null)
+            ciblePosition.transform.position = targetPosition;
+
         Animal animal = getAnimal();
+
+        if (timeRugissement > 0)
+        {
+            getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().rugirSprite;
+            timeRugissement -= Time.deltaTime;
+            if (timeRugissement <= 0)
+                getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().normalSprite;
+            return true;
+        }
 
         if (target != null && !target.targetable())
         {
+            animal.transform.localScale = tailleInitiale;
             GameObject.Destroy(cible.gameObject);
             cible = null;
             target = null;
@@ -62,13 +91,19 @@ public class AU_Chasse : A_ActionUser
                 if ( ( livings[i] as Sheep != null || livings[i] as Rabbit != null ) && ((Animal)livings[i]).targetable())
                 {
                     target = (Animal)livings[i];
-                    cible = ((Loup)animal).cibler(livings[i]);
+                    cible = ((LoupAlpha)animal).cibler(livings[i]);
                     break;
                 }
         }
         
         if(target == null)
         {
+            animal.transform.localScale = tailleInitiale;
+            if(Vector2.Distance(getAnimal().transform.position, targetPosition) <= .25f)
+            {
+                getActionPendlingList().removeAction(this);
+                return true;
+            }
             animal.faceTo(targetPosition);
             animal.fd();
         }
@@ -81,24 +116,30 @@ public class AU_Chasse : A_ActionUser
                 
             if(goAtk)
             {
-                if (animal.animationAttaque(target, tailleInitiale))
+                if(atkDelay > 0)
                 {
-                    Debug.Log("Blesse!");
+                    animal.setAgentToDontDodge(target);
+                    animal.faceTo(target);
+                    animal.fd(target.vitesse);
+                }
+                else if (animal.animationAttaque(target, tailleInitiale))
+                {
+                    atkDelay = 1;
                     target.blesse(10);
                     if (target.estMort())
                     {
                         GameObject.Destroy(cible.gameObject);
                         cible = null;
                         target = null;
-                        goAtk = false;
                     }
+                    goAtk = false;
                 }
             }
             else
             {
-                animal.setAgentToDontDodge((Animal)target);
+                animal.transform.localScale = tailleInitiale;
                 animal.faceTo(target);
-                animal.fd(animal.vitesse * 3);
+                animal.fd(animal.vitesse * 3, true, false);
             }
         }
 

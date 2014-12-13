@@ -6,6 +6,7 @@ public class AU_MoveTo : A_ActionUser
     private float xTarget;
     private float yTarget;
     private float timeRugissement = 1.2f;
+    private GameObject ciblePosition;
 
     public AU_MoveTo(float x, float y)
         : base("AU_MoveTo")
@@ -21,10 +22,25 @@ public class AU_MoveTo : A_ActionUser
         yTarget = position.y;
     }
 
+    protected override void onPause()
+    {
+        if (ciblePosition != null)
+            GameObject.Destroy(ciblePosition.gameObject);
+        base.onPause();
+    }
+
+    protected override void onRemove()
+    {
+        if (ciblePosition != null)
+            GameObject.Destroy(ciblePosition.gameObject);
+        base.onPause();
+    }
+
     protected override bool onUpdate(float deltaTime)
     {
         if(timeRugissement > 0)
         {
+            getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().rugirSprite;
             timeRugissement -= Time.deltaTime;
             if (timeRugissement <= 0)
                 getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().normalSprite;
@@ -59,6 +75,8 @@ public class AU_MoveTo : A_ActionUser
 
     protected override bool onStart(float deltaTime)
     {
+        ciblePosition = (GameObject)GameObject.Instantiate(((LoupAlpha)getAnimal()).prefabBlackTarget);
+        ciblePosition.transform.localScale = ciblePosition.transform.localScale * .5f;
         getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().rugirSprite;
         return base.onStart(deltaTime);
     }

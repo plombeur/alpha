@@ -47,7 +47,7 @@ public class Rabbit : Animal
         {
             Loup currentLoup = memoryBlocs[i].getEntity() as Loup;
             Sheep currentSheep = memoryBlocs[i].getEntity() as Sheep;
-            if (currentLoup != null || currentSheep != null)
+            if ((currentLoup != null && !currentLoup.estMort() )||( currentSheep != null && !currentSheep.estMort() ))
             {
                 Vector2 lastPosition = memoryBlocs[i].getLastPosition();
                 float distance = Vector2.Distance(lastPosition, transform.position);
@@ -89,7 +89,7 @@ public class Rabbit : Animal
 
     public override bool targetable()
     {
- 	    return !dansLeTerrier()&&base.targetable();
+ 	    return !dansLeTerrier()&& base.targetable();
     }
 
     public override System.Collections.Generic.List<SoundInformation> getSonsInterpellant()

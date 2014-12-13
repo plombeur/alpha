@@ -31,6 +31,23 @@ public class MindLoupInferieur : MindLoup
                 }
             }
         }
+        else if (LoupInferieur.alpha.getCurrentAction() as AU_Chasse != null)
+        {
+            if (chronoBeforeFollowingAlpha == -1)
+            {
+                chronoBeforeFollowingAlpha = (float)Random.Range(5, 10) * .1f;
+            }
+
+            if (chronoBeforeFollowingAlpha > 0)
+            {
+                chronoBeforeFollowingAlpha -= Time.deltaTime;
+                if (chronoBeforeFollowingAlpha <= 0)
+                {
+                    chronoBeforeFollowingAlpha = -1;
+                    actionList.addAction(new AU_FollowChasse(LoupInferieur.alpha));
+                }
+            }
+        }
 
         if (!a.perceptView.getLiving().Contains(LoupInferieur.alpha) && time >= timeBeforeCheckAlpha)
         {

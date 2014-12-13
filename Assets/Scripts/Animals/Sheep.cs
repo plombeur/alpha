@@ -41,7 +41,7 @@ public class Sheep : Animal
         for (int i = 0; i < memoryBlocs.Count; ++i)
         {
             Loup currentLoup = memoryBlocs[i].getEntity() as Loup;
-            if (currentLoup != null)
+            if (currentLoup != null && !currentLoup.estMort() )
             {
                 Vector2 lastPosition = memoryBlocs[i].getLastPosition();
                 float distance = Vector2.Distance(lastPosition, transform.position);

@@ -18,7 +18,7 @@ public class A_RejoindreTroupe : Action
 
     public override float getPriority()
     {
-        return 1;
+        return 45;
     }
 
     protected override bool onStart(float deltaTime)
