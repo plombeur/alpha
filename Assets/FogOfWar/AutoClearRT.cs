@@ -5,6 +5,7 @@ using System.Collections;
 public class AutoClearRT : MonoBehaviour {
 
 	public bool NoClearAfterStart = false;
+    public bool persistent = true;
     public Color fogColor = new Color(1,1,1,0.25f);
 
 	void Start () 
@@ -15,9 +16,10 @@ public class AutoClearRT : MonoBehaviour {
 
 	void OnPostRender () 
 	{
-		if(!NoClearAfterStart)
-		{
+		if(!NoClearAfterStart && persistent)
 			GetComponent<Camera>().clearFlags = CameraClearFlags.Depth;
-		}
+        else
+            GetComponent<Camera>().clearFlags = CameraClearFlags.Color;
+
 	}
 }
