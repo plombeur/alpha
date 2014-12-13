@@ -11,19 +11,19 @@ public class GameManager : MonoBehaviour
     public ToolTipManager toolTipManager;
     public CameraController2D cameraController;
 
-    public Transform mapDelimiterUpLeft, mapDelimiterBottomRight;
+    public Transform mapDelimiterBottomLeft, mapDelimiterTopRight;
     private Rect dimensions;
 
     void Awake()
     {
         instance = this;
 
-        if (mapDelimiterUpLeft == null)
+        if (mapDelimiterBottomLeft == null)
             Debug.LogError("No delimiter Up Left Linked !!!");
-        if (mapDelimiterBottomRight == null)
+        if (mapDelimiterTopRight == null)
             Debug.LogError("No delimiter Bottom Right Linked !!!");
-        if (mapDelimiterUpLeft != null && mapDelimiterBottomRight != null)
-            dimensions = new Rect(mapDelimiterUpLeft.position.x, mapDelimiterUpLeft.position.y, mapDelimiterBottomRight.position.x - mapDelimiterUpLeft.position.x, mapDelimiterBottomRight.position.y - mapDelimiterUpLeft.position.y);
+        if (mapDelimiterBottomLeft != null && mapDelimiterTopRight != null)
+            dimensions = new Rect(mapDelimiterBottomLeft.position.x, mapDelimiterBottomLeft.position.y, mapDelimiterTopRight.position.x - mapDelimiterBottomLeft.position.x, mapDelimiterTopRight.position.y - mapDelimiterBottomLeft.position.y);
         if (alphaWolf == null)
             Debug.LogError("No Alpha Wolf Linked !!!");
         if (eventManager == null)

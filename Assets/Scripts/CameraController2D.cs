@@ -27,7 +27,19 @@ public class CameraController2D : MonoBehaviour, EventManagerListener
             followTarget = false;
             Vector3 delta = worldPosition - lastMousePositonOnWorld;
             if (delta.magnitude != 0)
-                camera.transform.Translate(-delta);
+                transform.Translate(-delta);
+
+            Vector3 position = transform.position;
+            Rect dimensions = GameManager.getInstance().getDimensions();
+
+            Debug.Log(camera.pixelWidth / 2);
+
+            float cameraWidthHalf = camera.orthographicSize * camera.aspect;
+
+            position.x = Mathf.Clamp(position.x, dimensions.xMin + cameraWidthHalf, dimensions.xMin + dimensions.width - cameraWidthHalf);
+            position.y = Mathf.Clamp(position.y, dimensions.yMin + camera.orthographicSize, dimensions.yMin + dimensions.height - camera.orthographicSize);
+
+            transform.position = position;
 
             mouseRay = camera.ScreenPointToRay(Input.mousePosition);
             groundPlane.Raycast(mouseRay, out distanceCast);
