@@ -628,8 +628,9 @@ MonoBehaviour:
   eventManager: {fileID: 689423362}
   hud: {fileID: 1573053181}
   toolTipManager: {fileID: 561571331}
-  mapDelimiterUpLeft: {fileID: 1432270663}
-  mapDelimiterBottomRight: {fileID: 1063558894}
+  cameraController: {fileID: 2027364211}
+  mapDelimiterBottomLeft: {fileID: 1432270663}
+  mapDelimiterTopRight: {fileID: 1063558894}
 --- !u!1001 &101231309
 Prefab:
   m_ObjectHideFlags: 0
@@ -6698,7 +6699,7 @@ GameObject:
   - 135: {fileID: 1063558892}
   - 23: {fileID: 1063558891}
   m_Layer: 0
-  m_Name: MapDelimiterBottomRight
+  m_Name: MapDelimiterTopRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6750,7 +6751,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1063558890}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 31.1889019, y: -26.8143005, z: 0}
+  m_LocalPosition: {x: 31.1889019, y: 20.2000008, z: 0}
   m_LocalScale: {x: .0500000007, y: .0500000007, z: .0500000007}
   m_Children: []
   m_Father: {fileID: 1714550267}
@@ -9019,7 +9020,7 @@ GameObject:
   - 135: {fileID: 1432270661}
   - 23: {fileID: 1432270660}
   m_Layer: 0
-  m_Name: MapDelimiterUpLeft
+  m_Name: MapDelimiterBottomLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9071,7 +9072,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1432270659}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.0621986, y: 20.2341995, z: 0}
+  m_LocalPosition: {x: -16.0621986, y: -26.7999992, z: 0}
   m_LocalScale: {x: .0500000007, y: .0500000007, z: .0500000007}
   m_Children: []
   m_Father: {fileID: 1714550267}
@@ -13741,6 +13742,26 @@ Prefab:
       propertyPath: mapDelimiterBottomRight
       value: 
       objectReference: {fileID: 1063558894}
+    - target: {fileID: 11400002, guid: 14d7587fee9330b41a698677137fbee9, type: 2}
+      propertyPath: cameraController
+      value: 
+      objectReference: {fileID: 2027364211}
+    - target: {fileID: 11400002, guid: 14d7587fee9330b41a698677137fbee9, type: 2}
+      propertyPath: mapDelimiterBottomLeft
+      value: 
+      objectReference: {fileID: 1432270663}
+    - target: {fileID: 11400002, guid: 14d7587fee9330b41a698677137fbee9, type: 2}
+      propertyPath: mapDelimiterTopRight
+      value: 
+      objectReference: {fileID: 1063558894}
+    - target: {fileID: 100038, guid: 14d7587fee9330b41a698677137fbee9, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100074, guid: 14d7587fee9330b41a698677137fbee9, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 14d7587fee9330b41a698677137fbee9, type: 2}
   m_RootGameObject: {fileID: 377802856}
