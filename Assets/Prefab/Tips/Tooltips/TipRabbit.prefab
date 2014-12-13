@@ -39,14 +39,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52ff7701737db0440b1a16ec3f8c3cdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Lapin
-  description: "Vous avez vu un lapin! Petits herbivores de taille moyenne 25cm et
-    de poids moyenne 400g, les lapins vivent en groupe dans les terriers. Gr\xE2ce
-    aux longues oreilles, ils peuvent d\xE9tecter les pr\xE9dateurs de loin. En cas
-    d'alerte, il reste immobile pour \xE9viter d'\xEAtre apercevoir et ne fuit qu'au
-    dernier moment. Courant en zigzag pour d\xE9router le poursuivant, sa vitesse
-    peut atteindre 48km/h."
+  title: 
+  description: 
   icon: {fileID: 0}
+  mManager: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

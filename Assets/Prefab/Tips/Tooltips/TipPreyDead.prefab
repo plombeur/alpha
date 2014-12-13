@@ -39,12 +39,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ec6f1cb9ab92164ebaf26051fe77b65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: "Chasse succ\xE8s"
-  description: "F\xE9licitation, vous avez tu\xE9 une proie ! Seulement 10% des proies
-    pourchass\xE9es sont rattrap\xE9es par le loup, parfois apr\xE8s des centaines
-    de m\xE8tres de chasse, et la moiti\xE9 de celles-ci sont finalement mises \xE0
-    mort avec succ\xE8s. Le loup a besoin de 4kg de viande par jour.  Il d\xE9vore
-    ses proies en totalit\xE9, poils et os compris."
+  title: 
+  description: 
   icon: {fileID: 0}
   mManager: {fileID: 0}
 --- !u!1001 &100100000
