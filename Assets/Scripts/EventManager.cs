@@ -24,11 +24,27 @@ public class EventManager : MonoBehaviour
                         return;
                 }
             }
-            else if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(1))
             {
                 for (int i = 0; i < listeners.Count; ++i)
                 {
                     if (listeners[i].onMouseButtonDown(1))
+                        return;
+                }
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                for (int i = 0; i < listeners.Count; ++i)
+                {
+                    if (listeners[i].onMouseButtonUp(0))
+                        return;
+                }
+            }
+            if (Input.GetMouseButtonUp(1))
+            {
+                for (int i = 0; i < listeners.Count; ++i)
+                {
+                    if (listeners[i].onMouseButtonUp(1))
                         return;
                 }
             }
@@ -43,4 +59,5 @@ public class EventManager : MonoBehaviour
 public interface EventManagerListener
 {
     bool onMouseButtonDown(int button);
+    bool onMouseButtonUp(int button);
 }

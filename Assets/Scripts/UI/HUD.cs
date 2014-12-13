@@ -36,4 +36,9 @@ public class HUD : MonoBehaviour,EventManagerListener
 
         return false;
     }
+
+    public bool onMouseButtonUp(int button)
+    {
+        return false;
+    }
 }

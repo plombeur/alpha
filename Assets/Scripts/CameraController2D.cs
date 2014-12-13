@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.EventSystems;
 
-public class CameraController2D : MonoBehaviour
+public class CameraController2D : MonoBehaviour, EventManagerListener
 {
     public bool followTarget = true;
     public Transform target;
@@ -17,31 +17,23 @@ public class CameraController2D : MonoBehaviour
 
     void Update()
     {
-
-        if (Input.GetMouseButton(0))
+        if (mouseDown)
         {
             Ray mouseRay = camera.ScreenPointToRay(Input.mousePosition);
             float distanceCast;
             groundPlane.Raycast(mouseRay, out distanceCast);
             Vector3 worldPosition = mouseRay.GetPoint(distanceCast);
-            if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
-            {
-                mouseDown = true;
-            }
-            else if (mouseDown)
-            {
-                followTarget = false;
-                Vector3 delta = worldPosition - lastMousePositonOnWorld;
-                if (delta.magnitude != 0)
-                    camera.transform.Translate(-delta);
-            }
+
+            followTarget = false;
+            Vector3 delta = worldPosition - lastMousePositonOnWorld;
+            if (delta.magnitude != 0)
+                camera.transform.Translate(-delta);
+
             mouseRay = camera.ScreenPointToRay(Input.mousePosition);
             groundPlane.Raycast(mouseRay, out distanceCast);
             worldPosition = mouseRay.GetPoint(distanceCast);
             lastMousePositonOnWorld = worldPosition;
         }
-        else
-            mouseDown = false;
     }
     void LateUpdate()
     {
@@ -56,5 +48,24 @@ public class CameraController2D : MonoBehaviour
     public void setFollowTarget(bool value)
     {
         followTarget = value;
+    }
+
+    public bool onMouseButtonDown(int button)
+    {
+        Ray mouseRay = camera.ScreenPointToRay(Input.mousePosition);
+        float distanceCast;
+        groundPlane.Raycast(mouseRay, out distanceCast);
+        Vector3 worldPosition = mouseRay.GetPoint(distanceCast);
+        mouseRay = camera.ScreenPointToRay(Input.mousePosition);
+        groundPlane.Raycast(mouseRay, out distanceCast);
+        worldPosition = mouseRay.GetPoint(distanceCast);
+        lastMousePositonOnWorld = worldPosition;
+        mouseDown = true;
+        return false;
+    }
+    public bool onMouseButtonUp(int button)
+    {
+        mouseDown = false;
+        return false;
     }
 }
