@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Recruit : MonoBehaviour {
+public class Recruit : Objectif {
 
 	// Use this for initialization
 	void Start () {

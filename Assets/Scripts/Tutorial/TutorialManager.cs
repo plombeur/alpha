@@ -4,21 +4,26 @@ using System.Collections.Generic;
 
 public class TutorialManager : MonoBehaviour {
     public GameObject Displayer;
-    private Stack<Objectif> m_Tips;
-    private Objectif m_CurrentTip;
+    public Objectif[] Objectifs;
+    private int m_CurrentIndex;
     private InfoWindow m_DisplayerScript;
 
     // Use this for initialization
     void Start()
     {
-        m_Tips = new Stack<Objectif>();
-        m_CurrentTip = null;
-        m_DisplayerScript = Displayer.GetComponent<InfoWindow>();
+        if (Objectifs.Length == 0)
+        {
+            Debug.Log("Aucun objectif.");
+            Destroy(this);
+        }
+        m_CurrentIndex = -1;
+        /*m_DisplayerScript = Displayer.GetComponent<InfoWindow>();
         if (m_DisplayerScript == null)
         {
             Debug.Log("Script missing (InfoWindow)");
             Destroy(this);
-        }
+        }*/
+        achieve();
     }
 
     // Update is called once per frame
@@ -27,55 +32,39 @@ public class TutorialManager : MonoBehaviour {
     }
 
     /**
-     * Add the ToolTip to the display list.
+     * Display tutorial objectif.
      * */
-    public void askDisplay(Objectif tip)
-    {
-        m_Tips.Push(tip);
-        if (m_CurrentTip == null)
-        {
-            getNextTip();
-            displayToolTip();
-        }
-    }
-    /**
-     * Freeze time.
-     * Display ToolTip.
-     * */
-    public void displayToolTip()
-    {
-        displayToolTipDescription();
-    }
-    /**
-     * Display the current TollTip.
-     * */
-    private void displayToolTipDescription()
+    public void displayObjectif(Objectif toDisplay)
     {
     }
     /**
      * Called by the GUI to display the next ToolTip if existing.
      * Unfreeze + change tip.
      * */
-    public void validateReading()
+    public void achieve()
     {
-        if (getNextTip())
+        if (getNextObjectif())
         {
-            displayToolTip();
+            Objectif newObj = Objectifs[m_CurrentIndex].GetComponent<Objectif>();
+            displayObjectif(newObj);
+            //Debug.Log(newObj);
+            newObj.activate();
+        }
+        else
+        {
+            displayObjectif(null);
         }
     }
 
-    private bool getNextTip()
+    private bool getNextObjectif()
     {
-        if (m_CurrentTip != null)
+        ++m_CurrentIndex;
+        if (m_CurrentIndex < Objectifs.Length)
         {
-            Destroy(m_CurrentTip.gameObject);
-        }
-        if (m_Tips.Count != 0)
-        {
-            m_CurrentTip = m_Tips.Pop();
-            //Debug.Log("Next tip !");
+            //Debug.Log("Next objectif !");
             return true;
         }
+        //Debug.Log("Pas d'autre objectif.");
         return false;
     }
 }

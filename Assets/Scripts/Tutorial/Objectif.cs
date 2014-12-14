@@ -3,37 +3,45 @@ using System.Collections;
 
 public class Objectif : MonoBehaviour {
     public string title;
-    public string description;
-    public TutorialManager mManager;
+    public string objectif;
+    public string detail;
+    public TutorialManager m_Manager;
 
     // Use this for initialization
     protected void Start()
     {
+        enabled = false;
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
-        checkTrigger();
     }
 
     /**
      * Check display condition on update.
      * Must be overidden.
      * */
-    protected virtual void checkTrigger()
+    protected virtual void checkAchievement()
     {
+        Debug.Log("Achieve base (ne doit pas être appelé !).");
     }
 
-    /**
-     * Updates Manager + lock or destroy.
-     * */
-    protected void display()
+    public virtual void activate()
     {
-        if (mManager != null)
-        {
-            mManager.askDisplay(this);
-            this.enabled = false;
-        }
+        //Debug.Log("Activate mère.");
+        StartCoroutine(WaitForUpdate());
+    }
+
+    protected void achieve()
+    {
+        m_Manager.achieve();
+        this.enabled = false;
+    }
+
+    IEnumerator WaitForUpdate()
+    {
+        yield return new WaitForSeconds(1);
+        enabled = true;
     }
 }
