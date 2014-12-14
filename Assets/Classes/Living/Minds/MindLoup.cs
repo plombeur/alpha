@@ -14,7 +14,7 @@ public class MindLoup : MindAnimal {
 
         Loup loup = ((Loup)agent);
 
-        if (loup.faim < loup.FAIM_MAX / 2)
+        if (loup.faim <= loup.FAIM_MAX / 2)
         {
             List<MemoryBloc> memoryBlocs = new List<MemoryBloc>(loup.GetComponent<Memory>().getMemoyBlocs());
             Animal plusProcheCadavre = null;
@@ -42,7 +42,7 @@ public class MindLoup : MindAnimal {
                 actionList.addAction(new A_SeNourrir(plusProcheCadavre));
         }
         loup.faim -= Time.deltaTime;
-        if (loup.faim < loup.FAIM_MAX / 2)
+        if (loup.faim <= loup.FAIM_MAX / 2)
         {
             loup.displayStaticEmoticon(loup.hungryEmoticonSprite);
         }

@@ -12,7 +12,6 @@ public class CameraController2D : MonoBehaviour, EventManagerListener
 
     void Start()
     {
-
     }
 
     void Update()
@@ -64,20 +63,34 @@ public class CameraController2D : MonoBehaviour, EventManagerListener
 
     public bool onMouseButtonDown(int button)
     {
-        Ray mouseRay = camera.ScreenPointToRay(Input.mousePosition);
-        float distanceCast;
-        groundPlane.Raycast(mouseRay, out distanceCast);
-        Vector3 worldPosition = mouseRay.GetPoint(distanceCast);
-        mouseRay = camera.ScreenPointToRay(Input.mousePosition);
-        groundPlane.Raycast(mouseRay, out distanceCast);
-        worldPosition = mouseRay.GetPoint(distanceCast);
-        lastMousePositonOnWorld = worldPosition;
-        mouseDown = true;
+        if (button == 0)
+        {
+            Ray mouseRay = camera.ScreenPointToRay(Input.mousePosition);
+            float distanceCast;
+            groundPlane.Raycast(mouseRay, out distanceCast);
+            Vector3 worldPosition = mouseRay.GetPoint(distanceCast);
+            mouseRay = camera.ScreenPointToRay(Input.mousePosition);
+            groundPlane.Raycast(mouseRay, out distanceCast);
+            worldPosition = mouseRay.GetPoint(distanceCast);
+            lastMousePositonOnWorld = worldPosition;
+            mouseDown = true;
+        }
+        else if( button == 1)
+        {
+            Ray mouseRay = camera.ScreenPointToRay(Input.mousePosition);
+            float distanceCast;
+            groundPlane.Raycast(mouseRay, out distanceCast);
+            Vector3 worldPosition = mouseRay.GetPoint(distanceCast);
+            ((MindLoupAlpha)LoupInferieur.alpha.mind).addActionUserAction(new AU_Chasse(worldPosition));
+        }
         return false;
     }
     public bool onMouseButtonUp(int button)
     {
-        mouseDown = false;
+        if (button == 0)
+        {
+            mouseDown = false;
+        }
         return false;
     }
 }

@@ -17,8 +17,12 @@ public abstract class MindAnimal : Mind
         Animal animal = (Animal)agent;
 
         if (animal.estMort())
+        {
+            animal.meurt();
             return;
+        }
 
+        animal.hideStaticEmoticon();
         animal.resetAgentToDontDodge();
         animal.fd(0);
 

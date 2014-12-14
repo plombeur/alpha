@@ -1333,6 +1333,7 @@ MonoBehaviour:
   vie: 100
   direction: 0
   vitesse: 1
+  quantiteDeViande: 0
   prefabSoundWalk: {fileID: 100000, guid: 4b2c4a7fa3469e9488f36a4d554998c0, type: 2}
   normalSprite: {fileID: 21300000, guid: 4b6ec019a93e97f48bec72470082958a, type: 3}
   sleepSprite: {fileID: 21300000, guid: ff2b46c1857bbc04eb3148bc64357fb1, type: 3}
@@ -1349,8 +1350,7 @@ MonoBehaviour:
     type: 3}
   peutAvoirPeur: 1
   FAIM_MAX: 100
-  faim: 100
-  prefabTarget: {fileID: 0}
+  faim: 50
   distanceAlpha: 5
 --- !u!114 &11400002
 MonoBehaviour:
@@ -1475,6 +1475,7 @@ MonoBehaviour:
   vie: 100
   direction: 0
   vitesse: 1
+  quantiteDeViande: 0
   prefabSoundWalk: {fileID: 100000, guid: 4b2c4a7fa3469e9488f36a4d554998c0, type: 2}
   normalSprite: {fileID: 21300000, guid: 4b6ec019a93e97f48bec72470082958a, type: 3}
   sleepSprite: {fileID: 21300000, guid: ff2b46c1857bbc04eb3148bc64357fb1, type: 3}
@@ -1492,7 +1493,6 @@ MonoBehaviour:
   peutAvoirPeur: 1
   FAIM_MAX: 100
   faim: 100
-  prefabTarget: {fileID: 0}
   distanceAlpha: 5
   THREAT_MAX: 100
   threat: 0
@@ -1580,6 +1580,7 @@ MonoBehaviour:
   vie: 100
   direction: 0
   vitesse: 1
+  quantiteDeViande: 0
   prefabSoundWalk: {fileID: 100000, guid: 4b2c4a7fa3469e9488f36a4d554998c0, type: 2}
   normalSprite: {fileID: 21300000, guid: 4b6ec019a93e97f48bec72470082958a, type: 3}
   sleepSprite: {fileID: 21300000, guid: ff2b46c1857bbc04eb3148bc64357fb1, type: 3}
@@ -1597,7 +1598,6 @@ MonoBehaviour:
   peutAvoirPeur: 1
   FAIM_MAX: 100
   faim: 100
-  prefabTarget: {fileID: 0}
   distanceAlpha: 5
   THREAT_MAX: 100
   threat: 0
@@ -1685,6 +1685,7 @@ MonoBehaviour:
   vie: 100
   direction: 0
   vitesse: 1
+  quantiteDeViande: 0
   prefabSoundWalk: {fileID: 100000, guid: 4b2c4a7fa3469e9488f36a4d554998c0, type: 2}
   normalSprite: {fileID: 21300000, guid: 4b6ec019a93e97f48bec72470082958a, type: 3}
   sleepSprite: {fileID: 21300000, guid: ff2b46c1857bbc04eb3148bc64357fb1, type: 3}
@@ -1701,8 +1702,7 @@ MonoBehaviour:
     type: 3}
   peutAvoirPeur: 1
   FAIM_MAX: 100
-  faim: 100
-  prefabTarget: {fileID: 0}
+  faim: 50
   distanceAlpha: 5
   THREAT_MAX: 100
   threat: 0
@@ -1764,6 +1764,7 @@ MonoBehaviour:
   vie: 100
   direction: 0
   vitesse: 1
+  quantiteDeViande: 0
   prefabSoundWalk: {fileID: 100000, guid: 4b2c4a7fa3469e9488f36a4d554998c0, type: 2}
   normalSprite: {fileID: 21300000, guid: 53f92419c6b26ae48845b8d9b1f9dc84, type: 3}
   sleepSprite: {fileID: 21300000, guid: 521b52a7d75bbec4c8c746ad5ee61628, type: 3}
@@ -1780,8 +1781,9 @@ MonoBehaviour:
     type: 3}
   peutAvoirPeur: 1
   FAIM_MAX: 100
-  faim: 100
+  faim: 50
   prefabTarget: {fileID: 100000, guid: 7424a3f4eb749054aab6d6765d14ae90, type: 2}
+  prefabBlackTarget: {fileID: 100000, guid: ffaa7555bd472bc4bb4310e3f94cd198, type: 2}
 --- !u!114 &11400052
 MonoBehaviour:
   m_ObjectHideFlags: 1

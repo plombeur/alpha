@@ -5,9 +5,21 @@ using System.Collections.Generic;
 public class A_SeNourrir : Action
 {
     private Animal cadavre;
+    private float eatDelay = 0;
     public A_SeNourrir(Animal cadavre) : base("A_SeNourrir")
     {
         this.cadavre = cadavre;
+    }
+
+    protected override bool onStart(float deltaTime)
+    {
+        getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().normalSprite;
+        return base.onStart(deltaTime);
+    }
+    protected override bool onResume(float deltaTime)
+    {
+        getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().normalSprite;
+        return base.onStart(deltaTime);
     }
 
     public override float getPriority()
@@ -30,7 +42,7 @@ public class A_SeNourrir : Action
                 Debug.Log("Le loup alpha peut se nourrir !");
             canEat = true;
         }
-        else if(getAnimal() as LoupBeta != null && LoupInferieur.alpha.getCurrentAction() as A_SeNourrir != null)
+        else if(getAnimal() as LoupBeta != null && LoupInferieur.alpha.getCurrentAction() as A_SeNourrir == null)
         {
             if(getAnimal().DEBUG)
                 Debug.Log("Le loup beta peut se nourrir !");
@@ -60,13 +72,21 @@ public class A_SeNourrir : Action
             }
         }
 
+        if(eatDelay > 0)
+            eatDelay -= Time.deltaTime;
+
         if(canEat)
         {
             if(Vector2.Distance(cadavre.transform.position,getAnimal().transform.position) <= .3f)
             {
+                if (eatDelay > 0)
+                    return true;
+                eatDelay = .8f;
                 if (getAnimal().DEBUG)
                     Debug.Log("mange ...");
-                float nourritureMangee = cadavre.mangeCadavre(1);
+                getAnimal().displayAnimatedEmoticon(getAnimal().hungryEmoticonSprite);
+                getAnimal().fd(0);
+                float nourritureMangee = cadavre.mangeCadavre(5);
                 if(nourritureMangee == 0)
                 {
                     getActionPendlingList().removeAction(this);
@@ -89,7 +109,7 @@ public class A_SeNourrir : Action
         }
         else
         {
-            if(Vector2.Distance(cadavre.transform.position,getAnimal().transform.position) <= 3)
+            if (Vector2.Distance(cadavre.transform.position, getAnimal().transform.position) <= 3)
             {
                 if (getAnimal().DEBUG)
                     Debug.Log("s'éloigne des autres qui mangent");
@@ -97,8 +117,12 @@ public class A_SeNourrir : Action
                 getAnimal().rt(180);
                 getAnimal().fd();
             }
-            else if (getAnimal().DEBUG)
-                Debug.Log("Attend son tour pour manger");
+            else
+            {
+                getAnimal().fd(0);
+                if (getAnimal().DEBUG)
+                    Debug.Log("Attend son tour pour manger");
+            }
         }
 
         return true;

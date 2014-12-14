@@ -74,6 +74,8 @@ public class A_RejoindreTroupe : Action
             return true;
         }
 
+        getAnimal().displayStaticEmoticon(getAnimal().questionEmoticonSprite);
+
         if(list.Contains(alpha))
         {
             getAnimal().hideStaticEmoticon();

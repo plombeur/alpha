@@ -19,6 +19,7 @@ public class DetectionClickSourisPourMoveTroupe : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        Debug.Log("Coucou!");
         if(Input.GetMouseButtonDown(1))
             ((MindLoupAlpha)alpha.mind).addActionUserAction(new AU_MoveTo(Camera.main.ScreenToWorldPoint(Input.mousePosition)));
 	}
