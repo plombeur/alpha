@@ -128,11 +128,16 @@ public class A_SeNourrir : Action
         return true;
     }
 
+    public float getDistanceFrom(Vector2 fromPosition)
+    {
+        return Vector2.Distance(fromPosition, cadavre.transform.position);
+    }
+
     public override bool Equals(object obj)
     {
         if (obj as A_SeNourrir != null)
         {
-            return true;// ((A_SeNourrir)obj).cadavre == cadavre;
+            return ((A_SeNourrir)obj).cadavre == cadavre;
         }
         return false;
     }

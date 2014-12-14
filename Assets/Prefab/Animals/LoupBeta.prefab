@@ -303,10 +303,12 @@ MonoBehaviour:
   vie: 100
   direction: 0
   vitesse: 1
+  quantiteDeViande: 0
   prefabSoundWalk: {fileID: 100000, guid: 4b2c4a7fa3469e9488f36a4d554998c0, type: 2}
   normalSprite: {fileID: 21300000, guid: 4b6ec019a93e97f48bec72470082958a, type: 3}
   sleepSprite: {fileID: 21300000, guid: ff2b46c1857bbc04eb3148bc64357fb1, type: 3}
   rugirSprite: {fileID: 0}
+  deathSprite: {fileID: 21300000, guid: 703915111b2ff4b47a3293c0391b6dfe, type: 3}
   sleepEmoticonSprite: {fileID: 21300000, guid: 5c52b88407adcc049a8a40a1d13a864e,
     type: 3}
   questionEmoticonSprite: {fileID: 21300000, guid: d99880357a4ea7b42a62d9543e8f4400,

@@ -39,7 +39,17 @@ public class MindLoup : MindAnimal {
             }
 
             if (plusProcheCadavre != null)
-                actionList.addAction(new A_SeNourrir(plusProcheCadavre));
+            {
+                A_SeNourrir newAction = new A_SeNourrir(plusProcheCadavre);
+                A_SeNourrir actionNourrirPrecedente = actionList.getFirstActionWithSameType<A_SeNourrir>();
+                if(actionNourrirPrecedente == null)
+                    actionList.addAction(newAction);
+                else if(actionNourrirPrecedente.getDistanceFrom(agent.transform.position)>newAction.getDistanceFrom(agent.transform.position))
+                {
+                    actionList.removeAction(actionNourrirPrecedente);
+                    actionList.addAction(newAction);
+                }
+            }
         }
         loup.faim -= Time.deltaTime;
         if (loup.faim <= loup.FAIM_MAX / 2)

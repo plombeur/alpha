@@ -71,6 +71,15 @@ public class ActionPendingList
         this.debug = debug;
     }
 
+
+    public T getFirstActionWithSameType<T>() where T : Action
+    {
+        for (int i = 0; i < actions.Count; ++i)
+            if (actions[i] as T != null)
+                return (T)actions[i];
+        return null;
+    }
+
     public int size()
     {
         return actions.Count;
