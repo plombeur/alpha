@@ -14,7 +14,8 @@ public class GameManager : MonoBehaviour, EventManagerListener
     public CameraController2D cameraController;
     public float slowTimeSpeed = 4;
 
-    public bool gameOver = false;
+    private bool gameOver = false;
+    private bool gameWin = false;
     public bool WolvesModeHunt = false;
 
     public Transform mapDelimiterBottomLeft, mapDelimiterTopRight;
@@ -45,6 +46,10 @@ public class GameManager : MonoBehaviour, EventManagerListener
             Debug.LogError("No ToolTipManager Linked !!!");
         if (cameraController == null)
             Debug.LogError("No Camera Controller 2D Linked !!!");
+        if (informationWindow == null)
+            Debug.LogError("No Information Window Linked !!!");
+        if (objectifWindow == null)
+            Debug.LogError("No Objectif Window Linked !!!");
 
         eventManager.addEventManagerListener(hud);
         eventManager.addEventManagerListener(this);
@@ -158,8 +163,40 @@ public class GameManager : MonoBehaviour, EventManagerListener
     {
         stopTheTime = true;
     }
+    public void stopTime()
+    {
+        stopTheTime = true;
+        Time.timeScale = 0;
+    }
     public void restartTime()
     {
         stopTheTime = false;
+    }
+
+    public void setGameLost(string reasonText)
+    {
+        gameOver = true;
+        gameWin = false;
+    }
+
+    public void setGameWin()
+    {
+        gameOver = true;
+        gameWin = true;
+
+        objectifWindow.hideObjectifMiniWindow();
+        objectifWindow.hideObjectifWindow();
+        GameManager.getInstance().informationWindow.hideInfoPanel();
+
+        stopTime();
+    }
+
+    public bool isGameOver()
+    {
+        return gameOver;
+    }
+    public bool isGameWon()
+    {
+        return gameWin;
     }
 }

@@ -10,7 +10,7 @@ public class InfoWindow : MonoBehaviour
 
 	void Start ()
     {
-        infoWindowPanel.SetActive(false);
+        hideInfoPanel();
 	}
 	
 	void Update () 
@@ -23,7 +23,16 @@ public class InfoWindow : MonoBehaviour
         titleField.text = title;
         textField.text = textContent;
         this.icon.sprite = icon;
-        infoWindowPanel.SetActive(true);
+        showInfoPanel();
         GameManager.getInstance().stopTheTime = true;
+    }
+
+    public void hideInfoPanel()
+    {
+        infoWindowPanel.SetActive(false);
+    }
+    public void showInfoPanel()
+    {
+        infoWindowPanel.SetActive(true);
     }
 }
