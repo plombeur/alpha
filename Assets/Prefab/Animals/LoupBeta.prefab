@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 875d0f50b14ca3e47827478d5df182b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angle: 300
+  angle: 210
   fieldDrawer: {fileID: 0}
 --- !u!114 &11400002
 MonoBehaviour:
@@ -299,8 +299,8 @@ MonoBehaviour:
   perceptHearing: {fileID: 0}
   emoticonSystem: {fileID: 11400008}
   vectorDisplayer: {fileID: 0}
-  VIE_MAX: 100
-  vie: 100
+  VIE_MAX: 50
+  vie: 50
   direction: 0
   vitesse: 1
   quantiteDeViande: 0
