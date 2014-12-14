@@ -15,10 +15,7 @@ public class InfoWindow : MonoBehaviour
 	
 	void Update () 
     {
-        if (infoWindowPanel == null)
-        {
-
-        }
+        
 	}
 
     public void showInfo(string title, string textContent,Sprite icon)
@@ -27,5 +24,6 @@ public class InfoWindow : MonoBehaviour
         textField.text = textContent;
         this.icon.sprite = icon;
         infoWindowPanel.SetActive(true);
+        GameManager.getInstance().stopTheTime = true;
     }
 }

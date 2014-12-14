@@ -9,14 +9,21 @@ public class GameManager : MonoBehaviour, EventManagerListener
     public EventManager eventManager;
     public HUD hud;
     public ToolTipManager toolTipManager;
+    public ObjectifWindow objectifWindow;
+    public InfoWindow informationWindow;
     public CameraController2D cameraController;
+    public float slowTimeSpeed = 4;
 
+    public bool gameOver = false;
     public bool WolvesModeHunt = false;
 
     public Transform mapDelimiterBottomLeft, mapDelimiterTopRight;
     private Rect dimensions;
 
     private Plane groundPlane = new Plane(-Vector3.forward, Vector3.zero);
+
+    public bool stopTheTime = false;
+    private float lastTime = 0;
 
     void Awake()
     {
@@ -52,7 +59,23 @@ public class GameManager : MonoBehaviour, EventManagerListener
 
     void Update()
     {
-
+        float realDeltaTime = Time.realtimeSinceStartup - lastTime;
+        if (stopTheTime)
+        {
+            if (Time.timeScale <= 0.1)
+                Time.timeScale = 0;
+            else
+                Time.timeScale = Mathf.Lerp(Time.timeScale, 0, realDeltaTime * slowTimeSpeed);
+        }
+        else
+        {
+            if (Time.timeScale >= 1)
+                Time.timeScale = 1;
+            else
+                Time.timeScale = Mathf.Lerp(Time.timeScale, 1, realDeltaTime * slowTimeSpeed);
+        }
+        Time.fixedDeltaTime = 0.02F * Time.timeScale;
+        lastTime += realDeltaTime;
     }
 
     public static GameManager getInstance()
@@ -129,5 +152,14 @@ public class GameManager : MonoBehaviour, EventManagerListener
     public bool onMouseButtonUp(int button)
     {
         return false;
+    }
+
+    public void slowAndStopTime()
+    {
+        stopTheTime = true;
+    }
+    public void restartTime()
+    {
+        stopTheTime = false;
     }
 }
