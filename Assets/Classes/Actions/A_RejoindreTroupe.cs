@@ -97,6 +97,7 @@ public class A_RejoindreTroupe : Action
             getAnimal().fd(0.001f,false,false);
         }
         */
+        getActionPendlingList().removeAction(this);
         return true;
     }
 

@@ -366,7 +366,7 @@ public abstract class Animal : Living {
         return false;
     }
 
-    public void blesse(float damage)
+    public virtual void blesse(float damage)
     {
         if (DEBUG)
             Debug.Log("Animal blessé : " + damage);

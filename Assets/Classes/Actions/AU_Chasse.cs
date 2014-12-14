@@ -88,7 +88,7 @@ public class AU_Chasse : A_ActionUser
         {
             List<Living> livings = animal.perceptView.getLiving();
             for(int i=0;i<livings.Count;++i)
-                if ( ( livings[i] as Sheep != null || livings[i] as Rabbit != null ) && ((Animal)livings[i]).targetable())
+                if ( ( livings[i] as Sheep != null || livings[i] as Rabbit != null || livings[i] as Ours != null) && ((Animal)livings[i]).targetable())
                 {
                     target = (Animal)livings[i];
                     cible = ((LoupAlpha)animal).cibler(livings[i]);
