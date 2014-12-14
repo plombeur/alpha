@@ -368,6 +368,8 @@ public abstract class Animal : Living {
 
     public void blesse(float damage)
     {
+        if (DEBUG)
+            Debug.Log("Animal blessé : " + damage);
         vie -= damage;
         if (vie <= 0)
             meurt();

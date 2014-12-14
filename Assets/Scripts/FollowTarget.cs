@@ -21,7 +21,6 @@ public class FollowTarget : MonoBehaviour {
             {
                 Vector3 position = target.GetComponent<Transform>().position;
                 Transform transf = GetComponent<Transform>();
-                position.z -= 10;
                 transf.position = position;
                 time -= 0.04f;
             }

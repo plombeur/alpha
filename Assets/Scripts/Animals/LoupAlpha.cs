@@ -7,6 +7,7 @@ public class LoupAlpha : Loup
     //Pour la chasse
     public GameObject prefabTarget;
     public GameObject prefabBlackTarget;
+    public GameObject prefabYellowTarget;
 
     protected override void onCreate()
     {

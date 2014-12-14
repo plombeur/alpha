@@ -46,6 +46,8 @@ public class A_Fuite : Action
     {
         Animal animal = getAnimal();
 
+        getAnimal().displayStaticEmoticon(getAnimal().exclamationEmoticonSprite);
+
         if(time <= 0)
         {
             time = Random.Range(10, 25) * .1f;

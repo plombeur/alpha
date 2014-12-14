@@ -78,6 +78,18 @@ public class CameraController2D : MonoBehaviour, EventManagerListener
         else if( button == 1)
         {
             Ray mouseRay = camera.ScreenPointToRay(Input.mousePosition);
+
+            RaycastHit2D hit = Physics2D.Raycast(mouseRay.origin, mouseRay.direction);
+            if (hit.collider != null)
+            {
+                LoupBeta beta = hit.collider.gameObject.GetComponent<LoupBeta>();
+                if(beta != null)
+                {
+                    ((MindLoupAlpha)LoupInferieur.alpha.mind).addActionUserAction(new AU_CalmerBeta(beta));
+                    return false;
+                }
+            }
+            
             float distanceCast;
             groundPlane.Raycast(mouseRay, out distanceCast);
             Vector3 worldPosition = mouseRay.GetPoint(distanceCast);

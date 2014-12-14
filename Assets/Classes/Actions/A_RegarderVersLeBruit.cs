@@ -21,6 +21,8 @@ public class A_RegarderVersLeBruit : Action
     {
         Animal animal = getAnimal();
 
+        animal.displayStaticEmoticon(animal.questionEmoticonSprite);
+
         if(animal.GetComponent<PerceptView>() != null)
         {
             List<Living> livings = animal.GetComponent<PerceptView>().getLiving();

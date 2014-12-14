@@ -58,7 +58,7 @@ public class MindLoup : MindAnimal {
         }
         if(loup.faim <= 0)
         {
-            loup.blesse(loup.faim);
+            loup.blesse(-loup.faim);
             loup.faim = 0;
         }
         actionList.addAction(new A_Promenade(((Animal)agent).vitesse));
