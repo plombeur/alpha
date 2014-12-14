@@ -49,7 +49,7 @@ public class A_RejoindreTroupe : Action
 
     protected override bool onUpdate(float deltaTime)
     {
-        if (getAnimal().DEBUG)
+        /*if (getAnimal().DEBUG)
             Debug.Log("A_RejoindreTroupe ...");
         GameObject obj = GameObject.Find("LoupAlpha");
         if (obj == null)
@@ -96,7 +96,7 @@ public class A_RejoindreTroupe : Action
             getAnimal().rt(5);
             getAnimal().fd(0.001f,false,false);
         }
-        
+        */
         return true;
     }
 
