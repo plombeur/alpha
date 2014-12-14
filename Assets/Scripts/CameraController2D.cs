@@ -31,8 +31,6 @@ public class CameraController2D : MonoBehaviour, EventManagerListener
             Vector3 position = transform.position;
             Rect dimensions = GameManager.getInstance().getDimensions();
 
-            Debug.Log(camera.pixelWidth / 2);
-
             float cameraWidthHalf = camera.orthographicSize * camera.aspect;
 
             position.x = Mathf.Clamp(position.x, dimensions.xMin + cameraWidthHalf, dimensions.xMin + dimensions.width - cameraWidthHalf);
@@ -45,6 +43,8 @@ public class CameraController2D : MonoBehaviour, EventManagerListener
             worldPosition = mouseRay.GetPoint(distanceCast);
             lastMousePositonOnWorld = worldPosition;
         }
+        if (!Input.GetMouseButton(0))
+            mouseDown = false;
     }
     void LateUpdate()
     {
@@ -75,34 +75,10 @@ public class CameraController2D : MonoBehaviour, EventManagerListener
             lastMousePositonOnWorld = worldPosition;
             mouseDown = true;
         }
-        else if( button == 1)
-        {
-            Ray mouseRay = camera.ScreenPointToRay(Input.mousePosition);
-
-            RaycastHit2D hit = Physics2D.Raycast(mouseRay.origin, mouseRay.direction);
-            if (hit.collider != null)
-            {
-                LoupBeta beta = hit.collider.gameObject.GetComponent<LoupBeta>();
-                if(beta != null)
-                {
-                    ((MindLoupAlpha)LoupInferieur.alpha.mind).addActionUserAction(new AU_CalmerBeta(beta));
-                    return false;
-                }
-            }
-            
-            float distanceCast;
-            groundPlane.Raycast(mouseRay, out distanceCast);
-            Vector3 worldPosition = mouseRay.GetPoint(distanceCast);
-            ((MindLoupAlpha)LoupInferieur.alpha.mind).addActionUserAction(new AU_Chasse(worldPosition));
-        }
         return false;
     }
     public bool onMouseButtonUp(int button)
     {
-        if (button == 0)
-        {
-            mouseDown = false;
-        }
         return false;
     }
 }

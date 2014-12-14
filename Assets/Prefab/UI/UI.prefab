@@ -1687,7 +1687,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userActionWindow: {fileID: 11400090}
-  alphaWolf: {fileID: 0}
   lifeBar: {fileID: 11400022}
   MoralBar: {fileID: 11400030}
 --- !u!114 &11400088

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, EventManagerListener
 {
     private static GameManager instance;
 
@@ -11,8 +11,12 @@ public class GameManager : MonoBehaviour
     public ToolTipManager toolTipManager;
     public CameraController2D cameraController;
 
+    public bool WolvesModeHunt = false;
+
     public Transform mapDelimiterBottomLeft, mapDelimiterTopRight;
     private Rect dimensions;
+
+    private Plane groundPlane = new Plane(-Vector3.forward, Vector3.zero);
 
     void Awake()
     {
@@ -36,6 +40,7 @@ public class GameManager : MonoBehaviour
             Debug.LogError("No Camera Controller 2D Linked !!!");
 
         eventManager.addEventManagerListener(hud);
+        eventManager.addEventManagerListener(this);
         eventManager.addEventManagerListener(cameraController);
     }
 
@@ -73,4 +78,56 @@ public class GameManager : MonoBehaviour
         return dimensions;
     }
 
+
+    public bool onMouseButtonDown(int button)
+    {
+        if (button == 1)
+        {
+            Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            RaycastHit2D hit = Physics2D.Raycast(mouseRay.origin, mouseRay.direction);
+            if (hit.collider != null)
+            {
+                LoupBeta beta = hit.collider.gameObject.GetComponent<LoupBeta>();
+                if (beta != null)
+                {
+                    GameObject userActionSlapObject = new GameObject();
+                    UserActionSlap slapAction = userActionSlapObject.AddComponent<UserActionSlap>();
+                    slapAction.alphaWolf = alphaWolf;
+                    slapAction.betaWolf = beta;
+                    userActionSlapObject.name = slapAction.getActionLabel();
+                    UserActionManager.getInstance().executeUserAction(slapAction);
+                    return true;
+                }
+            }
+
+            float distanceCast;
+            groundPlane.Raycast(mouseRay, out distanceCast);
+            Vector3 worldPosition = mouseRay.GetPoint(distanceCast);
+            GameObject userActionObject = new GameObject();
+            if (WolvesModeHunt)
+            {
+                UserActionHunt huntAction = userActionObject.AddComponent<UserActionHunt>();
+                huntAction.alphaWolf = alphaWolf;
+                huntAction.position = worldPosition;
+                userActionObject.name = huntAction.getActionLabel();
+                UserActionManager.getInstance().executeUserAction(huntAction);
+            }
+            else
+            {
+                UserActionMoveTo moveAction = userActionObject.AddComponent<UserActionMoveTo>();
+                moveAction.alphaWolf = alphaWolf;
+                moveAction.position = worldPosition;
+                userActionObject.name = moveAction.getActionLabel();
+                UserActionManager.getInstance().executeUserAction(moveAction);
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public bool onMouseButtonUp(int button)
+    {
+        return false;
+    }
 }

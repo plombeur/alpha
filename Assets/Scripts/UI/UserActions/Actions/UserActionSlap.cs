@@ -1,19 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class UserActionMoveTo : UserAction
+public class UserActionSlap : UserAction
 {
     public LoupAlpha alphaWolf;
-    public Vector2 position;
+    public LoupBeta betaWolf;
 
     protected override UserActionResult onExecuteAction()
     {
-       ((MindLoupAlpha) alphaWolf.mind).addActionUserAction(new AU_MoveTo(position));
+        ((MindLoupAlpha)LoupInferieur.alpha.mind).addActionUserAction(new AU_CalmerBeta(betaWolf));
        return UserActionResult.SUCESS;
     }
     public override string getActionLabel()
     {
-        return "Deplacement vers position";
+        return "Calmer loup beta";
     }
     public override bool isCancelable()
     {

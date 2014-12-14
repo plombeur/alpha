@@ -5,7 +5,6 @@ using UnityEngine.EventSystems;
 public class HUD : MonoBehaviour,EventManagerListener
 {
     public UserActionWindow userActionWindow;
-    public LoupAlpha alphaWolf;
 
     public ProgressBar lifeBar;
     public ProgressBar MoralBar;
@@ -17,7 +16,7 @@ public class HUD : MonoBehaviour,EventManagerListener
 
     void Update()
     {
-        lifeBar.progress = alphaWolf.vie / (float)alphaWolf.VIE_MAX * 100;
+        lifeBar.progress = GameManager.getInstance().alphaWolf.vie / (float)GameManager.getInstance().alphaWolf.VIE_MAX * 100;
     }
 
     public bool onMouseButtonDown(int button)
