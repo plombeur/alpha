@@ -9,14 +9,18 @@ public class TipRabbit : ToolTip
     {
         title = "Vous avez croisé un lapin !";
         description = "Petits herbivores d'environ 25cm pour un poids de 400g, les lapins vivent en groupe dans des terriers. Grâce à leurs longues oreilles, ils peuvent détecter les prédateurs de loin.\n\nEn cas d'alerte, il reste immobile pour éviter d'être repéré et ne fuit qu'au dernier moment.\n\nCourant en zigzag pour semer le poursuivant, sa vitesse peut atteindre 48km/h.";
-            
-        m_Memory = mManager.Alpha.GetComponent<Memory>();
-        if (m_Memory == null)
+
+        Transform meute = mManager.Alpha.transform.parent.transform;
+        for (int iChild = 0; iChild < meute.childCount; iChild++)
         {
-            Debug.Log("Pas de mémoire du loup alpha.");
-            Destroy(this.gameObject);
+            m_Memory = meute.GetChild(iChild).GetComponent<Memory>();
+            if (m_Memory == null)
+            {
+                Debug.Log("Pas de mémoire de loup.");
+                Destroy(this.gameObject);
+            }
+            m_Memory.addMemoryListener(this);
         }
-        m_Memory.addMemoryListener(this);
     }
     protected override void checkTrigger()
     {
