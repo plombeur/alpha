@@ -38,7 +38,7 @@ public class AU_CalmerBeta : A_ActionUser
 
         if (goAtk)
         {
-            if (a.animationAttaque(cible, tailleInitiale))
+            if (a.animationAttaque(cible, a.getFaceToDirection(cible.transform.position)))
             {
                 cible.threat = 0;
                 getActionPendlingList().removeAction(this);

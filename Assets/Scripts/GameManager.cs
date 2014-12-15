@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
 
     public bool drawMemoryOnMap = true;
     public GameObject prefabMemoryDrawer;
-    private Dictionary<MemoryBloc, GameObject> memoryDrawers = new Dictionary<MemoryBloc,GameObject>();
+    private Dictionary<MemoryBloc, MemoryDrawer> memoryDrawers = new Dictionary<MemoryBloc, MemoryDrawer>();
 
     void Awake()
     {
@@ -92,8 +92,13 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
         }
         Time.fixedDeltaTime = 0.02F * Time.timeScale;
         lastTime += realDeltaTime;
+        upateMemoryDrawer();
     }
-   
+    private void upateMemoryDrawer()
+    {
+        foreach (MemoryDrawer drawer in memoryDrawers.Values)
+            drawer.icon.transform.position = drawer.target.getLastPosition();
+    }
     public static GameManager getInstance()
     {
         return instance;
@@ -226,15 +231,26 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
         drawer.transform.SetParent(uiWorld.transform);
         drawer.transform.position = bloc.getLastPosition();
         drawer.SetActive(true);
-        memoryDrawers.Add(bloc, drawer);
+        memoryDrawers.Add(bloc, new MemoryDrawer(bloc,drawer));
     }
 
     public void onMemoryRemove(Memory memory, MemoryBloc bloc)
     {
         if (!memoryDrawers.ContainsKey(bloc))
             return;
-        GameObject drawer = memoryDrawers[bloc];
+        MemoryDrawer drawer = memoryDrawers[bloc];
         memoryDrawers.Remove(bloc);
-        Destroy(drawer);
+        Destroy(drawer.icon);
+    }
+}
+struct MemoryDrawer
+{
+   public MemoryBloc target;
+   public GameObject icon;
+
+   public MemoryDrawer(MemoryBloc target, GameObject icon)
+   {
+       this.target = target;
+       this.icon = icon;
     }
 }

@@ -45,7 +45,7 @@ public class A_TaquinerAlpha : Action
 
         if (goAtk)
         {
-            if (a.animationAttaque(cible, tailleInitiale))
+            if (a.animationAttaque(cible, a.getFaceToDirection(cible.transform.position)))
             {
                 GameManager.getInstance().setGameLost("Un loup beta s'est rebellé!");
                 getActionPendlingList().removeAction(this);

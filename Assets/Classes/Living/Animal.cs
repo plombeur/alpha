@@ -336,32 +336,39 @@ public abstract class Animal : Living {
 
     private bool goAtk = true;
     private bool goRetourAtk = false;
-    public bool animationAttaque(Animal cible, Vector3 tailleInitiale)
+    private float tmpDirectionCible = -1;
+    private float timeAtk = .1f;
+    public bool animationAttaque(Animal cible, float directionCible)
     {
+        if (tmpDirectionCible == -1)
+            tmpDirectionCible = directionCible;
         if (goAtk)
         {
-            faceTo(cible);
-            fd(.001f, false, false);
             if (!goRetourAtk)
             {
-                transform.localScale += new Vector3(.1f, .15f, .1f);
-                if (transform.localScale.x >= tailleInitiale.x * 2)
+                direction = tmpDirectionCible;
+                fd(10, false, false);
+                if (timeAtk <= 0)
+                {
+                    timeAtk = .1f;
                     goRetourAtk = true;
+                }
             }
             else
             {
-                transform.localScale -= new Vector3(.05f, .075f, .05f);
-                if (transform.localScale.x <= tailleInitiale.x)
+                direction = tmpDirectionCible + 180;
+                fd(10, false, false);
+                if (timeAtk<=0)
                 {
-                    transform.localScale = tailleInitiale;
                     if (cible.getCurrentAction() as A_Repos != null)
                         ((MindAnimal)cible.mind).removeCurrentAction();
                     goAtk = true;
                     goRetourAtk = false;
+                    tmpDirectionCible = -1;
                     return true;
                 }
-
             }
+            timeAtk -= Time.deltaTime;
         }
         return false;
     }

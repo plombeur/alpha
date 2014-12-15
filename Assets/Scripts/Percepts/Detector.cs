@@ -22,17 +22,22 @@ public class Detector : MonoBehaviourAdapter
 
     public bool isInDetector(Vector3 position)
     {
+        Vector3 delta = position - transform.position;
+        delta.z = 0;
+
+        float scale = Mathf.Max(transform.lossyScale.x, transform.lossyScale.y);
+
+        if (delta.magnitude > GetComponent<CircleCollider2D>().radius * scale)
+            return false;
+
         if (this.angle < 360)
         {
-            float angle = Vector3.Angle(transform.up, position - transform.position);
+            float angle = Vector3.Angle(transform.up, delta);
             if (angle <= (this.angle / 2.0))
                 return true;
         }
         else
-        {
-            if ((position - transform.position).magnitude < GetComponent<CircleCollider2D>().radius)
-                return true;
-        }
+            return true;
         return false;
     }
 
@@ -84,7 +89,11 @@ public class Detector : MonoBehaviourAdapter
         {
             bool removed = false;
             GameObject o = objectsInTemp[index];
-            float angle = Vector3.Angle(transform.up, o.transform.position - transform.position);
+
+            Vector3 direction = o.transform.position - transform.position;
+            direction.z = 0;
+            float angle = Vector3.Angle(transform.up, direction);
+           
             if (angle > (this.angle / 2.0))
             {
                 removed = objectsInTemp.Remove(o);
@@ -99,7 +108,9 @@ public class Detector : MonoBehaviourAdapter
         {
             bool removed = false;
             GameObject o = objectsOutTemp[index];
-            float angle = Vector3.Angle(transform.up, o.transform.position - transform.position);
+            Vector3 direction = o.transform.position - transform.position;
+            direction.z = 0;
+            float angle = Vector3.Angle(transform.up, direction);
             if (angle <= (this.angle / 2.0))
             {
                 removed = objectsOutTemp.Remove(o);
@@ -114,6 +125,8 @@ public class Detector : MonoBehaviourAdapter
         {
             fieldDrawer.material.SetFloat("_angle", angle);
         }
+
+      
     }
    
     protected override void LateUpdate()

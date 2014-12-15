@@ -47,7 +47,7 @@ public class AU_FollowChasse : A_ActionUser
 
                 if(goAtk)
                 {
-                    if (animal.animationAttaque(actionChasse.target, tailleInitiale))
+                    if (animal.animationAttaque(actionChasse.target, animal.getFaceToDirection(actionChasse.target.transform.position)))
                     {
                         actionChasse.target.blesse(10);
                         goAtk = false;
