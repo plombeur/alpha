@@ -12,6 +12,8 @@ public class TutorialManager : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        disableGameplay();
+
         if (Objectifs.Length == 0)
         {
             //Debug.Log("Aucun objectif.");
@@ -73,5 +75,10 @@ public class TutorialManager : MonoBehaviour {
         }
         //Debug.Log("Pas d'autre objectif.");
         return false;
+    }
+
+    private void disableGameplay() {
+        Loup.GESTION_FAIM = false;
+        LoupBeta.GESTION_THREAT = false;
     }
 }

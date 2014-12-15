@@ -10,6 +10,8 @@ public class Hunt : Objectif {
     // Use this for initialization
     protected void Start()
     {
+        detail = "Pour te nourrir, tu dois chasser le mouton entouré d'un cercle orange.\n\nPour se faire, passe en mode \"Chasse\" (icône rouge de ta barre d'action) et déplace ta meute en direction du mouton.\n\nTes loups s'attaqueront automatiquement au mouton lorsqu'ils seront à portée.";
+
         m_Alpha = null;
         foreach(Transform child in GameManager.getInstance().tutorialManager.Meute.transform) {
             if (child.gameObject.name == "LoupAlpha")

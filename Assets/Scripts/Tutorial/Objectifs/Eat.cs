@@ -1,23 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Drink : Objectif {
-    public GameObject Meute;
-    public float InitialRatio;
-    public float AchieveRatio;
+public class Eat : Objectif {
+    public float HungryRatio;
+    public float NoMoreHungryRatio;
     private LoupAlpha m_OwnScript;
 
     // Use this for initialization
     void Start()
     {
-        InitialRatio = Mathf.Clamp(InitialRatio, 0, 1);
-        AchieveRatio = Mathf.Clamp(AchieveRatio, 0, InitialRatio);
+        NoMoreHungryRatio = Mathf.Clamp(NoMoreHungryRatio, 0, 1);
+        HungryRatio = Mathf.Clamp(HungryRatio, 0, NoMoreHungryRatio);
 
-        foreach (Transform child in Meute.transform)
+        foreach (Transform child in GameManager.getInstance().tutorialManager.Meute.transform)
         {
             if (child.gameObject.name == "LoupAlpha")
             {
-                //Debug.Log("Alpha found");
                 m_OwnScript = child.GetComponent<LoupAlpha>();
             }
         }
@@ -26,6 +24,8 @@ public class Drink : Objectif {
             //Debug.Log("Aucun alpha ????");
             Destroy(this);
         }
+
+        detail = "Maintenant que tu sais chasser, tu dois nourrir tes loups !\n\nL'icône de la cuisse de mouton au dessus de tes loups indique que ce loup à faim. Pour les nourrir, place les autour des carcasses (comme le mouton que tu viens de tuer) et attend que l'icône disparaisse.";
 
         base.Start();
     }
@@ -38,7 +38,8 @@ public class Drink : Objectif {
 
     void initialize()
     {
-        //m_OwnScript.soif = InitialRatio * m_OwnScript.passoif;
+        LoupBeta.GESTION_FAIM = true;
+        m_OwnScript.faim = HungryRatio * m_OwnScript.FAIM_MAX;
     }
 
     /**
@@ -47,11 +48,11 @@ public class Drink : Objectif {
      * */
     protected override void checkAchievement()
     {
-        /*if (m_OwnScript.soif <= AchieveRatio * m_OwnScript.passoif)
+        if (m_OwnScript.faim >= NoMoreHungryRatio * m_OwnScript.FAIM_MAX)
         {
             //Debug.Log("Achieved.");
             achieve();
-        }*/
+        }
     }
 
     public override void activate()

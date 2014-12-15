@@ -340,7 +340,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &100040
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,6 +591,22 @@ GameObject:
   - 114: {fileID: 11400088}
   m_Layer: 0
   m_Name: TipStart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &100070
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400020}
+  - 114: {fileID: 11400090}
+  m_Layer: 0
+  m_Name: MoveObjectif
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1251,6 +1267,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!1 &100148
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400036}
+  - 114: {fileID: 11400194}
+  m_Layer: 0
+  m_Name: EatObjectif
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &400000
 Transform:
   m_ObjectHideFlags: 1
@@ -1384,6 +1416,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 400012}
   m_RootOrder: 0
+--- !u!4 &400020
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100070}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400034}
+  m_RootOrder: 0
 --- !u!4 &400022
 Transform:
   m_ObjectHideFlags: 1
@@ -1445,7 +1489,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400034}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!4 &400032
 Transform:
   m_ObjectHideFlags: 1
@@ -1457,7 +1501,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400034}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!4 &400034
 Transform:
   m_ObjectHideFlags: 1
@@ -1468,10 +1512,24 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 400020}
   - {fileID: 400032}
   - {fileID: 400030}
+  - {fileID: 400036}
   m_Father: {fileID: 400004}
   m_RootOrder: 1
+--- !u!4 &400036
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100148}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400034}
+  m_RootOrder: 3
 --- !u!20 &2000000
 Camera:
   m_ObjectHideFlags: 1
@@ -2727,6 +2785,20 @@ MonoBehaviour:
   title: 
   description: 
   icon: {fileID: 21300000, guid: 53f92419c6b26ae48845b8d9b1f9dc84, type: 3}
+--- !u!114 &11400090
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b43d9b3540dc8943a8692a0226366b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: "D\xE9placements"
+  objectif: "* D\xE9place ta meute."
+  detail: 
 --- !u!114 &11400092
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3211,7 +3283,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 22400030}
   m_Direction: 2
   m_Value: 1
-  m_Size: .531956375
+  m_Size: .516647041
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3759,7 +3831,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 22400098}
   m_Direction: 2
   m_Value: 1
-  m_Size: .732196093
+  m_Size: .711124063
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3825,7 +3897,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Objectifs:
+  - {fileID: 11400090}
   - {fileID: 11400192}
+  - {fileID: 11400194}
   - {fileID: 11400190}
   Meute: {fileID: 0}
   Marqueur: {fileID: 100000, guid: cbb282211031719408985de50fd97c5b, type: 2}
@@ -3842,7 +3916,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: "Gestion des rivalit\xE9s."
   objectif: "* Montre ta sup\xE9riorit\xE9 au loup rebelle."
-  detail: A faire !
+  detail: 
   InitialThreatRatio: .5
   AchieveThreatRatio: .400000006
 --- !u!114 &11400192
@@ -3858,8 +3932,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: "La premi\xE8re chasse."
   objectif: '* Chasse le mouton.'
-  detail: A faire !
+  detail: 
   Mouton: {fileID: 100012, guid: caca124e3ccf059438dce9d514c21cf0, type: 2}
+--- !u!114 &11400194
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be2a7849b9296594cbe6e09204d5023a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Nourriture
+  objectif: '* Nourris ton loup alpha.'
+  detail: 
+  HungryRatio: .300000012
+  NoMoreHungryRatio: .949999988
 --- !u!222 &22200000
 CanvasRenderer:
   m_ObjectHideFlags: 1

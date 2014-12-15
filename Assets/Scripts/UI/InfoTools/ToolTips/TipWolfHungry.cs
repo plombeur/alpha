@@ -9,9 +9,7 @@ public class TipWolfHungry : ToolTip
     void Awake()
     {
         title = "Un membre de votre meute à faim !";
-        description = "Il faut ordonner à votre meute d'aller chasser, sinon il va mourir de faim...";
-        
-        //m_Alpha = mManager.Alpha.GetComponent<LoupAlpha>();
+        description = "Il faut ordonner à votre meute d'aller chasser, sinon il va mourir de faim...\n\nRappel : Pour chasser, pense à activer le mode \"chasse\" (icône rouge de ta barre d'action) !";
     }
 
     /*void Update()
@@ -22,21 +20,23 @@ public class TipWolfHungry : ToolTip
 
     protected override void checkTrigger()
     {
-        bool isHungry = false;
-        Transform meute = GameManager.getInstance().toolTipManager.Alpha.transform.parent.transform;
-        for (int iChild = 0; iChild < meute.childCount; iChild++)
+        if (Loup.getGESTION_FAIM())
         {
-            Loup currentLoup = meute.GetChild(iChild).GetComponent<Loup>();
-            if (currentLoup.faim <= 50)
+            bool isHungry = false;
+            Transform meute = GameManager.getInstance().toolTipManager.Alpha.transform.parent.transform;
+            for (int iChild = 0; iChild < meute.childCount; iChild++)
             {
-                isHungry = true;
+                Loup currentLoup = meute.GetChild(iChild).GetComponent<Loup>();
+                if (currentLoup.faim <= 50)
+                {
+                    isHungry = true;
+                }
             }
+            if (isHungry) display();
         }
-        if (isHungry) display();
     }
 
     protected override void checkMemoryModificationTrigger(MemoryBloc bloc)
     {
-
     }
 }

@@ -8,7 +8,7 @@ public class TipRabbit : ToolTip
     void Awake()
     {
         title = "Vous avez croisé un lapin !";
-        description = "Petits herbivores d'environ 25cm pour un poids de 400g, les lapins vivent en groupe dans des terriers. Grâce à leurs longues oreilles, ils peuvent détecter les prédateurs de loin.\n\nEn cas d'alerte, il reste immobile pour éviter d'être repéré et ne fuit qu'au dernier moment.\n\nCourant en zigzag pour semer le poursuivant, sa vitesse peut atteindre 48km/h.";
+        description = "Petits herbivores d'environ 25cm pour un poids d'environ 400g, les lapins vivent en groupe dans des terriers. Grâce à leurs longues oreilles, ils peuvent détecter les prédateurs de loin.\n\nEn cas d'alerte, il reste immobile pour éviter d'être repéré et ne fuit qu'au dernier moment.\n\nCourant en zigzag pour semer le poursuivant, sa vitesse peut atteindre 48km/h.";
 
         Transform meute = GameManager.getInstance().toolTipManager.Alpha.transform.parent.transform;
         for (int iChild = 0; iChild < meute.childCount; iChild++)
