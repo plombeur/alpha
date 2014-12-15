@@ -121,11 +121,10 @@ public class AU_Chasse : A_ActionUser
             {
                 if(atkDelay > 0)
                 {
-                    animal.setAgentToDontDodge(target);
                     animal.faceTo(target);
-                    animal.fd(target.vitesse);
+                    animal.fd(target.vitesse,false,false);
                 }
-                else if (animal.animationAttaque(target, animal.getFaceToDirection(target.transform.position)))
+                else if (atkDelay <= 0 && animal.animationAttaque(target, animal.getFaceToDirection(target.transform.position)))
                 {
                     atkDelay = 1;
                     target.blesse(10);
