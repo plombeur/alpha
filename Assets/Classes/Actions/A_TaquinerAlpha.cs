@@ -34,6 +34,7 @@ public class A_TaquinerAlpha : Action
 
     protected override bool onUpdate(float deltaTime)
     {
+        GameManager.getInstance().setCameraFocus(getAnimal().transform);
         Animal a = getAnimal();
         if (!goAtk && Vector2.Distance(a.GetComponent<Transform>().position, cible.GetComponent<Transform>().position) <= 1)
         {
