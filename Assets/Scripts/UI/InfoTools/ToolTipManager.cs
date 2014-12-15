@@ -34,7 +34,7 @@ public class ToolTipManager : MonoBehaviour
     public void askDisplay(ToolTip tip)
     {
         m_Tips.Push(tip);        
-        if (m_CurrentTip == null || !m_CurrentTip.enabled)
+        if (m_CurrentTip == null)
         {
             getNextTip();
             //Debug.Log("Current : " + m_CurrentTip.name);
@@ -72,6 +72,7 @@ public class ToolTipManager : MonoBehaviour
         if (m_CurrentTip != null)
         {
             m_CurrentTip.enabled = false;
+            m_CurrentTip = null;
         }
         if (m_Tips.Count != 0)
         {

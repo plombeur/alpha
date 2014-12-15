@@ -56,7 +56,7 @@ public class Hunt : Objectif {
 
         m_Script = m_Mouton.GetComponent<Animal>();
 
-        GameManager.getInstance().se
+        GameManager.getInstance().setCameraFocus(m_Marqueur.transform);
     }
 
     /**
