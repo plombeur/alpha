@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour, EventManagerListener
     public ToolTipManager toolTipManager;
     public ObjectifWindow objectifWindow;
     public InfoWindow informationWindow;
+    public TutorialManager tutorialManager;
     public CameraController2D cameraController;
     public float slowTimeSpeed = 4;
 
@@ -50,6 +51,8 @@ public class GameManager : MonoBehaviour, EventManagerListener
             Debug.LogError("No Information Window Linked !!!");
         if (objectifWindow == null)
             Debug.LogError("No Objectif Window Linked !!!");
+        if (tutorialManager == null)
+            Debug.LogError("No Tutorial Manager Linked !!!");
 
         eventManager.addEventManagerListener(hud);
         eventManager.addEventManagerListener(this);
