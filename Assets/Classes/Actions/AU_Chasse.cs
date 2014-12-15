@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class AU_Chasse : A_ActionUser
 {
-    public Vector2 targetPosition;
+    public Vector3 targetPosition;
     private GameObject ciblePosition;
     public Animal target;
     private GameObject cible;
@@ -62,7 +62,10 @@ public class AU_Chasse : A_ActionUser
             atkDelay -= deltaTime;
 
         if (ciblePosition != null)
+        {
+            targetPosition.z = 50;
             ciblePosition.transform.position = targetPosition;
+        }
 
         Animal animal = getAnimal();
 

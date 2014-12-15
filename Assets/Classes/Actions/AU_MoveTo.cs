@@ -39,7 +39,9 @@ public class AU_MoveTo : A_ActionUser
     protected override bool onUpdate(float deltaTime)
     {
         if (ciblePosition != null)
-            ciblePosition.transform.position = new Vector2(xTarget,yTarget);
+        {
+            ciblePosition.transform.position = new Vector3(xTarget, yTarget, 50);
+        }
         if(timeRugissement > 0)
         {
             getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().rugirSprite;
