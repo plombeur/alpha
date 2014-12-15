@@ -97,7 +97,12 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
     private void upateMemoryDrawer()
     {
         foreach (MemoryDrawer drawer in memoryDrawers.Values)
-            drawer.icon.transform.position = drawer.target.getLastPosition();
+        {
+            Vector3 position = drawer.target.getLastPosition();
+            position.z = drawer.icon.transform.position.z;
+            drawer.icon.transform.position = position;
+
+        }
     }
     public static GameManager getInstance()
     {
@@ -229,7 +234,9 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
         GameObject drawer = GameObject.Instantiate(prefabMemoryDrawer) as GameObject;
         drawer.transform.GetChild(0).GetComponent<Image>().sprite = bloc.getEntity().GetComponent<SpriteRenderer>().sprite;
         drawer.transform.SetParent(uiWorld.transform);
-        drawer.transform.position = bloc.getLastPosition();
+        Vector3 position = bloc.getLastPosition();
+        position.z = drawer.transform.position.z;
+        drawer.transform.position = position;
         drawer.SetActive(true);
         memoryDrawers.Add(bloc, new MemoryDrawer(bloc,drawer));
     }
