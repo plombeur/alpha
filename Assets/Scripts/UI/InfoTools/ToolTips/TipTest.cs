@@ -5,7 +5,7 @@ public class TipTest : ToolTip {
     float timer;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         timer = 5.0f;
     }

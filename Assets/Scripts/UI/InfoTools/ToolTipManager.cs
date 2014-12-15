@@ -25,10 +25,7 @@ public class ToolTipManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.getInstance().stopTheTime)
-        {
-            displayToolTip();
-        }
+       
     }
 
     /**
@@ -49,25 +46,9 @@ public class ToolTipManager : MonoBehaviour
      * */
     public void displayToolTip()
     {
-        if (freezeTime())
-        {
-            displayToolTipDescription();
-        }
+        displayToolTipDescription();
     }
-    /**
-     * Slow the time till pause and change the display color to smoothly appear.
-     * */
-    private bool freezeTime()
-    {
-        bool isFrozen = false;
-        GameManager.getInstance().slowAndStopTime();
-        if (GameManager.getInstance().stopTheTime)
-        {
-            isFrozen = true;
-        }
-   
-        return isFrozen;
-    }
+  
     /**
      * Display the current TollTip.
      * */

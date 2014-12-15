@@ -60,6 +60,8 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
             Debug.LogError("No Objectif Window Linked !!!");
         if (tutorialManager == null)
             Debug.LogError("No Tutorial Manager Linked !!!");
+        if (uiWorld == null)
+            Debug.LogError("No UI World Linked !!!");
 
         eventManager.addEventManagerListener(hud);
         eventManager.addEventManagerListener(this);
@@ -69,7 +71,6 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
     void Start()
     {
         alphaWolf.GetComponent<Memory>().addMemoryListener(this);
-
     }
 
     void Update()

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class TipWolfDead : ToolTip
 {
 
-    void Start()
+    void Awake()
     {
         title = "Un membre de votre meute est mort !";
         description = "Vos loups ne sont pas immortels ! Cet évenement pousse votre meute à douter de votre position de chef…";

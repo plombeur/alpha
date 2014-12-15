@@ -6,7 +6,7 @@ public class TipWolfHungry : ToolTip
 {
     LoupAlpha m_Alpha;
 
-    void Start()
+    void Awake()
     {
         title = "Un membre de votre meute à faim !";
         description = "Il faut ordonner à votre meute d'aller chasser, sinon il va mourir de faim...";
