@@ -2,22 +2,22 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class A_Taquiner : Action
+public class A_TaquinerAlpha : Action
 {
     private Loup cible;
     private bool goAtk = false;
     private bool goRetourAtk = false;
     private Vector3 tailleInitiale;
 
-    public A_Taquiner(Loup cible)
-        : base("A_Taquiner")
+    public A_TaquinerAlpha()
+        : base("A_TaquinerAlpha")
     {
-        this.cible = cible;
+        this.cible = LoupInferieur.alpha;
     }
 
     public override float getPriority()
     {
-        return 0.1f;
+        return 300;
     }
 
     protected override bool onStart(float deltaTime)
@@ -47,6 +47,7 @@ public class A_Taquiner : Action
         {
             if (a.animationAttaque(cible, tailleInitiale))
             {
+                GameManager.getInstance().setGameLost("Un loup beta s'est rebellé!");
                 getActionPendlingList().removeAction(this);
                 return true;
             }
@@ -67,8 +68,8 @@ public class A_Taquiner : Action
             return false;
         }
 
-        A_Taquiner action = obj as A_Taquiner;
-        return action != null && cible == action.cible;
+        A_TaquinerAlpha action = obj as A_TaquinerAlpha;
+        return action != null;
     }
 }
 

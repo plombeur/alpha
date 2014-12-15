@@ -14,6 +14,10 @@ public class MindLoupBeta : MindLoupInferieur
         {
             LoupBeta beta = (LoupBeta)agent;
             beta.threat += Mathf.Min(Time.deltaTime * beta.getAggressivite(), beta.THREAT_MAX - beta.threat);
+            if(beta.threat >= beta.THREAT_MAX)
+            {
+                actionList.addAction(new A_TaquinerAlpha());
+            }
             if (!worldBarInit)
             {
                 UIWorld.getInstance().registerWorldLifeThreatBar((LoupBeta)agent);

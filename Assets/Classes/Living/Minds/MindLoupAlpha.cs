@@ -10,6 +10,11 @@ public class MindLoupAlpha : MindLoup
 
     public override void vivre()
     {
+        LoupAlpha alpha = (LoupAlpha)agent;
+        if(alpha.vie <= 0)
+        {
+            GameManager.getInstance().setGameLost("Le loup alpha est malheurement mort!");
+        }
         base.vivre();
     }
 
