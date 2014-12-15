@@ -10,30 +10,23 @@ public class ToolTipManager : MonoBehaviour
     private ToolTip m_CurrentTip;
     private InfoWindow m_DisplayerScript;
 
-    private bool m_isFreezing;
-    public float toFreezeTime;
-    private float m_timer;
-
     // Use this for initialization
     void Start()
     {
         m_Tips = new Stack<ToolTip>();
         m_CurrentTip = null;
-        m_isFreezing = false;
         m_DisplayerScript = Displayer.GetComponent<InfoWindow>();
         if (m_DisplayerScript == null)
         {
             Debug.Log("Script missing (InfoWindow)");
             Destroy(this);
         }
-        toFreezeTime = Mathf.Clamp(toFreezeTime, 0.0f, 5.0f);
-        m_timer = toFreezeTime;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (m_isFreezing)
+        if (GameManager.getInstance().stopTheTime)
         {
             displayToolTip();
         }
@@ -57,7 +50,6 @@ public class ToolTipManager : MonoBehaviour
      * */
     public void displayToolTip()
     {
-        m_isFreezing = true;
         if (freezeTime())
         {
             displayToolTipDescription();
@@ -69,20 +61,12 @@ public class ToolTipManager : MonoBehaviour
     private bool freezeTime()
     {
         bool isFrozen = false;
-        if (Time.timeScale == 0.0F)
+        GameManager.getInstance().slowAndStopTime();
+        if (GameManager.getInstance().stopTheTime)
         {
             isFrozen = true;
         }
-        else if (Time.timeScale < 0.25F)
-        {
-            Time.timeScale = 0.0F;
-            isFrozen = true;
-        }
-        else
-        {
-            m_timer -= Time.deltaTime;
-            Time.timeScale = m_timer / toFreezeTime;
-        }
+   
         return isFrozen;
     }
     /**
@@ -104,7 +88,7 @@ public class ToolTipManager : MonoBehaviour
         }
         else
         {
-            m_isFreezing = false;
+            GameManager.getInstance().restartTime();
         }
     }
 
@@ -120,8 +104,7 @@ public class ToolTipManager : MonoBehaviour
             //Debug.Log("Next tip !");
             return true;
         }
-        m_timer = toFreezeTime;
-        Time.timeScale = 1.0F;
+
         return false;
     }
 }

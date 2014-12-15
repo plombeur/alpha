@@ -127,12 +127,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: "Gestion des rivalit\xE9s."
-  objectif: "Montre ta sup\xE9riorit\xE9 au loup rebelle."
+  objectif: "* Montre ta sup\xE9riorit\xE9 au loup rebelle."
   detail: A faire !
   m_Manager: {fileID: 11400004}
   Meute: {fileID: 0}
-  InitialThreatRatio: .800000012
-  AchieveThreatRatio: .200000003
+  InitialThreatRatio: .5
+  AchieveThreatRatio: .400000006
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -161,9 +161,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b131bbe7d574dd49abac0e7f7ef7dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Displayer: {fileID: 0}
   Objectifs:
   - {fileID: 11400000}
+  - {fileID: 11400002}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1

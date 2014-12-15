@@ -3,10 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class TutorialManager : MonoBehaviour {
-    public GameObject Displayer;
     public Objectif[] Objectifs;
     private int m_CurrentIndex;
-    private InfoWindow m_DisplayerScript;
+    private ObjectifWindow m_DisplayerScript;
 
     // Use this for initialization
     void Start()
@@ -17,12 +16,12 @@ public class TutorialManager : MonoBehaviour {
             Destroy(this);
         }
         m_CurrentIndex = -1;
-        /*m_DisplayerScript = Displayer.GetComponent<InfoWindow>();
+        m_DisplayerScript = GameManager.getInstance().objectifWindow;
         if (m_DisplayerScript == null)
         {
-            Debug.Log("Script missing (InfoWindow)");
+            Debug.Log("Script missing (ObjectifWindow)");
             Destroy(this);
-        }*/
+        }
         achieve();
     }
 
@@ -36,6 +35,12 @@ public class TutorialManager : MonoBehaviour {
      * */
     public void displayObjectif(Objectif toDisplay)
     {
+        if (toDisplay == null)
+        {
+            m_DisplayerScript.setObjectif(null, null, null);
+        }
+        else 
+            m_DisplayerScript.setObjectif(toDisplay.title, toDisplay.detail, toDisplay.objectif);
     }
     /**
      * Called by the GUI to display the next ToolTip if existing.
