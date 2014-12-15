@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
     public EventManager eventManager;
     public HUD hud;
     public UIWorld uiWorld;
+    public GameObject uiWorldPostFog;
     public ToolTipManager toolTipManager;
     public ObjectifWindow objectifWindow;
     public InfoWindow informationWindow;
@@ -233,7 +234,7 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
             return;
         GameObject drawer = GameObject.Instantiate(prefabMemoryDrawer) as GameObject;
         drawer.transform.GetChild(0).GetComponent<Image>().sprite = bloc.getEntity().GetComponent<SpriteRenderer>().sprite;
-        drawer.transform.SetParent(uiWorld.transform);
+        drawer.transform.SetParent(uiWorldPostFog.transform);
         Vector3 position = bloc.getLastPosition();
         position.z = drawer.transform.position.z;
         drawer.transform.position = position;
