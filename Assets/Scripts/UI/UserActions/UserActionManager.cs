@@ -66,6 +66,14 @@ public class UserActionManager
         else
             unlockUserActions();
     }
+    public void addUserActionListener(UserActionListener listener)
+    {
+        listeners.Add(listener);
+    }
+    public void removeUserActionListener(UserActionListener listener)
+    {
+        listeners.Remove(listener);
+    }
 }
 
 public interface UserActionListener
