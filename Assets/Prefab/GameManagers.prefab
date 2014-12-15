@@ -1641,6 +1641,7 @@ MonoBehaviour:
   alphaWolf: {fileID: 0}
   eventManager: {fileID: 11400000}
   hud: {fileID: 11400108}
+  uiWorld: {fileID: 0}
   toolTipManager: {fileID: 11400052}
   objectifWindow: {fileID: 11400032}
   informationWindow: {fileID: 11400166}
@@ -1651,6 +1652,8 @@ MonoBehaviour:
   mapDelimiterBottomLeft: {fileID: 0}
   mapDelimiterTopRight: {fileID: 0}
   stopTheTime: 0
+  drawMemoryOnMap: 1
+  prefabMemoryDrawer: {fileID: 0}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1

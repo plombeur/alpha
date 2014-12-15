@@ -54,9 +54,9 @@ public class Threat : Objectif {
     {
         m_OwnScript.threat = InitialThreatRatio * m_OwnScript.THREAT_MAX;
 
-        GameObject marqueur = Instantiate(m_Manager.Marqueur, m_OwnScript.transform.position, m_OwnScript.transform.rotation) as GameObject;
-        marqueur.transform.parent = m_OwnScript.transform;
-        marqueur.transform.localPosition = Vector3.zero;
+        m_Marqueur = Instantiate(m_Manager.Marqueur, m_OwnScript.transform.position, m_OwnScript.transform.rotation) as GameObject;
+        m_Marqueur.transform.parent = m_OwnScript.transform;
+        m_Marqueur.transform.localPosition = Vector3.zero;
     }
 
     /**

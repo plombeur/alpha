@@ -6,6 +6,7 @@ public class Objectif : MonoBehaviour {
     public string objectif;
     public string detail;
     protected TutorialManager m_Manager;
+    protected GameObject m_Marqueur;
 
     // Use this for initialization
     protected void Start()
@@ -37,6 +38,10 @@ public class Objectif : MonoBehaviour {
     protected void achieve()
     {
         m_Manager.achieve();
+        if (m_Marqueur != null)
+        {
+            Destroy(m_Marqueur);
+        }
         this.enabled = false;
     }
 

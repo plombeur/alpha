@@ -48,9 +48,9 @@ public class Hunt : Objectif {
         //Debug.Log("Instantiate");
         m_Mouton = Instantiate(Mouton, pos, m_Alpha.transform.rotation) as GameObject;
 
-        GameObject marqueur = Instantiate(m_Manager.Marqueur, pos, m_Alpha.transform.rotation) as GameObject;
-        marqueur.transform.parent = m_Mouton.transform;
-        marqueur.transform.localPosition = Vector3.zero;
+        m_Marqueur = Instantiate(m_Manager.Marqueur, pos, m_Alpha.transform.rotation) as GameObject;
+        m_Marqueur.transform.parent = m_Mouton.transform;
+        m_Marqueur.transform.localPosition = Vector3.zero;
 
         m_Script = m_Mouton.GetComponent<Animal>();
     }
