@@ -35,6 +35,10 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
     public GameObject prefabMemoryDrawer;
     private Dictionary<MemoryBloc, MemoryDrawer> memoryDrawers = new Dictionary<MemoryBloc, MemoryDrawer>();
 
+    public void setCameraFocus(Transform transform)
+    {
+        cameraController.setFollowTarget(transform);
+    }
     void Awake()
     {
         instance = this;
