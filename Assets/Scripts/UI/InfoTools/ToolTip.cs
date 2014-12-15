@@ -7,6 +7,8 @@ public class ToolTip : MonoBehaviour, MemoryListener
     public string description;
     public Sprite icon;
 
+    public bool isActivatedElsewhere = false;
+
     // Use this for initialization
     protected void Start()
     {

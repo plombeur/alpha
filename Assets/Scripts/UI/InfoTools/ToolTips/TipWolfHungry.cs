@@ -8,6 +8,7 @@ public class TipWolfHungry : ToolTip
 
     void Awake()
     {
+        isActivatedElsewhere = true;
         title = "Un membre de votre meute à faim !";
         description = "Il faut ordonner à votre meute d'aller chasser, sinon il va mourir de faim...\n\nRappel : Pour chasser, pense à activer le mode \"chasse\" (icône rouge de ta barre d'action) !";
     }
@@ -20,7 +21,7 @@ public class TipWolfHungry : ToolTip
 
     protected override void checkTrigger()
     {
-        if (Loup.getGESTION_FAIM())
+        if (Loup.GESTION_FAIM)
         {
             bool isHungry = false;
             Transform meute = GameManager.getInstance().toolTipManager.Alpha.transform.parent.transform;

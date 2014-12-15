@@ -4,6 +4,8 @@ using System.Collections;
 public class Eat : Objectif {
     public float HungryRatio;
     public float NoMoreHungryRatio;
+    public ToolTip TipHungry;
+
     private LoupAlpha m_OwnScript;
 
     // Use this for initialization
@@ -51,6 +53,7 @@ public class Eat : Objectif {
         if (m_OwnScript.faim >= NoMoreHungryRatio * m_OwnScript.FAIM_MAX)
         {
             //Debug.Log("Achieved.");
+            StartCoroutine(enableTip());
             achieve();
         }
     }
@@ -60,5 +63,11 @@ public class Eat : Objectif {
         //Debug.Log("Activate fils");
         initialize();
         base.activate();
+    }
+
+    IEnumerator enableTip()
+    {
+        yield return new WaitForSeconds(1.0f);
+        TipHungry.enabled = true;
     }
 }

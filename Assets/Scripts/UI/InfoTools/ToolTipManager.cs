@@ -34,9 +34,10 @@ public class ToolTipManager : MonoBehaviour
     public void askDisplay(ToolTip tip)
     {
         m_Tips.Push(tip);        
-        if (m_CurrentTip == null)
+        if (m_CurrentTip == null || !m_CurrentTip.enabled)
         {
             getNextTip();
+            //Debug.Log("Current : " + m_CurrentTip.name);
             displayToolTip();
         }
     }
@@ -46,15 +47,8 @@ public class ToolTipManager : MonoBehaviour
      * */
     public void displayToolTip()
     {
-        displayToolTipDescription();
-    }
-  
-    /**
-     * Display the current TollTip.
-     * */
-    private void displayToolTipDescription()
-    {
         m_DisplayerScript.showInfo(m_CurrentTip.title, m_CurrentTip.description, m_CurrentTip.icon);
+        //Debug.Log("Displaying : " + m_CurrentTip.name);
     }
     /**
      * Called by the GUI to display the next ToolTip if existing.

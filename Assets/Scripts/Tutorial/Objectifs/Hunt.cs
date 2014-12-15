@@ -44,8 +44,8 @@ public class Hunt : Objectif {
             return;
         }
         Vector2 pos = new Vector2();
-        pos.x = m_Alpha.transform.position.x + Random.Range(-7, 7);
-        pos.y = m_Alpha.transform.position.y + Random.Range(-7, 7);
+        pos.x = m_Alpha.transform.position.x + Random.Range(-5, 5);
+        pos.y = m_Alpha.transform.position.y + Random.Range(-5, 5);
 
         //Debug.Log("Instantiate");
         m_Mouton = Instantiate(Mouton, pos, m_Alpha.transform.rotation) as GameObject;
@@ -55,6 +55,8 @@ public class Hunt : Objectif {
         m_Marqueur.transform.localPosition = Vector3.zero;
 
         m_Script = m_Mouton.GetComponent<Animal>();
+
+        GameManager.getInstance().se
     }
 
     /**

@@ -57,7 +57,7 @@ public class Move : Objectif, UserActionListener
     {
         yield return new WaitForFixedUpdate();
         UserActionManager.getInstance().removeUserActionListener(this);
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(4.0f);
         achieve();
     }
 }
