@@ -19,6 +19,11 @@ public abstract class MindAnimal : Mind
         if (animal.estMort())
         {
             animal.meurt();
+            if(animal.quantiteDeViande <= 0)
+            {
+                Vector2 positionDuParadis = new Vector2(-5000, -5000);
+                animal.transform.position = positionDuParadis;
+            }
             return;
         }
 

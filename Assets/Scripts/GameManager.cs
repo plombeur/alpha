@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
     public EventManager eventManager;
     public HUD hud;
     public UIWorld uiWorld;
+    public GameObject uiWorldPostFog;
     public ToolTipManager toolTipManager;
     public ObjectifWindow objectifWindow;
     public InfoWindow informationWindow;
@@ -34,6 +35,10 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
     public GameObject prefabMemoryDrawer;
     private Dictionary<MemoryBloc, MemoryDrawer> memoryDrawers = new Dictionary<MemoryBloc, MemoryDrawer>();
 
+    public void setCameraFocus(Transform transform)
+    {
+        cameraController.setFollowTarget(transform);
+    }
     void Awake()
     {
         instance = this;
@@ -97,7 +102,12 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
     private void upateMemoryDrawer()
     {
         foreach (MemoryDrawer drawer in memoryDrawers.Values)
-            drawer.icon.transform.position = drawer.target.getLastPosition();
+        {
+            Vector3 position = drawer.target.getLastPosition();
+            position.z = drawer.icon.transform.position.z;
+            drawer.icon.transform.position = position;
+
+        }
     }
     public static GameManager getInstance()
     {
@@ -228,8 +238,10 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
             return;
         GameObject drawer = GameObject.Instantiate(prefabMemoryDrawer) as GameObject;
         drawer.transform.GetChild(0).GetComponent<Image>().sprite = bloc.getEntity().GetComponent<SpriteRenderer>().sprite;
-        drawer.transform.SetParent(uiWorld.transform);
-        drawer.transform.position = bloc.getLastPosition();
+        drawer.transform.SetParent(uiWorldPostFog.transform);
+        Vector3 position = bloc.getLastPosition();
+        position.z = drawer.transform.position.z;
+        drawer.transform.position = position;
         drawer.SetActive(true);
         memoryDrawers.Add(bloc, new MemoryDrawer(bloc,drawer));
     }

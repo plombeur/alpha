@@ -4,8 +4,8 @@ using UnityEngine.EventSystems;
 
 public class CameraController2D : MonoBehaviour, EventManagerListener
 {
-    public bool followTarget = true;
-    public Transform target;
+    public bool followTarget = false;
+    private Transform target;
     private bool mouseDown = false;
     private Vector3 lastMousePositonOnWorld;
     private Plane groundPlane = new Plane(-Vector3.forward, Vector3.zero);
@@ -56,9 +56,16 @@ public class CameraController2D : MonoBehaviour, EventManagerListener
         }
     }
 
-    public void setFollowTarget(bool value)
+    public void setFollowAlpha()
     {
-        followTarget = value;
+        followTarget = true;
+        target = GameManager.getInstance().alphaWolf.transform;
+    }
+
+    public void setFollowTarget(Transform transformToFollow)
+    {
+        followTarget = true;
+        target = transformToFollow;
     }
 
     public bool onMouseButtonDown(int button)

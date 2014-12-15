@@ -365,6 +365,8 @@ public abstract class Animal : Living {
                     goAtk = true;
                     goRetourAtk = false;
                     tmpDirectionCible = -1;
+                    faceTo(cible);
+                    fd(.0001f, false, false);
                     return true;
                 }
             }
