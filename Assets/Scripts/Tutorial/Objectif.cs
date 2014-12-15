@@ -5,11 +5,12 @@ public class Objectif : MonoBehaviour {
     public string title;
     public string objectif;
     public string detail;
-    public TutorialManager m_Manager;
+    private TutorialManager m_Manager;
 
     // Use this for initialization
     protected void Start()
     {
+        m_Manager = GameManager.getInstance().tutorialManager;
         enabled = false;
     }
 

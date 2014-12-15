@@ -3,19 +3,12 @@ using System.Collections;
 
 public class TreeManager : MonoBehaviour {
     public GameObject[] prefabs;
-    public Map map;
     public float density;
     private Rect m_Bounds;
 
     void Start()
     {
-        if (false || map == null)
-        {
-            Debug.Log(this.GetType() + " :: Missing Map !");
-            Destroy(this.gameObject);
-            return;
-        }
-        m_Bounds = new Rect(map.getLeftBorder(), map.getUpperBorder(), map.getRightBorder() - map.getLeftBorder(), map.getLowerBorder() - map.getUpperBorder());
+        m_Bounds = GameManager.getInstance().getDimensions();
         density = Mathf.Clamp(density, 0, 100);
         
         generateTrees();

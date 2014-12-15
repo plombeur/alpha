@@ -3,7 +3,6 @@ using System.Collections;
 
 public class RainManager : MonoBehaviour {
     public GameObject rainZonePrefab;
-    public Map map;
     public float zoneCount;
     public float range;
     public float probability;
@@ -13,13 +12,13 @@ public class RainManager : MonoBehaviour {
     private float m_Timer;
 
 	void Start () {
-        if (rainZonePrefab == null || map == null)
+        if (rainZonePrefab == null)
         {
-            Debug.Log(this.GetType() + " :: Missing Map !");
+            Debug.Log(this.GetType() + " :: Missing prefab !");
             Destroy(this.gameObject);
             return;
         }
-        m_Bounds = new Rect(map.getLeftBorder(), map.getUpperBorder(), map.getRightBorder() - map.getLeftBorder(), map.getLowerBorder() - map.getUpperBorder());
+        m_Bounds = GameManager.getInstance().getDimensions();
         probability = Mathf.Clamp(probability, 0, 100);
         zoneCount = Mathf.Clamp(zoneCount, 0, zoneCount);
 	}
