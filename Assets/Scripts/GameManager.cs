@@ -226,6 +226,8 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
         objectifWindow.hideObjectifWindow();
         GameManager.getInstance().informationWindow.hideInfoPanel();
 
+        hud.setGameOver("Tu as perdu !",reasonText);
+
         stopTime();
     }
 
@@ -237,6 +239,8 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
         objectifWindow.hideObjectifMiniWindow();
         objectifWindow.hideObjectifWindow();
         GameManager.getInstance().informationWindow.hideInfoPanel();
+
+        hud.setGameOver("Tu as gagné !","Bravo, tu as réussi a ....");
 
         stopTime();
     }

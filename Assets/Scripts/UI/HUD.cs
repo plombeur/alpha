@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class HUD : MonoBehaviour,EventManagerListener
 {
@@ -9,9 +10,12 @@ public class HUD : MonoBehaviour,EventManagerListener
     public ProgressBar lifeBar;
     public ProgressBar MoralBar;
 
+    public GameObject WinPanel;
+    public Text titleWin, descriptionWin;
+
     void Start()
     {
-
+        WinPanel.SetActive(false);
     }
 
     void Update()
@@ -35,7 +39,12 @@ public class HUD : MonoBehaviour,EventManagerListener
 
         return false;
     }
-
+    public void setGameOver(string title,string description)
+    {
+        titleWin.text = title;
+        descriptionWin.text = description;
+        WinPanel.SetActive(true);
+    }
     public bool onMouseButtonUp(int button)
     {
         return false;
