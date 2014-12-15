@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour, EventManagerListener
+public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
 {
     private static GameManager instance;
 
     public LoupAlpha alphaWolf;
     public EventManager eventManager;
     public HUD hud;
+    public UIWorld uiWorld;
     public ToolTipManager toolTipManager;
     public ObjectifWindow objectifWindow;
     public InfoWindow informationWindow;
@@ -26,6 +29,10 @@ public class GameManager : MonoBehaviour, EventManagerListener
 
     public bool stopTheTime = false;
     private float lastTime = 0;
+
+    public bool drawMemoryOnMap = true;
+    public GameObject prefabMemoryDrawer;
+    private Dictionary<MemoryBloc, GameObject> memoryDrawers = new Dictionary<MemoryBloc,GameObject>();
 
     void Awake()
     {
@@ -61,7 +68,7 @@ public class GameManager : MonoBehaviour, EventManagerListener
 
     void Start()
     {
-
+        alphaWolf.GetComponent<Memory>().addMemoryListener(this);
 
     }
 
@@ -84,8 +91,12 @@ public class GameManager : MonoBehaviour, EventManagerListener
         }
         Time.fixedDeltaTime = 0.02F * Time.timeScale;
         lastTime += realDeltaTime;
+        upateMemoryDrawer();
     }
-
+    private void upateMemoryDrawer()
+    {
+    
+    }
     public static GameManager getInstance()
     {
         return instance;
@@ -206,5 +217,27 @@ public class GameManager : MonoBehaviour, EventManagerListener
     public void setModeHunt(bool hunt)
     {
         this.WolvesModeHunt = hunt;
+    }
+
+    public void onMemoryAdd(Memory memory, MemoryBloc bloc)
+    {
+       // Debug.LogError(bloc.getEntity());
+        if (bloc.getEntity() as Plant != null || bloc.getEntity() as Loup != null)
+            return;
+        GameObject drawer = GameObject.Instantiate(prefabMemoryDrawer) as GameObject;
+        drawer.transform.GetChild(0).GetComponent<Image>().sprite = bloc.getEntity().GetComponent<SpriteRenderer>().sprite;
+        drawer.transform.SetParent(uiWorld.transform);
+        drawer.transform.position = bloc.getLastPosition();
+        drawer.SetActive(true);
+        memoryDrawers.Add(bloc, drawer);
+    }
+
+    public void onMemoryRemove(Memory memory, MemoryBloc bloc)
+    {
+        if (!memoryDrawers.ContainsKey(bloc))
+            return;
+        GameObject drawer = memoryDrawers[bloc];
+        memoryDrawers.Remove(bloc);
+        Destroy(drawer);
     }
 }

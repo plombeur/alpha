@@ -586,6 +586,7 @@ MonoBehaviour:
   toolTipManager: {fileID: 561571331}
   objectifWindow: {fileID: 1650510005}
   informationWindow: {fileID: 496097603}
+  tutorialManager: {fileID: 1817918970}
   cameraController: {fileID: 2027364211}
   slowTimeSpeed: 4
   WolvesModeHunt: 0
@@ -2871,6 +2872,10 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2027364211}
+    - target: {fileID: 11400002, guid: 14d7587fee9330b41a698677137fbee9, type: 2}
+      propertyPath: tutorialManager
+      value: 
+      objectReference: {fileID: 1817918970}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 14d7587fee9330b41a698677137fbee9, type: 2}
   m_RootGameObject: {fileID: 377802856}
@@ -3072,6 +3077,7 @@ Transform:
   - {fileID: 689423361}
   - {fileID: 1364301104}
   - {fileID: 658963571}
+  - {fileID: 1817918969}
   m_Father: {fileID: 0}
   m_RootOrder: 10
 --- !u!1 &381587869
@@ -4407,7 +4413,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Alpha: {fileID: 0}
   Displayer: {fileID: 496097600}
-  toFreezeTime: 2
 --- !u!4 &561571332
 Transform:
   m_ObjectHideFlags: 0
@@ -5737,6 +5742,58 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 368340254}
   m_GameObject: {fileID: 741051644}
+--- !u!1001 &755342081
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 377802857}
+    m_Modifications:
+    - target: {fileID: 400004, guid: 0d09ff7e179451a48b3be3ac5503342c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 0d09ff7e179451a48b3be3ac5503342c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 0d09ff7e179451a48b3be3ac5503342c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 0d09ff7e179451a48b3be3ac5503342c, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 0d09ff7e179451a48b3be3ac5503342c, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 0d09ff7e179451a48b3be3ac5503342c, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 0d09ff7e179451a48b3be3ac5503342c, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 0d09ff7e179451a48b3be3ac5503342c, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 0d09ff7e179451a48b3be3ac5503342c, type: 2}
+      propertyPath: Meute
+      value: 
+      objectReference: {fileID: 61395250}
+    - target: {fileID: 11400000, guid: 0d09ff7e179451a48b3be3ac5503342c, type: 2}
+      propertyPath: Meute
+      value: 
+      objectReference: {fileID: 61395250}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 0d09ff7e179451a48b3be3ac5503342c, type: 2}
+  m_RootGameObject: {fileID: 1817918968}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &758939923
 GameObject:
   m_ObjectHideFlags: 0
@@ -8510,6 +8567,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabEmoticon: {fileID: 100000, guid: 3a2017cb299e78449ba7ff88ec5e109d, type: 2}
   hauteurAffichageEmoticon: 1.20000005
+--- !u!1 &1194658956
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100002, guid: 0d09ff7e179451a48b3be3ac5503342c, type: 2}
+  m_PrefabInternal: {fileID: 755342081}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1194658957}
+  - 114: {fileID: 1194658958}
+  m_Layer: 0
+  m_Name: HuntObjectif
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1194658957
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400002, guid: 0d09ff7e179451a48b3be3ac5503342c, type: 2}
+  m_PrefabInternal: {fileID: 755342081}
+  m_GameObject: {fileID: 1194658956}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1817918969}
+  m_RootOrder: 0
+--- !u!114 &1194658958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 0d09ff7e179451a48b3be3ac5503342c,
+    type: 2}
+  m_PrefabInternal: {fileID: 755342081}
+  m_GameObject: {fileID: 1194658956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2633ce6478dcc8043a298f16b595ab1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: "La premi\xE8re chasse."
+  objectif: Chasse le mouton !
+  detail: A faire !
+  m_Manager: {fileID: 1817918970}
+  Mouton: {fileID: 100012, guid: caca124e3ccf059438dce9d514c21cf0, type: 2}
+  Meute: {fileID: 61395250}
 --- !u!1 &1196630866
 GameObject:
   m_ObjectHideFlags: 0
@@ -12987,6 +13090,53 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
+--- !u!1 &1722123991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: 0d09ff7e179451a48b3be3ac5503342c, type: 2}
+  m_PrefabInternal: {fileID: 755342081}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1722123992}
+  - 114: {fileID: 1722123993}
+  m_Layer: 0
+  m_Name: ThreatObjectif
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1722123992
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: 0d09ff7e179451a48b3be3ac5503342c, type: 2}
+  m_PrefabInternal: {fileID: 755342081}
+  m_GameObject: {fileID: 1722123991}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1817918969}
+  m_RootOrder: 1
+--- !u!114 &1722123993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 0d09ff7e179451a48b3be3ac5503342c,
+    type: 2}
+  m_PrefabInternal: {fileID: 755342081}
+  m_GameObject: {fileID: 1722123991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51c46659670a9f844b52a47ee7b2a615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: "Gestion des rivalit\xE9s."
+  objectif: "* Montre ta sup\xE9riorit\xE9 au loup rebelle."
+  detail: A faire !
+  m_Manager: {fileID: 1817918970}
+  Meute: {fileID: 61395250}
+  InitialThreatRatio: .5
+  AchieveThreatRatio: .400000006
 --- !u!1 &1731697962
 GameObject:
   m_ObjectHideFlags: 0
@@ -13557,6 +13707,51 @@ SpriteRenderer:
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: b538fcf62df94c7458faaa0c8ac391c0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!1 &1817918968
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100004, guid: 0d09ff7e179451a48b3be3ac5503342c, type: 2}
+  m_PrefabInternal: {fileID: 755342081}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1817918969}
+  - 114: {fileID: 1817918970}
+  m_Layer: 0
+  m_Name: TutorialManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1817918969
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400004, guid: 0d09ff7e179451a48b3be3ac5503342c, type: 2}
+  m_PrefabInternal: {fileID: 755342081}
+  m_GameObject: {fileID: 1817918968}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1194658957}
+  - {fileID: 1722123992}
+  m_Father: {fileID: 377802857}
+  m_RootOrder: 9
+--- !u!114 &1817918970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: 0d09ff7e179451a48b3be3ac5503342c,
+    type: 2}
+  m_PrefabInternal: {fileID: 755342081}
+  m_GameObject: {fileID: 1817918968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b131bbe7d574dd49abac0e7f7ef7dcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Objectifs:
+  - {fileID: 1722123993}
+  - {fileID: 1194658958}
 --- !u!1 &1823467802
 GameObject:
   m_ObjectHideFlags: 0
