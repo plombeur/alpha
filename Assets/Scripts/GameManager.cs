@@ -31,7 +31,9 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
     public bool stopTheTime = false;
     private float lastTime = 0;
 
-    public bool drawMemoryOnMap = true;
+    public float fogRadius = 3;
+    public GameObject herd;
+
     public GameObject prefabMemoryDrawer;
     private Dictionary<MemoryBloc, MemoryDrawer> memoryDrawers = new Dictionary<MemoryBloc, MemoryDrawer>();
 
@@ -67,6 +69,10 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
             Debug.LogError("No Tutorial Manager Linked !!!");
         if (uiWorld == null)
             Debug.LogError("No UI World Linked !!!");
+        if (uiWorldPostFog == null)
+            Debug.LogError("No UI World POST FOG Linked !!!");
+        if (herd == null)
+            Debug.LogError("No Herd Linked !!!");
 
         eventManager.addEventManagerListener(hud);
         eventManager.addEventManagerListener(this);
@@ -107,6 +113,18 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
             position.z = drawer.icon.transform.position.z;
             drawer.icon.transform.position = position;
 
+            bool drawerActive = true;
+            foreach (Loup wolf in herd.transform.GetComponentsInChildren<Loup>())
+            {
+                Vector3 delta = wolf.transform.position - position;
+                delta.z = 0;
+                if (delta.magnitude <= GameManager.getInstance().fogRadius)
+                {
+                    drawerActive = false;
+                    break;
+                }
+            }
+            drawer.icon.SetActive(drawerActive);
         }
     }
     public static GameManager getInstance()
@@ -203,6 +221,12 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
     {
         gameOver = true;
         gameWin = false;
+
+        objectifWindow.hideObjectifMiniWindow();
+        objectifWindow.hideObjectifWindow();
+        GameManager.getInstance().informationWindow.hideInfoPanel();
+
+        stopTime();
     }
 
     public void setGameWin()

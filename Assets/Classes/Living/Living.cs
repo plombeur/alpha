@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-/*
- * IMPORTANT: Un object Living doit être un rigidbody!!
- */
+[RequireComponent(typeof(Rigidbody))]
 public abstract class Living : Entity
 {
     public bool DEBUG = false;

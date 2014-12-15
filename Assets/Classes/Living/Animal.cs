@@ -391,6 +391,24 @@ public abstract class Animal : Living {
         hideStaticEmoticon();
     }
 
+    protected override void Update()
+    {
+        base.Update();
+
+        renderer.enabled = false;
+        foreach (Loup wolf in GameManager.getInstance().herd.transform.GetComponentsInChildren<Loup>())
+        {
+            Vector3 delta = wolf.transform.position - transform.position;
+            delta.z = 0;
+
+            if (delta.magnitude <= GameManager.getInstance().fogRadius)
+            {
+                renderer.enabled = true;
+                break;
+            }
+        }
+    }
+
     public abstract List<SoundInformation> getSonsInterpellant();
 
 }
