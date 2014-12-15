@@ -45,7 +45,7 @@ public class A_TaquinerOmega : Action
 
         if (goAtk)
         {
-            if(a.animationAttaque(cible,tailleInitiale))
+            if(a.animationAttaque(cible,a.getFaceToDirection(cible.transform.position)))
             {
                 getActionPendlingList().removeAction(this);
                 return true;

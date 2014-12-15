@@ -125,7 +125,7 @@ public class AU_Chasse : A_ActionUser
                     animal.faceTo(target);
                     animal.fd(target.vitesse);
                 }
-                else if (animal.animationAttaque(target, tailleInitiale))
+                else if (animal.animationAttaque(target, animal.getFaceToDirection(target.transform.position)))
                 {
                     atkDelay = 1;
                     target.blesse(10);
