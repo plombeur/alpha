@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class ToolTipManager : MonoBehaviour
 {
     public Loup Alpha;
-    public GameObject Displayer;
     private Stack<ToolTip> m_Tips;
     private ToolTip m_CurrentTip;
     private InfoWindow m_DisplayerScript;
@@ -15,7 +14,7 @@ public class ToolTipManager : MonoBehaviour
     {
         m_Tips = new Stack<ToolTip>();
         m_CurrentTip = null;
-        m_DisplayerScript = Displayer.GetComponent<InfoWindow>();
+        m_DisplayerScript = GameManager.getInstance().informationWindow;
         if (m_DisplayerScript == null)
         {
             Debug.Log("Script missing (InfoWindow)");
@@ -82,6 +81,7 @@ public class ToolTipManager : MonoBehaviour
      * */
     public void validateReading()
     {
+        m_CurrentTip.read();
         if (getNextTip())
         {
             displayToolTip();
@@ -96,7 +96,7 @@ public class ToolTipManager : MonoBehaviour
     {
         if (m_CurrentTip != null)
         {
-            Destroy(m_CurrentTip.gameObject);
+            m_CurrentTip.enabled = false;
         }
         if (m_Tips.Count != 0)
         {

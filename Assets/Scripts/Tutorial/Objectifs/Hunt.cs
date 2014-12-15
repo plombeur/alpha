@@ -3,7 +3,6 @@ using System.Collections;
 
 public class Hunt : Objectif {
     public GameObject Mouton;
-    public GameObject Meute;
     private GameObject m_Alpha;
     private GameObject m_Mouton;
     private Animal m_Script;
@@ -11,16 +10,17 @@ public class Hunt : Objectif {
     // Use this for initialization
     protected void Start()
     {
-        foreach(Transform child in Meute.transform) {
+        m_Alpha = null;
+        foreach(Transform child in GameManager.getInstance().tutorialManager.Meute.transform) {
             if (child.gameObject.name == "LoupAlpha")
             {
-                //Debug.Log("Alpha found");
+                //Debug.Log("Alpha found at start");
                 m_Alpha = child.gameObject;
             }
         }
         if (m_Alpha == null)
         {
-            //Debug.Log("Aucun alpha ????");
+            //Debug.Log("Aucun alpha at start ????");
             Destroy(this);
         }
 
@@ -35,11 +35,23 @@ public class Hunt : Objectif {
 
     void initialize()
     {
+        if (m_Alpha == null)
+        {
+            //Debug.Log("Aucun alpha ????");
+            Destroy(this);
+            return;
+        }
         Vector2 pos = new Vector2();
         pos.x = m_Alpha.transform.position.x + Random.Range(-7, 7);
         pos.y = m_Alpha.transform.position.y + Random.Range(-7, 7);
 
+        //Debug.Log("Instantiate");
         m_Mouton = Instantiate(Mouton, pos, m_Alpha.transform.rotation) as GameObject;
+
+        GameObject marqueur = Instantiate(m_Manager.Marqueur, pos, m_Alpha.transform.rotation) as GameObject;
+        marqueur.transform.parent = m_Mouton.transform;
+        marqueur.transform.localPosition = Vector3.zero;
+
         m_Script = m_Mouton.GetComponent<Animal>();
     }
 

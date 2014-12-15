@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class Threat : Objectif {
-    public GameObject Meute;
     public float InitialThreatRatio;
     public float AchieveThreatRatio;
     private GameObject m_Threat;
@@ -13,7 +12,7 @@ public class Threat : Objectif {
         InitialThreatRatio = Mathf.Clamp(InitialThreatRatio, 0, 1);
         AchieveThreatRatio = Mathf.Clamp(AchieveThreatRatio, 0, InitialThreatRatio);
 
-        foreach (Transform child in Meute.transform)
+        foreach (Transform child in GameManager.getInstance().tutorialManager.Meute.transform)
         {
             if (child.gameObject.name == "LoupBeta")
             {
@@ -54,6 +53,10 @@ public class Threat : Objectif {
     void initialize()
     {
         m_OwnScript.threat = InitialThreatRatio * m_OwnScript.THREAT_MAX;
+
+        GameObject marqueur = Instantiate(m_Manager.Marqueur, m_OwnScript.transform.position, m_OwnScript.transform.rotation) as GameObject;
+        marqueur.transform.parent = m_OwnScript.transform;
+        marqueur.transform.localPosition = Vector3.zero;
     }
 
     /**

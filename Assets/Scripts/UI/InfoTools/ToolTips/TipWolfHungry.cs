@@ -23,7 +23,7 @@ public class TipWolfHungry : ToolTip
     protected override void checkTrigger()
     {
         bool isHungry = false;
-        Transform meute = mManager.Alpha.transform.parent.transform;
+        Transform meute = GameManager.getInstance().toolTipManager.Alpha.transform.parent.transform;
         for (int iChild = 0; iChild < meute.childCount; iChild++)
         {
             Loup currentLoup = meute.GetChild(iChild).GetComponent<Loup>();

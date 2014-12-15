@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class TutorialManager : MonoBehaviour {
     public Objectif[] Objectifs;
+    public GameObject Meute;
+    public GameObject Marqueur;
     private int m_CurrentIndex;
     private ObjectifWindow m_DisplayerScript;
 
@@ -12,14 +14,14 @@ public class TutorialManager : MonoBehaviour {
     {
         if (Objectifs.Length == 0)
         {
-            Debug.Log("Aucun objectif.");
+            //Debug.Log("Aucun objectif.");
             Destroy(this);
         }
         m_CurrentIndex = -1;
         m_DisplayerScript = GameManager.getInstance().objectifWindow;
         if (m_DisplayerScript == null)
         {
-            Debug.Log("Script missing (ObjectifWindow)");
+            //Debug.Log("Script missing (ObjectifWindow)");
             Destroy(this);
         }
         achieve();

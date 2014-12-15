@@ -6,7 +6,6 @@ public class ToolTip : MonoBehaviour, MemoryListener
     public string title;
     public string description;
     public Sprite icon;
-    public ToolTipManager mManager;
 
     // Use this for initialization
     protected void Start()
@@ -38,12 +37,9 @@ public class ToolTip : MonoBehaviour, MemoryListener
      * */
     protected void display()
     {
-        if (mManager != null)
-        {
-            mManager.askDisplay(this);
-            //Debug.Log("Add " + this);
-            this.enabled = false;
-        }
+        GameManager.getInstance().toolTipManager.askDisplay(this);
+        //Debug.Log("Add " + this);
+        this.enabled = false;
     }
 
     /**
@@ -64,6 +60,10 @@ public class ToolTip : MonoBehaviour, MemoryListener
     }
 
     public void onMemoryRemove(Memory memory, MemoryBloc bloc)
+    {
+    }
+
+    public virtual void read()
     {
     }
 }

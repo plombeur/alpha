@@ -356,7 +356,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &100042
 GameObject:
   m_ObjectHideFlags: 1
@@ -590,23 +590,7 @@ GameObject:
   - 4: {fileID: 400018}
   - 114: {fileID: 11400088}
   m_Layer: 0
-  m_Name: TestTip
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &100070
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 400020}
-  - 114: {fileID: 11400090}
-  m_Layer: 0
-  m_Name: TestTip
+  m_Name: TipStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1266,7 +1250,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &400000
 Transform:
   m_ObjectHideFlags: 1
@@ -1362,7 +1346,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400018}
-  - {fileID: 400020}
   m_Father: {fileID: 400004}
   m_RootOrder: 2
 --- !u!4 &400014
@@ -1396,23 +1379,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100068}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 131.823196, y: 26.0986404, z: -.84375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400012}
   m_RootOrder: 0
---- !u!4 &400020
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100070}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 400012}
-  m_RootOrder: 1
 --- !u!4 &400022
 Transform:
   m_ObjectHideFlags: 1
@@ -2209,7 +2180,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Alpha: {fileID: 0}
-  Displayer: {fileID: 100124}
 --- !u!114 &11400054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2748,28 +2718,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 100068}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 669e007b60cb28c43ad0e3b868d4629d, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d8dc9841fa06c948b5956a10f084744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Test
-  description: Bonjour, teste moi !
+  title: 
+  description: 
   icon: {fileID: 0}
-  mManager: {fileID: 11400052}
---- !u!114 &11400090
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 669e007b60cb28c43ad0e3b868d4629d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Test 2
-  description: Bonjour, teste moi encore !
-  icon: {fileID: 0}
-  mManager: {fileID: 11400052}
 --- !u!114 &11400092
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3868,8 +3822,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Objectifs:
-  - {fileID: 11400190}
   - {fileID: 11400192}
+  - {fileID: 11400190}
+  Meute: {fileID: 0}
+  Marqueur: {fileID: 100000, guid: cbb282211031719408985de50fd97c5b, type: 2}
 --- !u!114 &11400190
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3884,7 +3840,6 @@ MonoBehaviour:
   title: "Gestion des rivalit\xE9s."
   objectif: "* Montre ta sup\xE9riorit\xE9 au loup rebelle."
   detail: A faire !
-  Meute: {fileID: 0}
   InitialThreatRatio: .5
   AchieveThreatRatio: .400000006
 --- !u!114 &11400192
@@ -3899,10 +3854,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: "La premi\xE8re chasse."
-  objectif: Chasse le mouton !
+  objectif: '* Chasse le mouton.'
   detail: A faire !
   Mouton: {fileID: 100012, guid: caca124e3ccf059438dce9d514c21cf0, type: 2}
-  Meute: {fileID: 0}
 --- !u!222 &22200000
 CanvasRenderer:
   m_ObjectHideFlags: 1

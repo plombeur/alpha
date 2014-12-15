@@ -13,7 +13,7 @@ public class TipLoss : ToolTip
 
     protected override void checkTrigger()
     {
-        if (mManager.Alpha.GetComponent<LoupAlpha>().estMort()) display();
+        if (GameManager.getInstance().toolTipManager.Alpha.GetComponent<LoupAlpha>().estMort()) display();
     }
 
     protected override void checkMemoryModificationTrigger(MemoryBloc bloc)

@@ -5,7 +5,7 @@ public class Objectif : MonoBehaviour {
     public string title;
     public string objectif;
     public string detail;
-    private TutorialManager m_Manager;
+    protected TutorialManager m_Manager;
 
     // Use this for initialization
     protected void Start()
