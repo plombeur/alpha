@@ -2123,7 +2123,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Alpha: {fileID: 0}
   Displayer: {fileID: 100124}
-  toFreezeTime: 2
 --- !u!114 &11400054
 MonoBehaviour:
   m_ObjectHideFlags: 1
