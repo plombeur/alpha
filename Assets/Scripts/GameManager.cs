@@ -199,4 +199,9 @@ public class GameManager : MonoBehaviour, EventManagerListener
     {
         return gameWin;
     }
+
+    public void setModeHunt(bool hunt)
+    {
+        this.WolvesModeHunt = hunt;
+    }
 }
