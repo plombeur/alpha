@@ -5,8 +5,7 @@ public class TipStart : ToolTip {
     void Awake()
     {
         title = "Bienvenue sur Alpha !";
-        description = "Vous prenez la place d’un loup alpha. Choisi par votre meute sur votre force, votre intelligence, votre sagesse, votre reconnaissance…,  vous devez donner des directions pour la faire survivre. L'extension de la territoire, la recherche de la nourriture, la protection des petits … vous défient tout au long du jeu. Utilisez votre connaissances et prouvez que vous êtes l'alpha!";
-        
+        description = "Vous incarnez un loup alpha. Fort et fier, vous êtes à la tête d'une meute de loup.\nVotre rôle est de faire survivre votre meute dans un environnement sauvage tout en conservant votre place de chef de meute.\n\nVotre aventure sera rythmée par la recherche de nourriture, l'exploration, la reproduction et la défense de votre meute...\n\nUtilisez votre connaissances et prouvez que vous êtes l'alpha !";   
     }
 
     protected override void checkTrigger()
