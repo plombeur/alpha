@@ -14,53 +14,57 @@ public class MindLoup : MindAnimal {
 
         Loup loup = ((Loup)agent);
 
-        if (loup.faim <= loup.FAIM_MAX / 2)
+        if (Loup.GESTION_FAIM)
         {
-            List<MemoryBloc> memoryBlocs = new List<MemoryBloc>(loup.GetComponent<Memory>().getMemoyBlocs());
-            Animal plusProcheCadavre = null;
-            for (int i = 0; i < memoryBlocs.Count; ++i)
+            if (loup.faim <= loup.FAIM_MAX / 2)
             {
-                Animal animal = memoryBlocs[i].getEntity() as Animal;
-                if (animal != null)
+                List<MemoryBloc> memoryBlocs = new List<MemoryBloc>(loup.GetComponent<Memory>().getMemoyBlocs());
+                Animal plusProcheCadavre = null;
+                for (int i = 0; i < memoryBlocs.Count; ++i)
                 {
-                    if (animal.estMort())
+                    Animal animal = memoryBlocs[i].getEntity() as Animal;
+                    if (animal != null)
                     {
-                        if (animal.quantiteDeViande > 0)
+                        if (animal.estMort())
                         {
-                            if (plusProcheCadavre == null)
+                            if (animal.quantiteDeViande > 0)
                             {
-                                plusProcheCadavre = animal;
+                                if (plusProcheCadavre == null)
+                                {
+                                    plusProcheCadavre = animal;
+                                }
+                                else if (Vector2.Distance(plusProcheCadavre.transform.position, agent.transform.position) > Vector2.Distance(animal.transform.position, agent.transform.position))
+                                    plusProcheCadavre = animal;
                             }
-                            else if (Vector2.Distance(plusProcheCadavre.transform.position, agent.transform.position) > Vector2.Distance(animal.transform.position, agent.transform.position))
-                                plusProcheCadavre = animal;
                         }
                     }
                 }
-            }
 
-            if (plusProcheCadavre != null)
-            {
-                A_SeNourrir newAction = new A_SeNourrir(plusProcheCadavre);
-                A_SeNourrir actionNourrirPrecedente = actionList.getFirstActionWithSameType<A_SeNourrir>();
-                if(actionNourrirPrecedente == null)
-                    actionList.addAction(newAction);
-                else if(actionNourrirPrecedente.getDistanceFrom(agent.transform.position)>newAction.getDistanceFrom(agent.transform.position))
+                if (plusProcheCadavre != null)
                 {
-                    actionList.removeAction(actionNourrirPrecedente);
-                    actionList.addAction(newAction);
+                    A_SeNourrir newAction = new A_SeNourrir(plusProcheCadavre);
+                    A_SeNourrir actionNourrirPrecedente = actionList.getFirstActionWithSameType<A_SeNourrir>();
+                    if (actionNourrirPrecedente == null)
+                        actionList.addAction(newAction);
+                    else if (actionNourrirPrecedente.getDistanceFrom(agent.transform.position) > newAction.getDistanceFrom(agent.transform.position))
+                    {
+                        actionList.removeAction(actionNourrirPrecedente);
+                        actionList.addAction(newAction);
+                    }
                 }
             }
+            loup.faim -= Time.deltaTime;
+            if (loup.faim <= loup.FAIM_MAX / 2)
+            {
+                loup.displayStaticEmoticon(loup.hungryEmoticonSprite);
+            }
+            if (loup.faim <= 0)
+            {
+                loup.blesse(-loup.faim);
+                loup.faim = 0;
+            }
         }
-        loup.faim -= Time.deltaTime;
-        if (loup.faim <= loup.FAIM_MAX / 2)
-        {
-            loup.displayStaticEmoticon(loup.hungryEmoticonSprite);
-        }
-        if(loup.faim <= 0)
-        {
-            loup.blesse(-loup.faim);
-            loup.faim = 0;
-        }
+
         actionList.addAction(new A_Promenade(((Animal)agent).vitesse));
         if (actionList.size() == 1)  //Si l'agent ne fait que se promener et qu'il s'embête ... ajout d'une action d'occupation aléatoire spécifiée par randomAction()
         {
