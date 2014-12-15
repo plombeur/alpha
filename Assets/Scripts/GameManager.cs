@@ -92,12 +92,8 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
         }
         Time.fixedDeltaTime = 0.02F * Time.timeScale;
         lastTime += realDeltaTime;
-        upateMemoryDrawer();
     }
-    private void upateMemoryDrawer()
-    {
-    
-    }
+   
     public static GameManager getInstance()
     {
         return instance;

@@ -14,8 +14,8 @@ public class ObjectifWindow : MonoBehaviour
 
 	void Start ()
     {
-        objectifWindowPanel.SetActive(false);
-
+        hideObjectifWindow();
+        hideObjectifMiniWindow();
 	}
 	
 	void Update () 
@@ -39,6 +39,7 @@ public class ObjectifWindow : MonoBehaviour
         miniWindowTitleField.text = title;
         miniWindowResumeField.text = resume;
         showObjectifWindow();
+        showObjectifMiniWindow();
     }
     public void showObjectifWindow()
     {
