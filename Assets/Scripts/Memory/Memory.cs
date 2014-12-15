@@ -11,18 +11,21 @@ public class Memory : MonoBehaviourAdapter
     private List<MemoryListener> listeners;
     private float timerMemoryCheck = MEMORY_CHECK_INTERVAL;
 
+    private List<MemoryListener> addListListener = new List<MemoryListener>(), removeListListener = new List<MemoryListener>();
+
     public Memory()
     {
         listeners = new List<MemoryListener>();
     }
     public void addMemoryListener(MemoryListener listener)
     {
-        listeners.Add(listener);
+        addListListener.Add(listener);
     }
     public void removeMemoryListener(MemoryListener listener)
     {
-        listeners.Remove(listener);
+        removeListListener.Add(listener);
     }
+
     public void addMemoryBloc(MemoryBloc bloc)
     {
         memoryBlocs.Add(bloc.getIdentity(), bloc);
@@ -70,6 +73,14 @@ public class Memory : MonoBehaviourAdapter
 
     protected override void Update()
     {
+        foreach (MemoryListener listener in addListListener)
+            listeners.Add(listener);
+        foreach (MemoryListener listener in removeListListener)
+            listeners.Remove(listener);
+
+        addListListener.Clear();
+        removeListListener.Clear();
+
         timerMemoryCheck -= Time.deltaTime;
         if (timerMemoryCheck <= 0)
         {

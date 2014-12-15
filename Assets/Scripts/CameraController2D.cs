@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 public class CameraController2D : MonoBehaviour, EventManagerListener
 {
-    public bool followTarget = false;
+    public bool followTarget = true;
     private Transform target;
     private bool mouseDown = false;
     private Vector3 lastMousePositonOnWorld;
@@ -12,6 +12,7 @@ public class CameraController2D : MonoBehaviour, EventManagerListener
 
     void Start()
     {
+        target = GameManager.getInstance().alphaWolf.transform;
     }
 
     void Update()

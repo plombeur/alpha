@@ -13,16 +13,12 @@ public class TipSheep : ToolTip
 
     void Start()
     {
-        Transform meute = GameManager.getInstance().toolTipManager.Alpha.transform.parent.transform;
+        Transform meute = GameManager.getInstance().herd.transform;
         for (int iChild = 0; iChild < meute.childCount; iChild++)
         {
             m_Memory = meute.GetChild(iChild).GetComponent<Memory>();
-            if (m_Memory == null)
-            {
-                Debug.Log("Pas de mémoire de loup.");
-                Destroy(this.gameObject);
-            }
-            m_Memory.addMemoryListener(this);
+            if (m_Memory != null)
+                m_Memory.addMemoryListener(this);
         }
     }
     protected override void checkTrigger()
