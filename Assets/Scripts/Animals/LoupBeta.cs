@@ -3,9 +3,20 @@ using System.Collections;
 
 public class LoupBeta : LoupInferieur
 {
+    public static bool GESTION_THREAT = true;
     public float THREAT_MAX = 100;
     public float threat = 0;
     private float aggressivite;
+
+    public static bool getGESTION_THREAT()
+    {
+        return GESTION_THREAT;
+    }
+
+    public static void setGESTION_THREAT(bool value)
+    {
+        GESTION_THREAT = value;
+    }
 
     protected override void onCreate()
     {

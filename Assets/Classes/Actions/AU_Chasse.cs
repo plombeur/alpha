@@ -156,4 +156,9 @@ public class AU_Chasse : A_ActionUser
         AU_Chasse action = obj as AU_Chasse;
         return action != null;
     }
+
+    public AU_MoveTo getActionMoveToConverti()
+    {
+        return new AU_MoveTo(targetPosition);
+    }
 }

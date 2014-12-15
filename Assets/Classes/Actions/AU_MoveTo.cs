@@ -93,4 +93,9 @@ public class AU_MoveTo : A_ActionUser
     {
         return new Vector2(xTarget, yTarget);
     }
+
+    public AU_Chasse getActionChasseConverti()
+    {
+        return new AU_Chasse(new Vector2(xTarget,yTarget));
+    }
 }
