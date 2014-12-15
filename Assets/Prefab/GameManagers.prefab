@@ -1845,6 +1845,7 @@ MonoBehaviour:
   eventManager: {fileID: 11400000}
   hud: {fileID: 11400108}
   uiWorld: {fileID: 11400054}
+  uiWorldPostFog: {fileID: 0}
   toolTipManager: {fileID: 11400052}
   objectifWindow: {fileID: 11400032}
   informationWindow: {fileID: 11400166}

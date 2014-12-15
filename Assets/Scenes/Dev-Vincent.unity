@@ -1601,6 +1601,67 @@ SpriteRenderer:
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: b538fcf62df94c7458faaa0c8ac391c0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!1 &203191040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100004, guid: 7741119b75b1ae3428297614c7501795, type: 2}
+  m_PrefabInternal: {fileID: 1628003237}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 203191041}
+  - 20: {fileID: 203191042}
+  m_Layer: 0
+  m_Name: CameraPostFog
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &203191041
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400004, guid: 7741119b75b1ae3428297614c7501795, type: 2}
+  m_PrefabInternal: {fileID: 1628003237}
+  m_GameObject: {fileID: 203191040}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2027364216}
+  m_RootOrder: 1
+--- !u!20 &203191042
+Camera:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 2000004, guid: 7741119b75b1ae3428297614c7501795,
+    type: 2}
+  m_PrefabInternal: {fileID: 1628003237}
+  m_GameObject: {fileID: 203191040}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 3
+  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: .300000012
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 1
+  orthographic size: 5
+  m_Depth: 2
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_HDR: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: .0219999999
 --- !u!1 &205303374
 GameObject:
   m_ObjectHideFlags: 0
@@ -2519,8 +2580,8 @@ MonoBehaviour:
   hungryEmoticonSprite: {fileID: 21300000, guid: 2f51e136faf9d754aa893765ae4756eb,
     type: 3}
   peutAvoirPeur: 1
-  FAIM_MAX: 50
-  faim: 50
+  FAIM_MAX: 80
+  faim: 80
   prefabTarget: {fileID: 100000, guid: 7424a3f4eb749054aab6d6765d14ae90, type: 2}
   prefabBlackTarget: {fileID: 100000, guid: ffaa7555bd472bc4bb4310e3f94cd198, type: 2}
   prefabYellowTarget: {fileID: 100002, guid: 7ea0130295269654885543ad7b1159e9, type: 2}
@@ -4273,6 +4334,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11400188, guid: 14d7587fee9330b41a698677137fbee9, type: 2}
+      propertyPath: Objectifs.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 14d7587fee9330b41a698677137fbee9, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4337,6 +4402,10 @@ Prefab:
       propertyPath: TipHungry
       value: 
       objectReference: {fileID: 177517271}
+    - target: {fileID: 11400188, guid: 14d7587fee9330b41a698677137fbee9, type: 2}
+      propertyPath: Objectifs.Array.data[4]
+      value: 
+      objectReference: {fileID: 1172997390}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 14d7587fee9330b41a698677137fbee9, type: 2}
   m_RootGameObject: {fileID: 855599945}
@@ -4587,6 +4656,7 @@ MonoBehaviour:
   eventManager: {fileID: 1739512212}
   hud: {fileID: 880844913}
   uiWorld: {fileID: 1243633187}
+  uiWorldPostFog: {fileID: 0}
   toolTipManager: {fileID: 1998626939}
   objectifWindow: {fileID: 2005396308}
   informationWindow: {fileID: 1729375134}
@@ -4743,6 +4813,7 @@ Transform:
   - {fileID: 926152120}
   - {fileID: 760611249}
   - {fileID: 697352656}
+  - {fileID: 1172997389}
   m_Father: {fileID: 855599946}
   m_RootOrder: 1
 --- !u!114 &590399950
@@ -4762,6 +4833,7 @@ MonoBehaviour:
   - {fileID: 926152121}
   - {fileID: 697352657}
   - {fileID: 760611250}
+  - {fileID: 1172997390}
   Meute: {fileID: 61395250}
   Marqueur: {fileID: 100000, guid: cbb282211031719408985de50fd97c5b, type: 2}
 --- !u!1 &591424096
@@ -5739,8 +5811,8 @@ MonoBehaviour:
   hungryEmoticonSprite: {fileID: 21300000, guid: 2f51e136faf9d754aa893765ae4756eb,
     type: 3}
   peutAvoirPeur: 1
-  FAIM_MAX: 100
-  faim: 100
+  FAIM_MAX: 80
+  faim: 80
   distanceAlpha: 5
   THREAT_MAX: 100
   threat: 0
@@ -8774,6 +8846,49 @@ SpriteRenderer:
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: b9922d965ec9fde459e9f72b3c376bab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!1 &1145140227
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1145140228}
+  - 114: {fileID: 1145140229}
+  m_Layer: 0
+  m_Name: TipEndTutorial
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1145140228
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1145140227}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1998626940}
+  m_RootOrder: 6
+--- !u!114 &1145140229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1145140227}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e58de0eca2acbc1418568d76492a59aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: 
+  description: 
+  icon: {fileID: 21300000, guid: f61609b05a25ae643abf2ad1870177cc, type: 3}
+  isActivatedElsewhere: 0
 --- !u!1 &1159023470
 GameObject:
   m_ObjectHideFlags: 0
@@ -8954,6 +9069,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hearingDetector: {fileID: 1306485703}
+--- !u!1 &1172997388
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1172997389}
+  - 114: {fileID: 1172997390}
+  m_Layer: 0
+  m_Name: EndTuto
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1172997389
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1172997388}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 590399949}
+  m_RootOrder: 4
+--- !u!114 &1172997390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1172997388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5ecb736eccc24e4281e3ea3c2f6e59d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: 
+  objectif: 
+  detail: 
+  TipEnd: {fileID: 1145140229}
 --- !u!1 &1181799072
 GameObject:
   m_ObjectHideFlags: 0
@@ -11033,8 +11191,8 @@ MonoBehaviour:
   hungryEmoticonSprite: {fileID: 21300000, guid: 2f51e136faf9d754aa893765ae4756eb,
     type: 3}
   peutAvoirPeur: 1
-  FAIM_MAX: 100
-  faim: 100
+  FAIM_MAX: 80
+  faim: 80
   distanceAlpha: 5
   THREAT_MAX: 100
   threat: 0
@@ -14811,8 +14969,8 @@ MonoBehaviour:
   hungryEmoticonSprite: {fileID: 21300000, guid: 2f51e136faf9d754aa893765ae4756eb,
     type: 3}
   peutAvoirPeur: 1
-  FAIM_MAX: 100
-  faim: 100
+  FAIM_MAX: 80
+  faim: 80
   distanceAlpha: 5
 --- !u!50 &1886785306
 Rigidbody2D:
@@ -15741,6 +15899,7 @@ Transform:
   - {fileID: 1274560084}
   - {fileID: 1484957790}
   - {fileID: 177517270}
+  - {fileID: 1145140228}
   m_Father: {fileID: 855599946}
   m_RootOrder: 2
 --- !u!1 &2005285776
@@ -15938,7 +16097,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followTarget: 1
-  target: {fileID: 0}
 --- !u!81 &2027364212
 AudioListener:
   m_ObjectHideFlags: 0
@@ -15988,7 +16146,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294966527
+    m_Bits: 4294965503
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -16007,6 +16165,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 709411573}
+  - {fileID: 203191041}
   m_Father: {fileID: 0}
   m_RootOrder: 10
 --- !u!1 &2035070739
