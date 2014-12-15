@@ -121,6 +121,8 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
                 if (delta.magnitude <= GameManager.getInstance().fogRadius)
                 {
                     drawerActive = false;
+                    drawer.icon.transform.GetChild(0).GetComponent<Image>().sprite = drawer.target.getEntity().GetComponent<SpriteRenderer>().sprite;
+
                     break;
                 }
             }
@@ -226,7 +228,7 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
         objectifWindow.hideObjectifWindow();
         GameManager.getInstance().informationWindow.hideInfoPanel();
 
-        hud.setGameOver("Tu as perdu !",reasonText);
+        hud.setGameOver("Tu as perdu !", reasonText);
 
         stopTime();
     }
@@ -240,7 +242,7 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
         objectifWindow.hideObjectifWindow();
         GameManager.getInstance().informationWindow.hideInfoPanel();
 
-        hud.setGameOver("Tu as gagné !","Bravo, tu as réussi a ....");
+        hud.setGameOver("Tu as gagné !", "Bravo, tu as réussi a ....");
 
         stopTime();
     }
@@ -283,7 +285,7 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
 
     public void onMemoryAdd(Memory memory, MemoryBloc bloc)
     {
-       // Debug.LogError(bloc.getEntity());
+        // Debug.LogError(bloc.getEntity());
         if (bloc.getEntity() as Plant != null || bloc.getEntity() as Loup != null)
             return;
         GameObject drawer = GameObject.Instantiate(prefabMemoryDrawer) as GameObject;
@@ -293,7 +295,7 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
         position.z = drawer.transform.position.z;
         drawer.transform.position = position;
         drawer.SetActive(true);
-        memoryDrawers.Add(bloc, new MemoryDrawer(bloc,drawer));
+        memoryDrawers.Add(bloc, new MemoryDrawer(bloc, drawer));
     }
 
     public void onMemoryRemove(Memory memory, MemoryBloc bloc)
@@ -307,12 +309,12 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
 }
 struct MemoryDrawer
 {
-   public MemoryBloc target;
-   public GameObject icon;
+    public MemoryBloc target;
+    public GameObject icon;
 
-   public MemoryDrawer(MemoryBloc target, GameObject icon)
-   {
-       this.target = target;
-       this.icon = icon;
+    public MemoryDrawer(MemoryBloc target, GameObject icon)
+    {
+        this.target = target;
+        this.icon = icon;
     }
 }
