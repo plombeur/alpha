@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Memory : MonoBehaviourAdapter
 {
-    public const float MEMORY_CHECK_INTERVAL = 2;
+    public const float MEMORY_CHECK_INTERVAL = 1;
 
     private PerceptView perceptView;
     private Dictionary<Identity, MemoryBloc> memoryBlocs;
