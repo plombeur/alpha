@@ -1586,6 +1586,7 @@ MonoBehaviour:
   toolTipManager: {fileID: 11400052}
   objectifWindow: {fileID: 11400032}
   informationWindow: {fileID: 11400166}
+  tutorialManager: {fileID: 0}
   cameraController: {fileID: 0}
   slowTimeSpeed: 4
   WolvesModeHunt: 0
@@ -1981,7 +1982,6 @@ MonoBehaviour:
   prefabs:
   - {fileID: 100000, guid: 37c9590be7ab5ee4fbfabdd49e050486, type: 2}
   - {fileID: 100000, guid: f520f69c82004ee4a97655144bc95aa6, type: 2}
-  map: {fileID: 0}
   density: 10
 --- !u!114 &11400038
 MonoBehaviour:
@@ -2394,7 +2394,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rainZonePrefab: {fileID: 100000, guid: db57461a2c4e5954fadabada257c5cbb, type: 2}
-  map: {fileID: 0}
   zoneCount: 10
   range: 10
   probability: 1
