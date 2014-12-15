@@ -4188,7 +4188,7 @@ MonoBehaviour:
   detail: 
   HungryRatio: .300000012
   NoMoreHungryRatio: .949999988
-  TipHungry: {fileID: 0}
+  TipHungry: {fileID: 11400196}
 --- !u!114 &11400196
 MonoBehaviour:
   m_ObjectHideFlags: 1

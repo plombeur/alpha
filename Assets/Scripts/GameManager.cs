@@ -257,6 +257,28 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
     public void setModeHunt(bool hunt)
     {
         this.WolvesModeHunt = hunt;
+
+        AU_Chasse chasse = alphaWolf.getCurrentAction() as AU_Chasse;
+        AU_MoveTo moving = alphaWolf.getCurrentAction() as AU_MoveTo;
+
+        if (hunt && moving != null)
+        {
+            GameObject userActionSlapObject = new GameObject();
+            UserActionHunt huntAction = userActionSlapObject.AddComponent<UserActionHunt>();
+            huntAction.alphaWolf = alphaWolf;
+            huntAction.position = moving.getActionChasseConverti().targetPosition;
+            userActionSlapObject.name = huntAction.getActionLabel();
+            UserActionManager.getInstance().executeUserAction(huntAction);
+        }
+        else if (!hunt && chasse != null)
+        {
+            GameObject userActionSlapObject = new GameObject();
+            UserActionMoveTo moveTo = userActionSlapObject.AddComponent<UserActionMoveTo>();
+            moveTo.alphaWolf = alphaWolf;
+            moveTo.position = chasse.targetPosition;
+            userActionSlapObject.name = moveTo.getActionLabel();
+            UserActionManager.getInstance().executeUserAction(moveTo);
+        }
     }
 
     public void onMemoryAdd(Memory memory, MemoryBloc bloc)
