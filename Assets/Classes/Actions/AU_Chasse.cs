@@ -108,7 +108,7 @@ public class AU_Chasse : A_ActionUser
                 return true;
             }
             animal.faceTo(targetPosition);
-            animal.fd();
+            animal.fd(animal.vitesse * 1.5f);
         }
         else
         {

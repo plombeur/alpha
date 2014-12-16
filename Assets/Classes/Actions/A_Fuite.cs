@@ -65,15 +65,15 @@ public class A_Fuite : Action
             if (time <= 0)
             {
                 getActionPendlingList().removeAction(this);
-                lapin.GetComponent<SpriteRenderer>().enabled = true;
+                lapin.GetComponent<SpriteRenderer>().sortingOrder = 1;
                 return false;
             }
-            lapin.GetComponent<SpriteRenderer>().enabled = false;
+            lapin.GetComponent<SpriteRenderer>().sortingOrder = -10;
             return true;
         }
         else
         {
-            animal.GetComponent<SpriteRenderer>().enabled = true;
+            getAnimal().GetComponent<SpriteRenderer>().sortingOrder = 1;
             if (time <= 0)
             {
                 animal.lt(180);

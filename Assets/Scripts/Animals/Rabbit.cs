@@ -84,7 +84,7 @@ public class Rabbit : Animal
 
     public bool dansLeTerrier()
     {
-        return Vector2.Distance(transform.position, trou.transform.position) <= .3f && !GetComponent<SpriteRenderer>().enabled;
+        return Vector2.Distance(transform.position, trou.transform.position) <= .3f && GetComponent<SpriteRenderer>().sortingOrder == -10;
     }
 
     public override bool targetable()
