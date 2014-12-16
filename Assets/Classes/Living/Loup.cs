@@ -4,7 +4,7 @@ using System.Collections;
 public abstract class Loup : Animal
 {
 
-    public static bool GESTION_FAIM = true;
+    public static bool GESTION_FAIM = false;
     public int FAIM_MAX;
     public float faim;
 

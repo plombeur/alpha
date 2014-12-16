@@ -3,7 +3,7 @@ using System.Collections;
 
 public class LoupBeta : LoupInferieur
 {
-    public static bool GESTION_THREAT = true;
+    public static bool GESTION_THREAT = false;
     public float THREAT_MAX = 100;
     public float threat = 0;
     private float aggressivite;
