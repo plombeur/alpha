@@ -39,11 +39,11 @@ public class A_RentrerTerrier : Action
 
         if(rabbit.aCoteDuTerrier())
         {
-            rabbit.GetComponent<SpriteRenderer>().enabled = false;
+            rabbit.GetComponent<SpriteRenderer>().sortingOrder = -10;
             time += deltaTime;
             if(time >= duree)
             {
-                rabbit.GetComponent<SpriteRenderer>().enabled = true;
+                rabbit.GetComponent<SpriteRenderer>().sortingOrder = 1;
                 getActionPendlingList().removeAction(this);
                 return true;
             }
