@@ -395,6 +395,8 @@ public abstract class Animal : Living {
     {
         base.Update();
 
+        if (this as Loup != null)
+            return;
         renderer.enabled = false;
         foreach (Loup wolf in GameManager.getInstance().herd.transform.GetComponentsInChildren<Loup>())
         {
