@@ -27,7 +27,7 @@ public class Eat : Objectif {
             Destroy(this);
         }
 
-        detail = "Maintenant que tu sais chasser, tu dois nourrir tes loups !\n\nL'icône de la cuisse de mouton au dessus de tes loups indique que ce loup à faim. Pour les nourrir, place les autour des carcasses (comme le mouton que tu viens de tuer) et attend que l'icône disparaisse.";
+        detail = "Maintenant que tu sais chasser, tu dois nourrir tes loups !\n\nL'icône de la cuisse de mouton au dessus de tes loups indique que ce loup à faim. Pour les nourrir, place les autour des carcasses (comme le mouton que tu viens de tuer) et attend de voir ton loup se nourrir.";
 
         base.Start();
     }

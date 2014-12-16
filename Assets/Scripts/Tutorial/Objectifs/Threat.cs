@@ -42,7 +42,7 @@ public class Threat : Objectif {
             Destroy(this);
         }
 
-        detail = "Pour maintenir la hiérarchie dans ta meute et maintenir ton statut de loup alpha, tu dois montrer ton autorité aux autres loups.\n\nLe loup entouré d'un cercle orange commence à douter de toi, tu peux voir sa barre de menace remplie à " + (InitialThreatRatio * 100).ToString() + "/" + (m_OwnScript.THREAT_MAX).ToString() + ". Pour le remettre à sa place, effectue un clic droit en le ciblant et observe ton loup le réprimander.\n\nLes loups peuvent aussi accepter d'eux même le loup alpha comme chef, tu verras alors un coeur au dessus de leur tête.";
+        detail = "Pour maintenir la hiérarchie dans ta meute et maintenir ton statut de loup alpha, tu dois montrer ton autorité aux autres loups.\n\nLe loup entouré d'un cercle orange commence à douter de toi, tu peux voir sa barre de menace remplie à " + (InitialThreatRatio * 100).ToString() + "/" + (m_OwnScript.THREAT_MAX).ToString() + ". Pour le remettre à sa place, effectue un clic droit en le ciblant et observe ton loup le réprimander.\n\nLes loups peuvent aussi accepter d'eux même le loup alpha comme chef, tu verras alors celui-ci se rapprocher de ton loup alpha et te montrer de l'affection.";
 
         base.Start();
 	}
