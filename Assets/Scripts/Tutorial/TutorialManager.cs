@@ -81,4 +81,10 @@ public class TutorialManager : MonoBehaviour {
         Loup.GESTION_FAIM = false;
         LoupBeta.GESTION_THREAT = false;
     }
+
+    public void lookAtGoal()
+    {
+        if (m_CurrentIndex >= 0)
+            Objectifs[m_CurrentIndex].GetComponent<Objectif>().lookAtGoal();
+    }
 }

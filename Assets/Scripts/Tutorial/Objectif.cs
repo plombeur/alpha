@@ -50,4 +50,12 @@ public class Objectif : MonoBehaviour {
         yield return new WaitForSeconds(1);
         enabled = true;
     }
+
+    public void lookAtGoal()
+    {
+        if (m_Marqueur != null)
+        {
+            GameManager.getInstance().setCameraFocus(m_Marqueur.transform);
+        }
+    }
 }
