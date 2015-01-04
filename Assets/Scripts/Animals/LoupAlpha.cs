@@ -3,7 +3,6 @@ using System.Collections;
 
 public class LoupAlpha : Loup
 {
-
     //Pour la chasse
     public GameObject prefabTarget;
     public GameObject prefabBlackTarget;

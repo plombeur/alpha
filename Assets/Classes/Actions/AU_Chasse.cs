@@ -12,6 +12,7 @@ public class AU_Chasse : A_ActionUser
     private bool goAtk = false;
     private float timeRugissement = 1.2f;
     private float atkDelay = 0;
+    private bool rugissementTemps = false;
 
     protected override bool onStart(float deltaTime)
     {
@@ -71,6 +72,11 @@ public class AU_Chasse : A_ActionUser
 
         if (timeRugissement > 0)
         {
+            if (!rugissementTemps)
+            {
+                getAnimal().GetComponentInChildren<Voice>().makeSound(getAnimal().getIdentity(), SoundInformation.WolfHowlHunt);
+                rugissementTemps = true;
+            }
             getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().rugirSprite;
             timeRugissement -= Time.deltaTime;
             if (timeRugissement <= 0)
@@ -108,7 +114,7 @@ public class AU_Chasse : A_ActionUser
                 return true;
             }
             animal.faceTo(targetPosition);
-            animal.fd(animal.vitesse * 1.5f);
+            animal.fd(animal.vitesse * 1f);
         }
         else
         {

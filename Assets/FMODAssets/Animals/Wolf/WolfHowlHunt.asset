@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20c628874f2b60f4abd9339bace4c29f, type: 3}
-  m_Name: Music_fight
+  m_Name: WolfHowlHunt
   m_EditorClassIdentifier: 
-  path: event:/Musics/Music_fight
-  id: '{9087189b-6117-4a2a-b1ee-8a4bfe572b5e}'
+  path: event:/Animals/Wolf/WolfHowlHunt
+  id: '{c6aced54-48dc-4606-a0c6-228452c27eba}'

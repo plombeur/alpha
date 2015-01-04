@@ -86,6 +86,7 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
 
     void Update()
     {
+        /*
         float realDeltaTime = Time.realtimeSinceStartup - lastTime;
         if (stopTheTime)
         {
@@ -100,10 +101,17 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
                 Time.timeScale = 1;
             else
                 Time.timeScale = Mathf.Lerp(Time.timeScale, 1, realDeltaTime * slowTimeSpeed);
-        }
+        }*/
+        //FMOD_StudioSystem.instance.System.getBus()
         Time.fixedDeltaTime = 0.02F * Time.timeScale;
-        lastTime += realDeltaTime;
+        //lastTime += realDeltaTime;
         upateMemoryDrawer();
+
+        if (isGameOver())
+            stopTime();
+
+        if (Input.GetKey(KeyCode.Escape))
+            Application.Quit();
     }
     private void upateMemoryDrawer()
     {

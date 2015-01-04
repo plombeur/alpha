@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(FMOD_StudioEventEmitter))]
+[RequireComponent(typeof(MyEmitter))]
 [RequireComponent(typeof(CircleCollider2D))]
 public class Voice : Sound
 {
@@ -12,14 +12,14 @@ public class Voice : Sound
     private InformationVoiceLink soundPlaying;
     private CircleCollider2D soundCollider;
 
-    private FMOD_StudioEventEmitter emitter;
+    private MyEmitter emitter;
 
     protected override void Start()
     {
         soundCollider = GetComponent<CircleCollider2D>();
         soundCollider.isTrigger = true;
         soundCollider.enabled = false;
-        emitter = GetComponent<FMOD_StudioEventEmitter>();
+        emitter = GetComponent<MyEmitter>();
     }
 
     protected override void Update()
@@ -42,7 +42,9 @@ public class Voice : Sound
                 break;
             }
         }
-        if (soundLink == null)
+        if (info == SoundInformation.None)
+            emitter.Stop();
+        else if (soundLink == null)
             Debug.LogError("Sound link not found : " + info + " for " + owner);
         else
         {
@@ -51,8 +53,8 @@ public class Voice : Sound
                 emitter.Stop();
             soundPlaying = soundLink;
             emitter.asset = soundLink.clip;
+            emitter.PlayWithRefresh();
             emitter.getParameter("Maturity").setValue(maturity);
-            emitter.Play();
             soundCollider.enabled = true;
         }
     }

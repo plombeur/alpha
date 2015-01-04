@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20c628874f2b60f4abd9339bace4c29f, type: 3}
-  m_Name: WolfHowHunt
+  m_Name: SheepShout
   m_EditorClassIdentifier: 
-  path: event:/Animals/Wolf/WolfHowHunt
-  id: '{c6aced54-48dc-4606-a0c6-228452c27eba}'
+  path: event:/Animals/Sheep/SheepShout
+  id: '{180cf6f1-a906-474e-a589-309b4b3e4d87}'

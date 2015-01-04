@@ -38,7 +38,7 @@ public abstract class MindAnimal : Mind
         //Gestion des reflexes, fuite automatique
         if ( animal.peutAvoirPeur && animal.besoinDeFuir() )
         {
-            actionList.addAction(new A_Fuite());
+            actionList.addAction(new A_Fuite(animal.shoutSound));
         }
 
         //Gestion des bruits qui interpellent l'agent.

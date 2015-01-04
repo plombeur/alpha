@@ -5,6 +5,12 @@ using System.Collections.Generic;
 
 public abstract class Animal : Living {
 
+    public SoundInformation deathSound;
+    public SoundInformation idleSound;
+    public SoundInformation attackSound;
+    public SoundInformation hitSound;
+    public SoundInformation shoutSound;
+
     public float distanceDeSecurite = 2.5f;
     public PerceptView perceptView;
     public PerceptHearing perceptHearing;
@@ -384,8 +390,10 @@ public abstract class Animal : Living {
             meurt();
     }
 
-    public void meurt()
+    public virtual void meurt()
     {
+        GetComponentInChildren<Voice>().makeSound(getIdentity(), deathSound);
+
         GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         GetComponent<SpriteRenderer>().sprite = this.deathSprite;
         hideStaticEmoticon();
@@ -394,6 +402,10 @@ public abstract class Animal : Living {
     protected override void Update()
     {
         base.Update();
+
+        int rand = Random.Range(0, 2000);
+        if (rand < 1)
+            GetComponentInChildren<Voice>().makeSound(getIdentity(), idleSound);
 
         if (this as Loup != null)
             return;

@@ -7,6 +7,7 @@ public class AU_MoveTo : A_ActionUser
     private float yTarget;
     private float timeRugissement = 1.2f;
     private GameObject ciblePosition;
+    private bool rugissementTemps = false;
 
     public AU_MoveTo(float x, float y)
         : base("AU_MoveTo")
@@ -44,6 +45,11 @@ public class AU_MoveTo : A_ActionUser
         }
         if(timeRugissement > 0)
         {
+            if (!rugissementTemps)
+            {
+                getAnimal().GetComponentInChildren<Voice>().makeSound(getAnimal().getIdentity(), SoundInformation.WolfHowlMove);
+                rugissementTemps = true;
+            }
             getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().rugirSprite;
             timeRugissement -= Time.deltaTime;
             if (timeRugissement <= 0)

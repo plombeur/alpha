@@ -52,7 +52,7 @@ public class CameraController2D : MonoBehaviour, EventManagerListener
         if (followTarget && target != null)
         {
             Vector3 position = target.position;
-            position.z = -1;
+            position.z = -5;
             transform.position = position;
         }
     }

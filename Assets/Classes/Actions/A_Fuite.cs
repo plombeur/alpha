@@ -6,9 +6,16 @@ public class A_Fuite : Action
 
     private float time = 0;
     private float lastDirection = -1;
+    private SoundInformation sound;
+
+    public A_Fuite(SoundInformation sound) : base("A_Fuite")
+    {
+        this.sound = sound;
+    }
 
     protected override bool onStart(float deltaTime)
     {
+        getAnimal().GetComponentInChildren<Voice>().makeSound(getAnimal().getIdentity(), sound);
         getAnimal().GetComponent<SpriteRenderer>().sprite = getAnimal().normalSprite;
         getAnimal().displayStaticEmoticon(getAnimal().exclamationEmoticonSprite);
         return onUpdate(deltaTime);
@@ -37,11 +44,6 @@ public class A_Fuite : Action
     {
         return 90;
     }
-
-    public A_Fuite() : base("A_Fuite")
-    {
-    }
-
     protected override bool onUpdate(float deltaTime)
     {
         Animal animal = getAnimal();
