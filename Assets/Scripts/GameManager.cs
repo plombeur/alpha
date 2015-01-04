@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
 {
     private static GameManager instance;
 
+    public FMOD_StudioEventEmitter musicEmitter;
     public LoupAlpha alphaWolf;
     public EventManager eventManager;
     public HUD hud;
@@ -22,6 +23,8 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
     private bool gameOver = false;
     private bool gameWin = false;
     public bool WolvesModeHunt = false;
+    private float fadeMusic = 0;
+    public bool isMusicFight = false;
 
     public Transform mapDelimiterBottomLeft, mapDelimiterTopRight;
     private Rect dimensions;
@@ -86,6 +89,13 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
 
     void Update()
     {
+        if (isMusicFight)
+            fadeMusic = Mathf.Lerp(0, 1, fadeMusic + Time.deltaTime);
+        else
+            fadeMusic = Mathf.Lerp(1, 0, (1-fadeMusic) + Time.deltaTime);
+
+        fadeMusic = Mathf.Clamp(fadeMusic, 0, 1);
+        musicEmitter.getParameter("Fight").setValue(fadeMusic);
         /*
         float realDeltaTime = Time.realtimeSinceStartup - lastTime;
         if (stopTheTime)
@@ -305,7 +315,7 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
         drawer.SetActive(true);
         memoryDrawers.Add(bloc, new MemoryDrawer(bloc, drawer));
     }
-
+   
     public void onMemoryRemove(Memory memory, MemoryBloc bloc)
     {
         if (!memoryDrawers.ContainsKey(bloc))
