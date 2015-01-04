@@ -49,6 +49,7 @@ public class AU_FollowChasse : A_ActionUser
                 {
                     if (animal.animationAttaque(actionChasse.target, animal.getFaceToDirection(actionChasse.target.transform.position)))
                     {
+                        getAnimal().GetComponentInChildren<Voice>().makeSound(getAnimal().getIdentity(), getAnimal().attackSound);
                         actionChasse.target.blesse(10);
                         goAtk = false;
                     }

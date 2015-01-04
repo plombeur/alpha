@@ -133,6 +133,7 @@ public class AU_Chasse : A_ActionUser
                 else if (atkDelay <= 0 && animal.animationAttaque(target, animal.getFaceToDirection(target.transform.position)))
                 {
                     atkDelay = 1;
+                    getAnimal().GetComponentInChildren<Voice>().makeSound(getAnimal().getIdentity(), getAnimal().attackSound);
                     target.blesse(10);
                     if (target.estMort())
                     {

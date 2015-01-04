@@ -385,6 +385,8 @@ public abstract class Animal : Living {
     {
         if (DEBUG)
             Debug.Log("Animal blessé : " + damage);
+        GetComponentInChildren<Voice>().makeSound(getIdentity(), hitSound);
+
         vie -= damage;
         if (vie <= 0)
             meurt();

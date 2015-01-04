@@ -191,9 +191,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 403444}
-  - 114: {fileID: 11403444}
   - 58: {fileID: 5803444}
   - 114: {fileID: 11403446}
+  - 114: {fileID: 11403810}
   m_Layer: 0
   m_Name: Voice
   m_TagString: Untagged
@@ -285,7 +285,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100012}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -44.2543678, y: -29.3492622, z: 0}
+  m_LocalPosition: {x: -91.7921524, y: 7.92281151, z: 0}
   m_LocalScale: {x: .160110861, y: .160110876, z: .160110876}
   m_Children:
   - {fileID: 400014}
@@ -351,8 +351,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103444}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.91765118, y: 1205.46057, z: 0}
-  m_LocalScale: {x: 10.7462044, y: 10.7462053, z: 53.7310295}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400014}
   m_RootOrder: 3
@@ -491,10 +491,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DEBUG: 0
   deathSound: 0
-  idleSound: 0
+  idleSound: 11
   attackSound: 0
-  hitSound: 7
-  shoutSound: 6
+  hitSound: 9
+  shoutSound: 8
   distanceDeSecurite: 8
   perceptView: {fileID: 11400006}
   perceptHearing: {fileID: 11400014}
@@ -554,20 +554,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hearingDetector: {fileID: 11400012}
---- !u!114 &11403444
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 103444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a800da49483edc428ed59832d42c2d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  asset: {fileID: 11400000, guid: 870dbdf37bde5314ab6e90fe229b9ef2, type: 2}
-  path: '{990db73f-9c6e-4a1e-b987-26615bcfd106}'
-  startEventOnAwake: 0
 --- !u!114 &11403446
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -580,11 +566,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   songs:
-  - information: 6
-    clip: {fileID: 11400000, guid: 57fe7728476ab1847adca62eb262a60b, type: 2}
-  - information: 7
-    clip: {fileID: 11400000, guid: 767792a118bfc1a44981032ca0eacd27, type: 2}
+  - information: 9
+    clip: {fileID: 11400000, guid: d679d0d11a1e4224987f3e3b39551f49, type: 2}
+  - information: 8
+    clip: {fileID: 11400000, guid: 6b52a6a0691a456489b7e5e8928727a3, type: 2}
+  - information: 10
+    clip: {fileID: 11400000, guid: 5cd73a94f1fc26047a3e3ab1acd29a55, type: 2}
+  - information: 11
+    clip: {fileID: 11400000, guid: ef0cb5e43ece5e942a86160b46bce448, type: 2}
   maturity: .5
+--- !u!114 &11403810
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 103444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf180c6929ad2f84a8df094811ca9f80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asset: {fileID: 0}
+  path: 
+  startEventOnAwake: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

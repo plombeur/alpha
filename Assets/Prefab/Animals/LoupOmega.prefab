@@ -148,9 +148,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 434474}
-  - 114: {fileID: 11434476}
   - 58: {fileID: 5834474}
   - 114: {fileID: 11434474}
+  - 114: {fileID: 11407356}
   m_Layer: 0
   m_Name: Voice
   m_TagString: Untagged
@@ -269,8 +269,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 134474}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -51.1600075, y: -2, z: 0}
-  m_LocalScale: {x: 1.38764012, y: 1.38764012, z: 1.38764095}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400000}
   m_RootOrder: 3
@@ -535,6 +535,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2898c9825e35374b8afa61ba3f986c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11407356
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf180c6929ad2f84a8df094811ca9f80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asset: {fileID: 0}
+  path: 
+  startEventOnAwake: 0
 --- !u!114 &11434474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -550,24 +564,14 @@ MonoBehaviour:
   - information: 2
     clip: {fileID: 11400000, guid: 57fe7728476ab1847adca62eb262a60b, type: 2}
   - information: 3
-    clip: {fileID: 11400000, guid: 767792a118bfc1a44981032ca0eacd27, type: 2}
+    clip: {fileID: 11400000, guid: 6384bc0c5cdc52b4487b92db44168dc0, type: 2}
   - information: 5
+    clip: {fileID: 11400000, guid: 767792a118bfc1a44981032ca0eacd27, type: 2}
+  - information: 7
     clip: {fileID: 11400000, guid: 870dbdf37bde5314ab6e90fe229b9ef2, type: 2}
+  - information: 1
+    clip: {fileID: 11400000, guid: d230c0864119b5645996096dadb08033, type: 2}
   maturity: .5
---- !u!114 &11434476
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 134474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a800da49483edc428ed59832d42c2d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  asset: {fileID: 11400000, guid: 870dbdf37bde5314ab6e90fe229b9ef2, type: 2}
-  path: '{990db73f-9c6e-4a1e-b987-26615bcfd106}'
-  startEventOnAwake: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -151,6 +151,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &154920
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 454920}
+  - 58: {fileID: 5854920}
+  - 114: {fileID: 11454918}
+  - 114: {fileID: 11485050}
+  m_Layer: 0
+  m_Name: Voice
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &400000
 Transform:
   m_ObjectHideFlags: 1
@@ -234,12 +252,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100012}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -38.1959991, y: 6.24679995, z: 0}
+  m_LocalPosition: {x: -25.8759995, y: -9.44740009, z: 0}
   m_LocalScale: {x: .173866376, y: .173866361, z: .173866361}
   m_Children:
   - {fileID: 400010}
   - {fileID: 400000}
   - {fileID: 400016}
+  - {fileID: 454920}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &400014
@@ -267,6 +286,18 @@ Transform:
   - {fileID: 400014}
   m_Father: {fileID: 400012}
   m_RootOrder: 2
+--- !u!4 &454920
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154920}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400012}
+  m_RootOrder: 3
 --- !u!50 &5000000
 Rigidbody2D:
   m_ObjectHideFlags: 1
@@ -325,6 +356,17 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Radius: 4.32000017
+  m_Center: {x: 0, y: 0}
+--- !u!58 &5854920
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154920}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Radius: .5
   m_Center: {x: 0, y: 0}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -401,6 +443,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DEBUG: 0
+  deathSound: 0
+  idleSound: 13
+  attackSound: 0
+  hitSound: 12
+  shoutSound: 14
   distanceDeSecurite: 8
   perceptView: {fileID: 11400006}
   perceptHearing: {fileID: 11400014}
@@ -448,6 +495,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hearingDetector: {fileID: 11400012}
+--- !u!114 &11454918
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17329086ea1aa54448b00552ca827740, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  songs:
+  - information: 12
+    clip: {fileID: 11400000, guid: 4ace36cae963e6242a52458fae691ec4, type: 2}
+  - information: 13
+    clip: {fileID: 11400000, guid: 9d5d34d19fe10c54a8e3629dff1212cb, type: 2}
+  - information: 14
+    clip: {fileID: 11400000, guid: 8d0cfb581764c7f44a694ca5fa8d8c49, type: 2}
+  - information: 15
+    clip: {fileID: 11400000, guid: 9103c11412290374f9624968f43fc418, type: 2}
+  maturity: .5
+--- !u!114 &11485050
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf180c6929ad2f84a8df094811ca9f80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asset: {fileID: 0}
+  path: 
+  startEventOnAwake: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
