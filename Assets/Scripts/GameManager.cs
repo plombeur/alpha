@@ -276,6 +276,7 @@ public class GameManager : MonoBehaviour, EventManagerListener, MemoryListener
 
     public void setModeHunt(bool hunt)
     {
+        isMusicFight = hunt;
         this.WolvesModeHunt = hunt;
 
         AU_Chasse chasse = alphaWolf.getCurrentAction() as AU_Chasse;
