@@ -52,7 +52,10 @@ public class A_Fuite : Action
 
         if(time <= 0)
         {
-            time = Random.Range(10, 25) * .1f;
+            if(animal as Rabbit != null)
+                time = Random.Range(30, 60) * .1f;
+            else
+                time = Random.Range(10, 25) * .1f;
             lastDirection = animal.getDirectionFuite();
         }
         else
