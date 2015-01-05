@@ -39,6 +39,8 @@ public abstract class Animal : Living {
     public Sprite heartEmoticonSprite;
     public Sprite hungryEmoticonSprite;
 
+    private float maturity;
+
     //Variable qui définit si le systeme de réflexe fuite doit être activé
     public bool peutAvoirPeur = true;
 
@@ -65,6 +67,7 @@ public abstract class Animal : Living {
 
     public override void construct(Mind mind)
     {
+        maturity = Random.Range(500, 1000) * .001f;
         if (emoticonSystem != null)
             emoticonSystem.setAnimal(this);
         direction = 0;
@@ -427,4 +430,8 @@ public abstract class Animal : Living {
 
     public abstract List<SoundInformation> getSonsInterpellant();
 
+    public float getMaturity()
+    {
+        return maturity;
+    }
 }
