@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(MyEmitter))]
-[RequireComponent(typeof(CircleCollider2D))]
+//[RequireComponent(typeof(CircleCollider2D))]
 public class Voice : Sound
 {
     public InformationVoiceLink[] songs;
     public float maturity = 0;
 
     private InformationVoiceLink soundPlaying;
-    private CircleCollider2D soundCollider;
+   // private CircleCollider2D soundCollider;
 
     private MyEmitter emitter;
 
     protected override void Start()
     {
-        soundCollider = GetComponent<CircleCollider2D>();
-        soundCollider.isTrigger = true;
-        soundCollider.enabled = false;
+        //soundCollider = GetComponent<CircleCollider2D>();
+       // soundCollider.isTrigger = true;
+      //  soundCollider.enabled = false;
         emitter = GetComponent<MyEmitter>();
     }
 
@@ -26,7 +26,7 @@ public class Voice : Sound
     {
         if (soundPlaying != null && emitter.HasFinished())
         {
-            soundCollider.enabled = false;
+           // soundCollider.enabled = false;
             soundPlaying = null;
         }
     }
@@ -55,7 +55,7 @@ public class Voice : Sound
             emitter.asset = soundLink.clip;
             emitter.PlayWithRefresh();
             emitter.getParameter("Maturity").setValue(maturity);
-            soundCollider.enabled = true;
+         //   soundCollider.enabled = true;
         }
     }
     public bool isPlaying()

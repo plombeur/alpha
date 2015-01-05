@@ -9,6 +9,7 @@ public class MyEmitter : MonoBehaviour
     public FMODAsset asset;
     public string path = "";
     public bool startEventOnAwake = false;
+    private float maxDist = 100;
 
     FMOD.Studio.EventInstance evt;
     bool hasStarted = false;
@@ -166,6 +167,8 @@ public class MyEmitter : MonoBehaviour
 
     void Update()
     {
+        if ((Camera.main.transform.position - transform.position).magnitude > maxDist)
+            free();
         if (evt != null && evt.isValid())
         {
             Update3DAttributes();
