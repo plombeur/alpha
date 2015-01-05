@@ -54,7 +54,7 @@ public class Voice : Sound
             soundPlaying = soundLink;
             emitter.asset = soundLink.clip;
             emitter.PlayWithRefresh();
-            emitter.getParameter("Maturity").setValue(maturity);
+            emitter.getParameter("Maturity").setValue(((Animal)owner.getEntity()).getMaturity());
          //   soundCollider.enabled = true;
         }
     }
