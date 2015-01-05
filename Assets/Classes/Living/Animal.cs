@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public abstract class Animal : Living {
 
+    public FMOD_StudioEventEmitter walkEmitter;
+
     public SoundInformation deathSound;
     public SoundInformation idleSound;
     public SoundInformation attackSound;
@@ -93,19 +95,9 @@ public abstract class Animal : Living {
 
     public void fd(float pas, bool smoothRotation = true, bool evitementDesAutresAgents = true)
     {
-        if ( prefabSoundWalk != null )
+        if ( walkEmitter != null && walkEmitter.HasFinished())
         {
-            if (sound == null)
-            {
-                sound = (GameObject)Instantiate(prefabSoundWalk);
-            }
-            else
-            {
-                if (!sound.GetComponent<SoundSimple>().isStarted())
-                {
-                    //sound.GetComponent<SoundSimple>().play(getIdentity());
-                }
-            }
+            walkEmitter.Play();
         }
 
         float finalDirection = direction;

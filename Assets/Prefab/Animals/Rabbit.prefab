@@ -201,6 +201,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &127108
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 427108}
+  - 114: {fileID: 11427108}
+  m_Layer: 0
+  m_Name: WalkEmitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &400000
 Transform:
   m_ObjectHideFlags: 1
@@ -285,7 +301,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100012}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -91.7921524, y: 7.92281151, z: 0}
+  m_LocalPosition: {x: -44.2543678, y: -29.3492622, z: 0}
   m_LocalScale: {x: .160110861, y: .160110876, z: .160110876}
   m_Children:
   - {fileID: 400014}
@@ -305,6 +321,7 @@ Transform:
   - {fileID: 400018}
   - {fileID: 400000}
   - {fileID: 403444}
+  - {fileID: 427108}
   m_Father: {fileID: 400012}
   m_RootOrder: 0
 --- !u!4 &400016
@@ -356,6 +373,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 400014}
   m_RootOrder: 3
+--- !u!4 &427108
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127108}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 38.7211266, y: 38.7211227, z: 38.7211227}
+  m_Children: []
+  m_Father: {fileID: 400014}
+  m_RootOrder: 4
 --- !u!50 &5000000
 Rigidbody2D:
   m_ObjectHideFlags: 1
@@ -490,6 +519,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DEBUG: 0
+  walkEmitter: {fileID: 11427108}
   deathSound: 0
   idleSound: 11
   attackSound: 0
@@ -589,6 +619,20 @@ MonoBehaviour:
   asset: {fileID: 0}
   path: 
   startEventOnAwake: 0
+--- !u!114 &11427108
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a800da49483edc428ed59832d42c2d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asset: {fileID: 11400000, guid: 767792a118bfc1a44981032ca0eacd27, type: 2}
+  path: '{660eeef5-f077-448e-b3bc-7e96ef8b9153}'
+  startEventOnAwake: 1
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

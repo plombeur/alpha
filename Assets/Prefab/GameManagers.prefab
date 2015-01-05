@@ -2015,6 +2015,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7c8183abf727e4cbfdef5b5cfcd51a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicEmitter: {fileID: 0}
   alphaWolf: {fileID: 0}
   eventManager: {fileID: 11400000}
   hud: {fileID: 11400108}
@@ -2027,6 +2028,7 @@ MonoBehaviour:
   cameraController: {fileID: 0}
   slowTimeSpeed: 4
   WolvesModeHunt: 0
+  isMusicFight: 0
   mapDelimiterBottomLeft: {fileID: 0}
   mapDelimiterTopRight: {fileID: 0}
   stopTheTime: 0
