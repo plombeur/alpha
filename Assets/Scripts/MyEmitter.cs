@@ -9,7 +9,7 @@ public class MyEmitter : MonoBehaviour
     public FMODAsset asset;
     public string path = "";
     public bool startEventOnAwake = false;
-    private float maxDist = 10;
+    private float maxDist = 15;
 
     FMOD.Studio.EventInstance evt;
     bool hasStarted = false;
