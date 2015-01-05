@@ -146,7 +146,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 437838}
-  - 58: {fileID: 5837838}
   - 114: {fileID: 11437838}
   - 114: {fileID: 11496462}
   m_Layer: 0
@@ -192,7 +191,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.0599999987, y: -.0399999991, z: 0}
+  m_LocalPosition: {x: -5.01049995, y: 4.78259993, z: 0}
   m_LocalScale: {x: .277528197, y: .277528256, z: 1.38764131}
   m_Children:
   - {fileID: 400004}
@@ -390,17 +389,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_Radius: 15.2799997
   m_Center: {x: 0, y: 0}
---- !u!58 &5837838
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 137838}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Radius: .5
-  m_Center: {x: 0, y: 0}
 --- !u!64 &6400000
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -563,8 +551,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a800da49483edc428ed59832d42c2d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asset: {fileID: 11400000, guid: 767792a118bfc1a44981032ca0eacd27, type: 2}
-  path: '{660eeef5-f077-448e-b3bc-7e96ef8b9153}'
+  asset: {fileID: 11400000, guid: d230c0864119b5645996096dadb08033, type: 2}
+  path: '{0847b1ac-d12d-45e4-87dc-96e4273f6498}'
   startEventOnAwake: 1
 --- !u!114 &11496462
 MonoBehaviour:
