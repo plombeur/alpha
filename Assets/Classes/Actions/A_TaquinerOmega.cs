@@ -47,6 +47,7 @@ public class A_TaquinerOmega : Action
         {
             if(a.animationAttaque(cible,a.getFaceToDirection(cible.transform.position)))
             {
+                getAnimal().GetComponentInChildren<Voice>().makeSound(getAnimal().getIdentity(), SoundInformation.WolfAttack);
                 getActionPendlingList().removeAction(this);
                 return true;
             }

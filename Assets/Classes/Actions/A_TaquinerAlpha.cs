@@ -48,6 +48,7 @@ public class A_TaquinerAlpha : Action
         {
             if (a.animationAttaque(cible, a.getFaceToDirection(cible.transform.position)))
             {
+                getAnimal().GetComponentInChildren<Voice>().makeSound(getAnimal().getIdentity(), SoundInformation.WolfAttack);
                 GameManager.getInstance().setGameLost("Un loup beta s'est rebellé!");
                 getActionPendlingList().removeAction(this);
                 return true;

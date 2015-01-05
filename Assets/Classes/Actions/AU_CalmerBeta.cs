@@ -40,6 +40,7 @@ public class AU_CalmerBeta : A_ActionUser
         {
             if (a.animationAttaque(cible, a.getFaceToDirection(cible.transform.position)))
             {
+                getAnimal().GetComponentInChildren<Voice>().makeSound(getAnimal().getIdentity(), SoundInformation.WolfAttack);
                 cible.threat = 0;
                 getActionPendlingList().removeAction(this);
                 return true;
