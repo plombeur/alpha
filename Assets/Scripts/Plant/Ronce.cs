@@ -81,4 +81,14 @@ public class Ronce : Plant {
     {
         base.setStartingGrowth(startGrowth);
     }
+   void OnTriggerEnter2D(Collider2D collision)
+    {
+       if (collision.gameObject.GetComponent<Animal>() != null)
+            GetComponentInChildren<FMOD_StudioEventEmitter>().Play();
+   }
+   void OnTriggerExit2D(Collider2D collision)
+   {
+       if (collision.gameObject.GetComponent<Animal>() != null)
+           GetComponentInChildren<FMOD_StudioEventEmitter>().Play();
+    }
 }

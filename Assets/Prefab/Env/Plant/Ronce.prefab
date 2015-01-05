@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21200000}
   - 114: {fileID: 11400000}
   - 58: {fileID: 5800000}
+  - 114: {fileID: 11454808}
   m_Layer: 0
   m_Name: Ronce
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.1034985, y: 28.9679985, z: 0}
+  m_LocalPosition: {x: -92.5713501, y: 28.2997742, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -52,12 +53,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a138354e0fdac9a4e9fdc94839ed235e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DEBUG: 0
   maxHealth: 1000
   maxGrowth: 5
   growSpeed: .200000003
   nutriments: 0
   isAdult: 0
   fruitPrefab: {fileID: 100000, guid: 38b2cef6bf3646c4d95206b97ea1868a, type: 2}
+--- !u!114 &11454808
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a800da49483edc428ed59832d42c2d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asset: {fileID: 11400000, guid: 14cd736012c9515429a9272ea921a960, type: 2}
+  path: '{f8e46b99-c0f1-4ee1-a76a-79150fd26284}'
+  startEventOnAwake: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
