@@ -38,7 +38,7 @@ public class ObjectifWindow : MonoBehaviour
 
         miniWindowTitleField.text = title;
         miniWindowResumeField.text = resume;
-        showObjectifWindow();
+      //  showObjectifWindow();
         showObjectifMiniWindow();
     }
     public void showObjectifWindow()

@@ -23,7 +23,7 @@ public class InfoWindow : MonoBehaviour
         titleField.text = title;
         textField.text = textContent;
         this.icon.sprite = icon;
-        showInfoPanel();
+       // showInfoPanel();
         GameManager.getInstance().stopTheTime = true;
     }
 
@@ -33,6 +33,6 @@ public class InfoWindow : MonoBehaviour
     }
     public void showInfoPanel()
     {
-        infoWindowPanel.SetActive(true);
+       // infoWindowPanel.SetActive(true);
     }
 }

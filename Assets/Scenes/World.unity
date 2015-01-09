@@ -40839,6 +40839,10 @@ Prefab:
       propertyPath: musicEmitter
       value: 
       objectReference: {fileID: 2027364217}
+    - target: {fileID: 100146, guid: 14d7587fee9330b41a698677137fbee9, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 14d7587fee9330b41a698677137fbee9, type: 2}
   m_RootGameObject: {fileID: 377802856}
@@ -42588,7 +42592,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1874770109
 Transform:
   m_ObjectHideFlags: 0
